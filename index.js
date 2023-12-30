@@ -30,8 +30,8 @@ app.get("/register", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-
-    res.sendFile('C:/Users/Acer/Documents/GitHub/proje/views/login.html');
+    //C:/Users/Acer/Documents/GitHub/proje
+    res.sendFile('./views/login.html');
 })
 
 
