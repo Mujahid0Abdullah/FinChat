@@ -56,7 +56,7 @@ export const login = (req, res) => {
         res.cookie("accessToken", token, {
             httpOnly: true
 
-        }).status(200).redirect("/home")
+        }).status(200).redirect("/home");
         //json(others)
         //redirect('http://127.0.0.1:5500/views/anasayfa.html')
         //render("anasayfa.ejs", { others });
