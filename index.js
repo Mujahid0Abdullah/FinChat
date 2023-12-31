@@ -1,6 +1,5 @@
 import express from "express";
 
-import { fileURLToPath } from "url";
 import { dirname } from "path";
 import bodyParser from "body-parser";
 import path from "path";
@@ -16,9 +15,7 @@ import commentRoutes from "./routes/comments.js";
 
 import cookieParser from "cookie-parser";
 
-//file send 
-const __filename = fileURLToPath(import.meta.url);
-const _dirname = dirname(_filename);
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -70,7 +67,7 @@ app.get("/login", (req, res) => {
 app.get("/", (req, res) => {
     console.log("Anasayfa");
 
-    const htmlPath = path.join(__dirname, 'views', 'login.html');
+    const htmlPath = path.resolve('views', 'login.html');
     res.sendFile(htmlPath);
 });
 
