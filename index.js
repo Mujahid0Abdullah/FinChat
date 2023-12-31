@@ -64,6 +64,15 @@ app.get("/home", (req, res) => {
 });
 
 
+app.get("/register", (req, res) => {
+    console.log("Anasayfa");
+
+    const htmlPath = path.resolve('views', 'register.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 
 
 app.get("/", (req, res) => {
