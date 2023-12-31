@@ -65,6 +65,8 @@ app.get("/home", (req, res) => {
     console.log("Anasayfa");
 
     const htmlPath = path.resolve('views', 'anasayfa.html');
+    console.log(htmlPath);
+
     res.sendFile(htmlPath);
 });
 
