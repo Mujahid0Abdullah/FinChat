@@ -56,6 +56,15 @@ app.get("/login", (req, res) => {
     res.render('./views/login.ejs');
 })
 
+const path = require('path');
+
+app.get("/", (req, res) => {
+    console.log("Anasayfa");
+
+    const htmlPath = path.join(__dirname, 'views', 'login.html');
+    res.sendFile(htmlPath);
+});
+
 /*
 app.use(
     cors({
