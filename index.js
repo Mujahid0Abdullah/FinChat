@@ -57,10 +57,12 @@ app.get("/register", (req, res) => {
     res.render("register.ejs")
 })
 
+
 app.get("/login", (req, res) => {
     //C:/Users/Acer/Documents/GitHub/proje
     res.redirect('./views/login.html');
-})
+});
+
 app.get("/home", (req, res) => {
     console.log("Anasayfa");
 
@@ -69,6 +71,7 @@ app.get("/home", (req, res) => {
 
     res.sendFile(htmlPath);
 });
+
 
 
 app.get("/", (req, res) => {
