@@ -65,7 +65,7 @@ app.get("/home", (req, res) => {
 
 
 app.get("/register", (req, res) => {
-    console.log("Anasayfa");
+    console.log("register");
 
     const htmlPath = path.resolve('views', 'register.html');
     console.log(htmlPath);
