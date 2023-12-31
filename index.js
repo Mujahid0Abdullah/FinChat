@@ -56,7 +56,7 @@ app.get("/login", (req, res) => {
     res.render('./views/login.ejs');
 })
 
-const path = require('path');
+
 
 app.get("/", (req, res) => {
     console.log("Anasayfa");
@@ -71,7 +71,7 @@ app.use(
         origin: "http://127.0.0.1:5500",
     })
 );*/
-
+/*
 app.get("/", (req, res) => {
     console.log("Anasayfa");
 
@@ -79,7 +79,7 @@ app.get("/", (req, res) => {
     //res.sendFile(htmlPath);
     res.send("Ana sayfaya hoş geldiniz!"); // Kök dizine gelen isteğe yanıt olarak bir metin gönderir
 
-});
+});*/
 
 
 
