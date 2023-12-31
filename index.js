@@ -66,8 +66,10 @@ app.use(
 app.get("/", (req, res) => {
     console.log("Anasayfa");
 
-    const htmlPath = path.join(__dirname, 'views', 'anasayfa.html');
-    res.sendFile(htmlPath);
+    //const htmlPath = path.join(__dirname, 'views', 'anasayfa.html');
+    //res.sendFile(htmlPath);
+    res.send("Ana sayfaya hoş geldiniz!"); // Kök dizine gelen isteğe yanıt olarak bir metin gönderir
+
 });
 
 
