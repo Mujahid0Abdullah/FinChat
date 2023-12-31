@@ -4,3 +4,4 @@ git push
 
 
 git pull // ile son kodu indir
+ben ozan
