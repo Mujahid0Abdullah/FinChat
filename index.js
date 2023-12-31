@@ -61,11 +61,16 @@ app.get("/login", (req, res) => {
     //C:/Users/Acer/Documents/GitHub/proje
     res.redirect('./views/login.html');
 })
+app.get("/home", (req, res) => {
+    console.log("Anasayfa");
 
+    const htmlPath = path.resolve('views', 'anasayfa.html');
+    res.sendFile(htmlPath);
+});
 
 
 app.get("/", (req, res) => {
-    console.log("Anasayfa");
+    console.log("login");
 
     const htmlPath = path.resolve('views', 'login.html');
     res.sendFile(htmlPath);
