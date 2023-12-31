@@ -126,6 +126,7 @@
                 if (response.ok) {
                     alert('Login successful! Redirecting to the homepage.');
                     //window.location.href = './views/anasayfa.html';
+                    window.location.href = './home';
                 } else {
                     const errorMessage = await response.json();
                     alert(`Login failed: ${errorMessage}`);
