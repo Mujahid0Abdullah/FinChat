@@ -29,8 +29,7 @@ export const register = (req, res) => {
 
         db.query(q2, [values], (err, data) => {
             if (err) return res.status(500).json(err);
-            return res.status(200).render("login.ejs");
-            //json("kullanıcı oluşturuldu");
+            return res.status(200).json("kullanıcı oluşturuldu");
 
         });
 
