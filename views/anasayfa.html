@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özel Tasarım</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            display: flex;
+            height: 100vh;
+        }
+
+        #left-region {
+            flex: 5;
+            background-color: #BFBFBF;
+            position: relative;
+        }
+
+        #middle-region {
+            flex: 21;
+            background-color: #FFFFFF;
+        }
+
+        #right-region {
+            flex: 6;
+            background-color: #595959;
+            border-left: 3px solid black;
+            /* Sol kenarlık */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+
+        }
+
+        .horizontal-line {
+            height: 8px;
+            background-color: #F2F2F2;
+            border-radius: 36px;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-style: double;
+            border: 2px solid black;
+        }
+
+        .horizontal-middle-line {
+            height: 50px;
+            background-color: #F2F2F2;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+
+        }
+
+        #dollar-icon {
+            position: left;
+            width: 100px;
+            height: 100px;
+            bottom: -10px;
+            /* İkonu çizginin altına yerleştir */
+            left: 50%;
+            padding-top: 0px;
+            transform: translateX(-50%);
+            padding-left: 20px;
+        }
+
+        #gold-icon {
+            position: left;
+            width: 100px;
+            height: 100px;
+            bottom: -10px;
+            /* İkonu çizginin altına yerleştir */
+            left: 50%;
+            padding-top: 0px;
+            transform: translateX(-50%);
+            padding-left: 40px;
+        }
+
+        #kripto-icon {
+            position: left;
+            width: 100px;
+            height: 100px;
+            bottom: -10px;
+            /* İkonu çizginin altına yerleştir */
+            left: 50%;
+            padding-top: 0px;
+            transform: translateX(-50%);
+            padding-left: 40px;
+        }
+
+        #clickable-lines {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+            /* Popup'un önünde olmasını sağlar */
+        }
+
+        #clickable-lines span {
+            display: block;
+            width: 20px;
+            height: 4px;
+            background-color: black;
+            margin-bottom: 4px;
+            transition: background-color 0.3s ease;
+            /* Hover efekti için geçiş efekti */
+        }
+
+        #clickable-lines:hover span {
+            background-color: #3498db;
+            /* Hover rengi */
+        }
+
+        #popup {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: -100px;
+            /* Popup'ın sağ kenara olan mesafesi */
+            width: 100px;
+            height: 40px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            /* Yazıları ortala */
+            z-index: 2;
+            /* Çizgilerin üzerinde olmasını sağlar */
+        }
+
+        .popup-content {
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            /* Renk değişimini yumuşatmak için geçiş efekti */
+        }
+
+        .popup-content:hover {
+            color: #3498db;
+            /* Hover rengi */
+        }
+
+        #imageViewer {
+            width: 100px;
+            height: 80px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            border-radius: 10px;
+            border-style: dashed;
+        }
+
+        #imageViewer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #dynamic-popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Popup'ı dikey ve yatay ortala */
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            /* Yazıları ortala */
+            z-index: 3;
+            /* Diğer elementlerin üzerinde olmasını sağlar */
+        }
+
+        /* Yeni eklenen stil */
+        /* Yeni eklenen stil */
+        .para-birimleri,
+        .altin-degerleri,
+        .kripto-degerleri {
+            margin: 0;
+            /* H3 etiketlerinin margin'ını sıfırla */
+            padding-left: 80px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="left-region">
+            <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
+                onclick="togglePopup(event)">
+                <!-- Sağ üst köşeye çizgiler buraya gelecek -->
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()"
+                onclick="closePopup(event)">
+                <!-- Pencere İçeriği Buraya Gelecek -->
+                <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
+                <div class="popup-content" onclick="openProfilePage()">My Profile</div>
+                <button onclick="logoutUser()">Logout</button>
+            </div>
+        </div>
+        <div id="middle-region">
+            <!-- Orta Bölge İçeriği Buraya Gelecek -->
+            <div class="horizontal-middle-line"><span style="font-size: 36px;">
+                    <div id="userInfo"></div>
+
+                </span>
+            </div>
+            <form id="postForm">
+                <label for="desc">Description:</label><br>
+                <input type="text" id="desc" name="desc"><br>
+                <div id="imageViewer"></div>
+                <button type="button" id="uploadImageButton" onclick="openImageView()">Upload Image</button>
+                <label for="img">Image URL:</label><br>
+                <input type="file" id="img" name="img"><br><br>
+                <button type="button" onclick="addpost()">Add Post</button>
+            </form>
+            <div id="postsList">
+
+            </div>
+        </div>
+        <div id="right-region">
+            <!-- Sağ Bölge İçeriği Buraya Gelecek -->
+            <div class="horizontal-line">
+                <img id="dollar-icon" src="dollar-icon.gif" alt="Dollar Icon">
+            </div>
+
+            <h3 class="para-birimleri" id="dolar-try"></h3>
+            <h3 class="para-birimleri" id="euro-try"></h3>
+            <h3 class="para-birimleri" id="sterlin-try"></h3>
+            <h3 class="para-birimleri" id="pln-try"></h3>
+            <div class="horizontal-line">
+                <img id="gold-icon" src="gold-icon.gif" alt="Dollar Icon">
+            </div>
+            <h3 class="altin-degerleri">Gram Altın=300Tl</h3>
+            <h3 class="altin-degerleri">Çeyrek Altın=500Tl</h3>
+            <h3 class="altin-degerleri">C. Altını=200Tl</h3>
+            <h3 class="altin-degerleri">Yatım Altın=100Tl</h3>
+            <div class="horizontal-line">
+                <img id="kripto-icon" src="kripto-icon.gif" alt="Dollar Icon">
+            </div>
+            <h3 class="kripto-degerleri">Bitcoin=300Tl</h3>
+            <h3 class="kripto-degerleri">Etherium=200Tl</h3>
+            <h3 class="kripto-degerleri">DogeCoin=100Tl</h3>
+            <h3 class="kripto-degerleri">ZırtCoin=50Tl</h3>
+            <div class="horizontal-line"></div>
+        </div>
+    </div>
+
+    <div id="dynamic-popup">
+        <div class="popup-content">
+            İçerik Buraya Gelecek
+        </div>
+    </div>
+
+    <script>
+
+        var closePopupTimeout;
+
+        function togglePopup(event) {
+            event.stopPropagation();
+            var popup = document.getElementById("popup");
+            popup.style.display = popup.style.display === "none" ? "block" : "none";
+        }
+
+        function openPopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+
+        function closePopup(event) {
+            event.stopPropagation();
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+
+        function openDynamicPopup() {
+            var dynamicPopup = document.getElementById("dynamic-popup");
+            dynamicPopup.style.display = "block";
+        }
+
+        function openProfilePage() {
+            window.location.href = "profile.html";
+        }
+
+        function cancelClosePopup() {
+            clearTimeout(closePopupTimeout);
+        }
+
+        function closePopupWithDelay() {
+            closePopupTimeout = setTimeout(function () {
+                var popup = document.getElementById("popup");
+                popup.style.display = "none";
+            }, 100); // 1 saniye gecikme
+        }
+
+        // Dışında bir yere tıklandığında popup'ları kapat
+        window.addEventListener("click", function () {
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+
+            var dynamicPopup = document.getElementById("dynamic-popup");
+            dynamicPopup.style.display = "none";
+        });
+        const url = "https://fin-chat.onrender.com/"
+        fetchPosts()
+        function fetchPosts() {
+
+            fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+                .then(response => response.json())
+                .then(posts => {
+                    // Sunucudan gelen verileri işleme
+                    console.log(posts);
+                    const postsListContainer = document.getElementById('postsList');
+
+                    posts.forEach(post => {
+                        const postDiv = document.createElement('div');
+                        postDiv.classList.add('post');
+
+                        const postId = document.createElement('p');
+                        postId.textContent = `user:  ${post.name}`;
+
+                        const postDesc = document.createElement('p');
+                        postDesc.textContent = `Description: ${post.desc}`;
+
+                        const postCreatedAt = document.createElement('p');
+                        postCreatedAt.textContent = `Created At: ${moment(post.createdAt).fromNow()}`;
+
+                        const postImage = document.createElement('img');
+                        postImage.src = post.img; // Resim URL
+                        postImage.alt = 'Post Image';
+
+                        const hr = document.createElement('hr');
+                        postDiv.appendChild(postId);
+                        postDiv.appendChild(postDesc);
+                        postDiv.appendChild(postCreatedAt);
+                        postDiv.appendChild(postImage);
+                        postDiv.appendChild(hr);
+
+                        postsListContainer.appendChild(postDiv);
+
+                    })
+                        .catch(error => {
+                            console.error('Error fetching posts:', error);
+                        });
+                })
+        }
+        //LOGOUT
+        function logoutUser() {
+            fetch(`${url}auths/logout`, { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Logout failed');
+                })
+                .then(data => {
+                    console.log(data);
+
+                    window.location.href = `${url}login`;
+                })
+                .catch(error => {
+                    console.error('Logout error:', error);
+                });
+        }
+        function addpost() {
+            const desc = document.getElementById('desc').value;
+            const img = document.getElementById('img').files[0];
+            const formdata = new FormData();
+            formdata.append('desc', desc);
+            formdata.append('img', img);
+            fetch(`${url}posts`, {
+                method: 'POST',
+                /*headers: {
+                    'Content-Type': 'multipart/form-data'
+                },*/
+                body: formdata
+                //JSON.stringify(postData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('hata oldu , yeniden giriş yapın');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Post eklendi:', data);
+                    fetchPosts();
+                })
+                .catch(error => {
+
+                    const message = error.message
+                    //data.message;
+                    alert(message);
+                });
+        }
+
+        function openImageView() {
+            var fileInput = document.createElement("input");
+            fileInput.type = "file";
+
+            fileInput.addEventListener("change", function () {
+                var selectedFile = fileInput.files[0];
+                if (selectedFile) {
+                    var imageViewer = document.getElementById("imageViewer");
+                    imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
+                }
+            });
+
+            fileInput.click();
+        }
+
+        async function displayUserInfo() {
+            try {
+                const response = await fetch('/users');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user info');
+                }
+                const userInfo = await response.json();
+
+                const userInfoDiv = document.getElementById('userInfo');
+                userInfoDiv.innerHTML = `               
+          <p>Merhaba ${userInfo.name}</p>          
+        `;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        displayUserInfo()
+        function getExchangeRates() {
+            const apiKey = '1bcf3f77aed6bcf6430e283f';
+            const baseCurrency = 'USD';
+            const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
+
+            fetch(apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const dollarToTRY = document.getElementById('dolar-try');
+                    const usdToTRY = data.conversion_rates.TRY;
+                    dollarToTRY.textContent = `USD to TRY: ${usdToTRY.toFixed(5)}`; // Döviz kuru bilgisini gösterir
+
+
+                    const usdToEUR = data.conversion_rates.EUR;
+                    const eurToTRY = (1 / usdToEUR) * usdToTRY;
+                    const euroToTRY = document.getElementById('euro-try');
+                    //const eurToTRY = data.conversion_rates.EUR;
+                    euroToTRY.textContent = `EUR to TRY: ${eurToTRY.toFixed(5)}`;
+
+                    const gbpToTRY = document.getElementById('sterlin-try');
+                    const usdToGBP = data.conversion_rates.GBP;
+                    const gbpToTRYValue = (1 / usdToGBP) * usdToTRY;
+                    gbpToTRY.textContent = `GBP to TRY: ${gbpToTRYValue.toFixed(5)}`;
+
+                    const plnToTRY = document.getElementById('pln-try');
+                    const usdToPLN = data.conversion_rates.PLN;
+                    const plnToTRYValue = (1 / usdToPLN) * usdToTRY;
+                    plnToTRY.textContent = `PLN to TRY: ${plnToTRYValue.toFixed(5)}`;
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+        }
+
+        // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
+        getExchangeRates();
+
+
+        //ADD POST
+        /*
+        document.getElementById('postForm').addEventListener('submit', function (event) {
+
+            event.preventDefault(); // Form submitini engelle
+
+            const desc = document.getElementById('desc').value;
+            const img = document.getElementById('img').files[0];
+
+            const formdata = new FormData();
+            formdata.append('desc', desc);
+            formdata.append('img', img);
+            // Post verilerini obje olarak oluştur
+            const postData = {
+                des: desc,
+                img: img
+            };
+
+            // POST isteği göndermek için fetch kullanımı
+            fetch('http://localhost:8800/posts', {
+                method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: formdata
+                //JSON.stringify(postData)
+             })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('hata oldu , yeniden giriş yapın');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Post eklendi:', data);
+                    fetchPosts();
+                })
+                .catch(error => {
+
+                    const message = error.message
+                    //data.message;
+                    alert(message);
+                });
+                });
+
+        /*
+        GetData()
+        function GetData() {
+            fetch("http://localhost:8800/posts", {
+                method: "GET"
+            }).then(Request => Request.json())
+                .then(data => {
+                    ShowData(data)
+                })
+        }
+*/
+        /*
+                function ShowData(data) {
+                    let Table = `<table class="table">`
+                    Table += `<tr> 
+                                    <th>Name</th> 
+                                    <th>Email</th> 
+                                    <th>Password</th> 
+                                    <th style="color:red;">Delete</th>
+                                    <th style="color:dark;">Update</th>
+                                 </tr>`
+                    Users.forEach(User => {
+                        Table += `<tr> 
+                                        <td contenteditable id="Name${User.Id}">${User.desc}</td> 
+                                        <td contenteditable id="Email${User.Id}">${User.userid}</td> 
+                                        <td contenteditable id="Password${User.Id}">${User.img}</td> 
+                                        <td onclick="Remove(${User.createdAt})"><button class="btn btn-danger">x</button> </td>
+                                        <td onclick="Update(${User.Id})"><img src="update.png" width="45"></td>  
+                                    </tr>`
+                    });
+                    Table += ` </table>`
+                    //document.getElementById("Users").innerHTML = Table
+                }
+                    
+                /*
+        function Create() {
+         fetch("http://localhost:8800/auths/login", {
+             method: "POST",
+             headers: { 'Content-Type': 'application/json' },
+             body: JSON.stringify({
+                 username: document.getElementById("username").value,
+        
+                 password: document.getElementById("password").value
+             })
+         }).then(Request => Request.json()).then(Answer => {
+            
+             fetchPosts()
+         })
+        }*/
+    </script>
+</body>
+
+</html>
