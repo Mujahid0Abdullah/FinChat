@@ -14,7 +14,7 @@ router.use(Express.urlencoded({ extended: true })); // URL-encoded verilerini i�
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'C:/Users/Acer/Documents/GitHub/proje/public/uploads'); // Dosyanın kaydedileceği yol
+        cb(null, './public/uploads'); // Dosyanın kaydedileceği yol
 
     },
     filename: function (req, file, cb) {
@@ -27,12 +27,12 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 //authorize,
-router.get("/", getPosts)
+router.get("/", authorize, getPosts)
 router.post("/", authorize, upload.single('img'), (req, res) => {
 
     console.log(req.body);
     const file = req.file;
-    const imagePath = `C:/Users/Acer/Documents/GitHub/proje/public/uploads/${file.filename}`;
+    const imagePath = `./public/uploads/${file.filename}`;
     const descValue = req.body.desc;
     const userInfo = req.userInfo; // Yetkilendirme adımında doğrulanan kullanıcı bilgileri
 

@@ -14,10 +14,31 @@ import cookieParser from "cookie-parser";
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*"); // Tüm kaynaklara erişime izin verir
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // İzin verilen HTTP metodları
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"); // İzin verilen headerlar
+    res.header("Access-Control-Allow-Credentials", true); // Kimlik doğrulaması yapılan isteklere izin verir
+    next();
+});
+
+// CORS politikalarını uygulamak için cors modülünü kullanmaya gerek kalmayabilir
+// Ancak, cors modülünü kullanmaya devam etmek isterseniz:
+app.use(
+    cors({
+        origin: "*", // Tüm kaynaklara erişime izin verir
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // İzin verilen HTTP metodları
+        credentials: true, // Kimlik doğrulaması yapılan isteklere izin verir
+        preflightContinue: false, // OPTIONS ön isteklerini işleme alır
+        optionsSuccessStatus: 204 // OPTIONS isteğine başarılı bir yanıt döndürür
+    })
+);
+/*
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Credential", true);
     next();
-})
+})*/
 app.use(express.json())
 app.listen(8800, () => {
     console.log("listening");
@@ -35,18 +56,18 @@ app.get("/login", (req, res) => {
     res.render('./views/login.ejs');
 })
 
-
+/*
 app.use(
     cors({
         origin: "http://127.0.0.1:5500",
     })
-);
+);*/
 
 app.get("/", (req, res) => {
     console.log("Anasayfa");
 
-    // const htmlPath = path.join(__dirname, '/public/anasayfa.html');
-    res.sendFile('C:/Users/Acer/Documents/GitHub/proje/views/anasayfa.html');
+    const htmlPath = path.join(__dirname, 'views', 'anasayfa.html');
+    res.sendFile(htmlPath);
 });
 
 
