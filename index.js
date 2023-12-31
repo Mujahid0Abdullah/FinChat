@@ -78,6 +78,8 @@ app.get("/", (req, res) => {
     console.log("login");
 
     const htmlPath = path.resolve('views', 'login.html');
+    console.log(htmlPath);
+
     res.sendFile(htmlPath);
 });
 
