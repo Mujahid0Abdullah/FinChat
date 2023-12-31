@@ -83,6 +83,15 @@ app.get("/", (req, res) => {
     res.sendFile(htmlPath);
 });
 
+
+app.get("/register", (req, res) => {
+    console.log("register");
+
+    const htmlPath = path.resolve('frontend', 'register.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
 /*
 app.use(
     cors({
