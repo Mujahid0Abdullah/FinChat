@@ -66,8 +66,8 @@ app.use(
 app.get("/", (req, res) => {
     console.log("Anasayfa");
 
-    // const htmlPath = path.join(__dirname, '/public/anasayfa.html');
-    res.sendFile('./views/anasayfa.html');
+    const htmlPath = path.join(__dirname, 'views', 'anasayfa.html');
+    res.sendFile(htmlPath);
 });
 
 
