@@ -64,6 +64,15 @@ app.get("/home", (req, res) => {
 });
 
 
+app.get("/register", (req, res) => {
+    console.log("register");
+
+    const htmlPath = path.resolve('frontend', 'anasayfa.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 
 app.get("/", (req, res) => {
     console.log("login");
