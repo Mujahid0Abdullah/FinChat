@@ -53,7 +53,7 @@ app.get("/register", (req, res) => {
 
 app.get("/login", (req, res) => {
     //C:/Users/Acer/Documents/GitHub/proje
-    res.sendFile('./views/login.html');
+    res.redirect('./views/login.html');
 })
 
 
