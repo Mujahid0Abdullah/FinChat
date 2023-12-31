@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özel Tasarım</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #middle-region {
+            flex: 21;
+            background-color: #FFFFFF;
+            overflow-y: auto;
+            overflow-x: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        #left-region {
+            flex: 5;
+            background-color: #BFBFBF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .share-post {
+            position:   static;
+            left: 0;
+            right:0;
+            top: 120px;
+            width: 900px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            position: center;
+            margin-left: 30px;
+            box-shadow: 5px 5px 10px 2px rgba(0,0,0,.8);
+            margin-top: 20px;
+        }
+
+        .post-view{
+            position:static;
+            left: 0;
+            right:0;
+            top: 120px;
+            width: 900px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            position: center;
+            margin-left: 30px;
+            margin-top: 25px;
+            margin-bottom:5px;
+        }
+
+        .left-column {
+            flex: 1;
+            flex-direction: column;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: lightgray;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            color: #333;
+            font-weight: bold;
+            position: relative;
+            margin: auto;
+        }
+
+        .right-column {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upper-row {
+            flex: 3;
+            background-color: white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .upper-row textarea {
+            width: 100%;
+            height: 95%;
+            resize: none;
+            border: none;
+            outline: none;
+        }
+
+        .lower-row {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+        }
+
+        .lower-row button {
+            margin-left: 10px;
+        }
+
+                #sendButton {
+                    height: 30px;
+                    width: 30px;
+                    padding: 0; /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+                    border: none; /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+                    background: none; /* Arkaplan rengini kaldırıyoruz */
+                    cursor: pointer;
+                }
+
+                #sendButton img {
+                    height: 100%;
+                    width: 100%;
+                }
+
+
+
+
+                #commentsButton {
+                    height: 30px;
+                    width: 30px;
+                    padding: 0; /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+                    border: none; /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+                    background: none; /* Arkaplan rengini kaldırıyoruz */
+                    cursor: pointer;
+                }
+
+                #commentsButton img {
+                    height: 100%;
+                    width: 100%;
+                }
+
+
+
+
+
+
+        .horizontal-line {
+            height: 8px;
+            background-color: #F2F2F2;
+            border-radius: 36px;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-style: double;
+            border: 2px solid black;
+        }
+
+        .horizontal-middle-line {
+            height: 50px;
+            background-color: #F2F2F2;
+            position: relative;
+            margin-top: 20px;
+            margin-bottom: 0px;
+            text-align: center;
+        }
+
+        #right-region {
+            flex: 6;
+            background-color: #595959;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            overflow: hidden;
+            border: 2px solid black;
+        }
+
+        #dollar-icon {
+            position: left;
+            width: 100px;
+            height: 100px;
+            bottom: -10px;
+            left: 50%;
+            padding-top: 0px;
+            transform: translateX(-50%);
+            padding-left: 20px;
+        }
+
+        #gold-icon {
+            position: left;
+            width: 100px;
+            height: 100px;
+            bottom: -10px;
+            left: 50%;
+            padding-top: 0px;
+            transform: translateX(-50%);
+            padding-left: 40px;
+        }
+
+        #kripto-icon {
+            position: left;
+            width: 100px;
+            height: 100px;
+            bottom: -10px;
+            left: 50%;
+            padding-top: 0px;
+            transform: translateX(-50%);
+            padding-left: 40px;
+        }
+
+        #clickable-lines {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #clickable-lines span {
+            display: block;
+            width: 20px;
+            height: 4px;
+            background-color: black;
+            margin-bottom: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        #clickable-lines:hover span {
+            background-color: #3498db;
+        }
+
+        #popup {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0px;
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .popup-content {
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .popup-content:hover {
+            color: #3498db;
+        }
+
+        #dynamic-popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            z-index: 3;
+        }
+
+        #close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        #firstnameLastname {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border-radius: 36px;
+            height: 30px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        #password,
+        #repeatPassword {
+            margin-bottom: 5px;
+            border-radius: 36px;
+            height: 30px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        #save-btn {
+            background-color: #9CC2E6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px;
+        }
+
+
+
+        .para-birimleri,
+        .altin-degerleri,
+        .kripto-degerleri {
+            margin: 0;
+            padding-left: 80px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="left-region">
+            <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
+                onclick="togglePopup(event)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()"
+                onclick="closePopup(event)">
+                <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
+                <div class="popup-content" onclick="openProfilePage()">My Profile</div>
+                <div class="popup-content" onclick="LogOut()">Log Out</div>
+
+            </div>
+        </div>
+        <div id="middle-region">
+
+          <div class="horizontal-middle-line">
+              <span style="font-size: 36px;">Hoş Geldin Ali</span>
+          </div>
+
+            <div class="share-post">
+                <div class="left-column">
+                    <div class="user-avatar">
+                        <img src="path/to/user/avatar.jpg">
+                    </div>
+                    <div class="user-name">Ali</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea placeholder="Your text here..." rows="5" cols="50"></textarea>
+                    </div>
+
+                    <div class="lower-row">
+
+                      <button id="sendButton">
+                          <img src="send.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-view">
+                <div class="left-column">
+                    <div class="user-avatar">
+                        <img src="path/to/user/avatar.jpg">
+                    </div>
+                    <div class="user-name">Fırat</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="lower-row">
+                      <button id="commentsButton">
+                          <img src="comment.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-view">
+                <div class="left-column">
+                    <div class="user-avatar">
+                        <img src="path/to/user/avatar.jpg">
+                    </div>
+                    <div class="user-name">Fırat</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="lower-row">
+                      <button id="commentsButton">
+                          <img src="comment.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post-view">
+                <div class="left-column">
+                    <div class="user-avatar">
+                        <img src="path/to/user/avatar.jpg">
+                    </div>
+                    <div class="user-name">Fırat</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5" cols="50"></textarea>
+                    </div>
+                    <div class="lower-row">
+                      <button id="commentsButton">
+                          <img src="comment.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div id="right-region">
+            <div class="horizontal-line">
+                <img id="dollar-icon" src="dollar-icon.gif" alt="Dollar Icon">
+            </div>
+            <h3 class="para-birimleri">Dolar/tl=37</h3>
+            <h3 class="para-birimleri">Euro/tl=39</h3>
+            <h3 class="para-birimleri">Sterlin/tl=30</h3>
+            <h3 class="para-birimleri">Pln/tl=3</h3>
+            <div class="horizontal-line">
+                <img id="gold-icon" src="gold-icon.gif" alt="Dollar Icon">
+            </div>
+            <h3 class="altin-degerleri">Gram Altın=300Tl</h3>
+            <h3 class="altin-degerleri">Çeyrek Altın=500Tl</h3>
+            <h3 class="altin-degerleri">C. Altını=200Tl</h3>
+            <h3 class="altin-degerleri">Yatım Altın=100Tl</h3>
+            <div class="horizontal-line">
+                <img id="kripto-icon" src="kripto-icon.gif" alt="Dollar Icon">
+            </div>
+            <h3 class="kripto-degerleri">Bitcoin=300Tl</h3>
+            <h3 class="kripto-degerleri">Etherium=200Tl</h3>
+            <h3 class="kripto-degerleri">DogeCoin=100Tl</h3>
+            <h3 class="kripto-degerleri">ZırtCoin=50Tl</h3>
+            <div class="horizontal-line"></div>
+        </div>
+    </div>
+
+    <div id="dynamic-popup">
+        <div id="close-btn" onclick="closeDynamicPopup()">X</div>
+        <div class="user-avatar" onclick="openProfilePictureInput()">
+            <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
+            <div id="editProfilePicture"></div>
+        </div>
+        <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
+        <br>
+        <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
+        <br>
+        <input type="password" id="password" placeholder="Password">
+        <br>
+        <input type="password" id="repeatPassword" placeholder="Repeat Password">
+        <br>
+        <button id="save-btn" onclick="saveChanges()">Save</button>
+    </div>
+
+    <script>
+        var closePopupTimeout;
+
+        function togglePopup(event) {
+            event.stopPropagation();
+            var popup = document.getElementById("popup");
+            popup.style.display = popup.style.display === "none" ? "block" : "none";
+        }
+
+        function openPopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = "block";
+        }
+
+        function closePopup(event) {
+            event.stopPropagation();
+            var popup = document.getElementById("popup");
+            popup.style.display = "none";
+        }
+
+        function openDynamicPopup() {
+            var dynamicPopup = document.getElementById("dynamic-popup");
+            dynamicPopup.style.display = "block";
+        }
+
+        function closeDynamicPopup() {
+    var dynamicPopup = document.getElementById("dynamic-popup");
+    dynamicPopup.style.display = "none";
+}
+
+function saveChanges() {
+    // Burada yapılmak istenen değişiklikleri işleyebilirsiniz.
+    // Örneğin, kullanıcının girdiği bilgileri alıp bir veritabanına kaydetme işlemi gerçekleştirebilirsiniz.
+    alert("Changes saved!");
+}
+
+        function openProfilePage() {
+            window.location.href = "profile.html";
+        }
+
+        function cancelClosePopup() {
+            clearTimeout(closePopupTimeout);
+        }
+
+        function closePopupWithDelay() {
+            closePopupTimeout = setTimeout(function () {
+                var popup = document.getElementById("popup");
+                popup.style.display = "none";
+            }, 100); // 1 saniye gecikme
+        }
+
+        function LogOut() {
+
+    alert("You have been logged out.");
+}
+
+function openProfilePictureInput() {
+    var profilePictureInput = document.getElementById('profilePictureInput');
+    profilePictureInput.click();
+}
+
+document.getElementById('commentsButton').addEventListener('click', function () {
+    window.location.href = 'CommentThePost.html';
+});
+
+function handleProfilePictureChange() {
+    var profilePictureInput = document.getElementById('profilePictureInput');
+    var currentProfilePicture = document.getElementById('currentProfilePicture');
+
+    if (profilePictureInput.files && profilePictureInput.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            currentProfilePicture.src = e.target.result;
+        };
+
+        reader.readAsDataURL(profilePictureInput.files[0]);
+    }
+}
+
+
+    </script>
+</body>
+
+</html>
