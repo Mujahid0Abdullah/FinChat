@@ -12,6 +12,10 @@ const router = Express.Router()
 router.use(Express.json()); // JSON verilerini işlemek için
 router.use(Express.urlencoded({ extended: true })); // URL-encoded verilerini işlemek için
 
+
+
+
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './public/uploads'); // Dosyanın kaydedileceği yol
@@ -24,10 +28,17 @@ const storage = multer.diskStorage({
     }
 });
 
+
+
+
 const upload = multer({ storage: storage });
+
+
 
 //authorize,
 router.get("/", authorize, getPosts)
+
+
 router.post("/", authorize, upload.single('img'), (req, res) => {
 
     console.log(req.body);
