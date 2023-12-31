@@ -1,7 +1,11 @@
 import express from "express";
+
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 import bodyParser from "body-parser";
 import path from "path";
 import cors from "cors";
+
 
 console.log("im here listening");
 const app = express();
@@ -11,6 +15,11 @@ import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 
 import cookieParser from "cookie-parser";
+
+//file send 
+const __filename = fileURLToPath(import.meta.url);
+const _dirname = dirname(_filename);
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
