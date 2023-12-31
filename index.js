@@ -1,6 +1,4 @@
 import express from "express";
-
-import { dirname } from "path";
 import bodyParser from "body-parser";
 import path from "path";
 import cors from "cors";
@@ -52,16 +50,9 @@ app.listen(8800, () => {
 });
 app.use(cookieParser());
 
-app.get("/register", (req, res) => {
-
-    res.render("register.ejs")
-})
 
 
-app.get("/login", (req, res) => {
-    //C:/Users/Acer/Documents/GitHub/proje
-    res.redirect('./views/login.html');
-});
+
 
 app.get("/home", (req, res) => {
     console.log("Anasayfa");
@@ -84,34 +75,39 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/register", (req, res) => {
-    console.log("register");
-
-    const htmlPath = path.resolve('frontend', 'register.html');
-    console.log(htmlPath);
-
-    res.sendFile(htmlPath);
-});
-/*
-app.use(
-    cors({
-        origin: "http://127.0.0.1:5500",
-    })
-);*/
-/*
-app.get("/", (req, res) => {
-    console.log("Anasayfa");
-
-    //const htmlPath = path.join(__dirname, 'views', 'anasayfa.html');
-    //res.sendFile(htmlPath);
-    res.send("Ana sayfaya hoş geldiniz!"); // Kök dizine gelen isteğe yanıt olarak bir metin gönderir
-
-});*/
-
-
 
 
 app.use("/comments", commentRoutes);
 app.use("/auths", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+app.use(
+    cors({
+        origin: "http://127.0.0.1:5500",
+    })
+);*/
