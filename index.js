@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import cors from "cors";
-import { db } from "../connect.js";
+import { db } from "./connect.js";
 
 
 
