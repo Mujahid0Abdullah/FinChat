@@ -269,6 +269,47 @@
         }
 
 
+ 
+
+        #popup {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0px;
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .popup-content {
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .popup-content:hover {
+            color: #3498db;
+        }
+
+        #dynamic-popup {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            z-index: 3;
+        }
+
         #close-btn {
             position: absolute;
             top: 10px;
@@ -304,31 +345,6 @@
             border: 2px;
         }
 
-        #popup {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0px;
-            width: 100px;
-            height: 50px;
-            background-color: white;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        .popup-content {
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .popup-content:hover {
-            color: #3498db;
-        }
-
-
         #imageViewer {
             width: 100px;
             height: 80px;
@@ -343,20 +359,7 @@
             height: 100%;
             object-fit: cover;
         }
-        #dynamic-popup {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background-color: white;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-            z-index: 3;
-        }
+
 
 
 
