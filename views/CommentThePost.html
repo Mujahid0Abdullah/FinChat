@@ -507,7 +507,9 @@
     </div>
 
     <script>
-        const url = "https://fin-chat.onrender.com/"
+        const url = "https://fin-chat.onrender.com/";
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('postId');
 
         fetchPosts()
 
@@ -594,7 +596,7 @@
 
         function fetchPosts() {
             console.log("getpost");
-            fetch(`${url}posts/post`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+            fetch(`${url}posts/post?postId=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
                 .then(response => response.json())
                 .then(post => {
                     // Sunucudan gelen verileri işleme
