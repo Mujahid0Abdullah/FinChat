@@ -534,9 +534,14 @@
         }
 
         function openDynamicPopup() {
-            var dynamicPopup = document.getElementById("dynamic-popup");
-            dynamicPopup.style.display = "block";
-        }
+        var dynamicPopup = document.getElementById("dynamic-popup");
+        dynamicPopup.style.display = "block";
+    }
+
+    function closeDynamicPopup() {
+        var dynamicPopup = document.getElementById("dynamic-popup");
+        dynamicPopup.style.display = "none";
+    }
 
         function openProfilePage() {
             window.location.href = "profile.html";
