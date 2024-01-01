@@ -269,7 +269,7 @@
         }
 
 
- 
+
 
         #popup {
             display: none;
@@ -418,7 +418,7 @@
                 onclick="closePopup(event)">
                 <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
                 <div class="popup-content" onclick="openProfilePage()">My Profile</div>
-                <div class="popup-content" onclick="LogOut()">Log Out</div>
+                <div class="popup-content" onclick="logoutUser()">Log Out</div>
 
             </div>
         </div>
@@ -426,8 +426,8 @@
             <!-- Orta Bölge İçeriği Buraya Gelecek -->
             <div class="horizontal-middle-line"><span style="font-size: 36px;">
                     <div id="userInfo"></div>
-                    </span>
-                 </div>
+                </span>
+            </div>
 
             <form id="postForm">
 
@@ -437,7 +437,7 @@
                             <img src="path/to/user/avatar.jpg">
                         </div>
                         <div id="input-post-name" class="user-name"></div>
-                    </div> 
+                    </div>
                     <div class="right-column">
                         <div class="upper-row">
                             <textarea id="desc" name="desc" placeholder="Your text here..." rows="5"
@@ -534,17 +534,17 @@
 
         function closePopup(event) {
             if (event) {
-        event.stopPropagation();
-    }
+                event.stopPropagation();
+            }
             var popup = document.getElementById("popup");
             popup.style.display = "none";
         }
 
         function openDynamicPopup() {
-    console.log("Opening dynamic popup");
-    var dynamicPopup = document.getElementById("dynamic-popup");
-    dynamicPopup.style.display = "block";
-}
+            console.log("Opening dynamic popup");
+            var dynamicPopup = document.getElementById("dynamic-popup");
+            dynamicPopup.style.display = "block";
+        }
 
 
         function closeDynamicPopup() {
@@ -761,7 +761,7 @@
           <p>Merhaba ${userInfo.name}</p>          
         `;
 
-        userInfoDiv2.innerHTML = `               
+                userInfoDiv2.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
 </div>        `;
