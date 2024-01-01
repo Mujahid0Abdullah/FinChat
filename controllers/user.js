@@ -23,36 +23,30 @@ export const getUser = (req, res) => {
 
 
 export const updateUser = (req, res) => {
-    const token = req.cookies.accessToken;
-    if (!token) return res.status(401).json("Not authenticated!");
 
-    jwt.verify(token, "secretkey", (err, userInfo) => {
-        if (err) return res.status(403).json("Token is not valid!");
+    console.log("Password:", req.body.password, data);
+    //yeni kullanıcı oluşturma
 
+    //hash password
+    const Salt = bcrypt.genSaltSync(10); // şifreleme metodu
+    const hashedPassword = bcrypt.hashSync(req.body.password, Salt)
+    console.log("Salt:", Salt);
 
-        console.log("Password:", req.body.password, data);
-        //yeni kullanıcı oluşturma
+    const q =
+        "UPDATE users SET `name`=?,`password`=? WHERE id=? ";
 
-        //hash password
-        const Salt = bcrypt.genSaltSync(10); // şifreleme metodu
-        const hashedPassword = bcrypt.hashSync(req.body.password, Salt)
-        console.log("Salt:", Salt);
+    db.query(
+        q,
+        [
+            req.body.name,
+            hashedPassword,
+            req.userInfo.id,
+        ],
+        (err, data) => {
+            if (err) res.status(500).json(err);
+            if (data.affectedRows > 0) return res.json("Updated!");
+            return res.status(403).json("You can update only your post!");
+        }
+    );
 
-        const q =
-            "UPDATE users SET `name`=?,`password`=? WHERE id=? ";
-
-        db.query(
-            q,
-            [
-                req.body.name,
-                hashedPassword,
-                userInfo.id,
-            ],
-            (err, data) => {
-                if (err) res.status(500).json(err);
-                if (data.affectedRows > 0) return res.json("Updated!");
-                return res.status(403).json("You can update only your post!");
-            }
-        );
-    });
 };

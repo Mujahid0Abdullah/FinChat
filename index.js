@@ -98,6 +98,18 @@ app.get("/register", (req, res) => {
     res.sendFile(htmlPath);
 });
 
+
+app.get("/profile", (req, res) => {
+    console.log("profile");
+
+    const htmlPath = path.resolve('views', 'profile.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
+
+
 app.get("/post", (req, res) => {
     -
         console.log("getpost");
