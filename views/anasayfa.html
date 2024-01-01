@@ -343,7 +343,6 @@
             height: 100%;
             object-fit: cover;
         }
-
         #dynamic-popup {
             display: none;
             position: absolute;
@@ -497,7 +496,7 @@
 
     <div id="dynamic-popup">
         <div id="close-btn" onclick="closeDynamicPopup()">X</div>
-        <div class="user-avatar" onclick="openProfilePictureInput()">
+        <div class="user-avatar-big" onclick="openProfilePictureInput()">
             <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
             <div id="editProfilePicture"></div>
         </div>
@@ -534,14 +533,14 @@
         }
 
         function openDynamicPopup() {
-        var dynamicPopup = document.getElementById("dynamic-popup");
-        dynamicPopup.style.display = "block";
-    }
+            var dynamicPopup = document.getElementById("dynamic-popup");
+            dynamicPopup.style.display = "block";
+        }
 
-    function closeDynamicPopup() {
-        var dynamicPopup = document.getElementById("dynamic-popup");
-        dynamicPopup.style.display = "none";
-    }
+        function closeDynamicPopup() {
+            var dynamicPopup = document.getElementById("dynamic-popup");
+            dynamicPopup.style.display = "none";
+        }
 
         function openProfilePage() {
             window.location.href = "profile.html";
