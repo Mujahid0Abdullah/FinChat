@@ -15,6 +15,33 @@ export const getPosts = (req, res) => {
     });
 };
 
+export const getpost = (req, res) => {
+    // Burada post ID'sini almak istediğiniz postun detaylarını alın
+    // postDetails değişkeni örnek olarak bir postun detaylarını içeriyor olsun
+
+    const q = "SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) WHERE p.id=? ORDER BY p.createdAt DESC";
+
+    id = req.params.postID;
+    db.query(q, [id], (err, data) => {
+        if (err) return res.status(500).json(err);
+
+        return res.status(200).json(data);
+    });
+    /*
+    const postDetails = {
+        id: req.params.postID,
+        title: 'Post Title',
+        content: 'Post Content',
+        // Diğer post özellikleri...
+    };*/
+    console.log("getpost");
+
+    const htmlPath = path.resolve('views', 'CommentThePost.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+    // Örnek bir HTML dosyasını göndermek istediğiniz sayfanın dizinini belirtin
+};
 
 export const addPost = (req, res) => {
 
