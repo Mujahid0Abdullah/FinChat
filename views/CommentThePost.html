@@ -410,29 +410,30 @@
 
 
 
-
-            <div class="share-comment">
-                <div class="left-column">
-                    <div class="user-avatar-small">
-                        <img src="path/to/user/avatar.jpg">
+            <form id="commentForm">
+                <div class="share-comment">
+                    <div class="left-column">
+                        <div class="user-avatar-small">
+                            <img src="path/to/user/avatar.jpg">
+                        </div>
+                        <div id="user-name" class="user-name">Ali</div>
                     </div>
-                    <div class="user-name">Ali</div>
+                    <div class="right-column">
+                        <div class="upper-row">
+                            <textarea id="desc" name="desc" placeholder="Your text here..." rows="5"
+                                cols="50"></textarea>
+                        </div>
+
+                        <div class="lower-row">
+
+                            <button type="submit" id="sendButton">
+                                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
+                                    alt="Button Image">
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="right-column">
-                    <div class="upper-row">
-                        <textarea placeholder="Your text here..." rows="5" cols="50"></textarea>
-                    </div>
-
-                    <div class="lower-row">
-
-                        <button id="sendButton">
-                            <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
-                                alt="Button Image">
-                        </button>
-                    </div>
-                </div>
-            </div>
-
+            </form>
 
             <div id="commentsList"></div>
 
@@ -715,6 +716,41 @@
                 })
         }
 
+        document.getElementById('commentForm').addEventListener('submit', function (event) {
+            // Form submitini engelle
+
+            const desc = document.getElementById('desc').value;
+
+
+            // Post verilerini obje olarak oluştur
+            const postData = {
+                desc: desc,
+
+            };
+
+            // POST isteği göndermek için fetch kullanımı
+            fetch(`${url}posts`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(postData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Post eklendi:', data);
+                    fetchPosts();
+                    // İsteğin başarılı olduğu durumda, istediğiniz işlemleri burada gerçekleştirin
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+        });
 
     </script>
 </body>
