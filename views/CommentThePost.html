@@ -373,6 +373,12 @@
             padding-left: 80px;
             color: white;
         }
+
+        #finChatTitle {
+        font-size: 40px;
+        font-family: 'Bahnschrift Condensed', sans-serif;
+        color: rgb(0, 0, 0); /* Renk: RGB 156 194 230 */
+    }
     </style>
 </head>
 
@@ -385,10 +391,10 @@
                 <span></span>
                 <span></span>
             </div>
-            <div class="user-avatar-big" style="margin:30px;">
+            <div class="user-avatar-big" style="margin:40px;">
                 <img src="path/to/user/avatar.jpg">
             </div>
-            <h4 style="margin-left: 90px;">Ali</h4>
+            <div id="userInfo2"></div>
             <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()"
                 onclick="closePopup(event)">
                 <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
@@ -399,11 +405,11 @@
         </div>
         <div id="middle-region">
 
-            <div class="horizontal-middle-line"><span style="font-size: 36px;">
-                    <div id="userInfo"></div>
+            <div class="horizontal-middle-line">
+                <span style="font-size: 36px;">
+                    <div id="finChatTitle">FinChat</div>
                 </span>
             </div>
-
 
 
             <div id="postsList"></div>
@@ -720,10 +726,18 @@
                 const userInfo = await response.json();
 
                 const userInfoDiv = document.getElementById('userInfo');
+                const userInfoDiv2 = document.getElementById('userInfo2');
+
 
                 userInfoDiv.innerHTML = `               
           <p>${userInfo.name}</p>          
-        `; /*userInfoDiv2.innerHTML = `               
+        `; 
+        
+                userInfoDiv2.innerHTML = `               
+        <div style="text-align: center;">
+    <p style="font-weight: bold;">${userInfo.name}</p>
+</div>        `;
+        /*userInfoDiv2.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
 </div>        `*/;
