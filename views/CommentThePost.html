@@ -416,7 +416,7 @@
                         <div class="user-avatar-small">
                             <img src="path/to/user/avatar.jpg">
                         </div>
-                        <div id="user-name" class="user-name">Ali</div>
+                        <div id="userInfo" class="user-name"></div>
                     </div>
                     <div class="right-column">
                         <div class="upper-row">
@@ -438,41 +438,7 @@
             <div id="commentsList"></div>
 
 
-            <div class="shared-comment">
-                <div class="left-column">
-                    <div class="user-avatar-small">
-                        <img src="path/to/user/avatar.jpg">
-                    </div>
-                    <div class="user-name">Ali</div>
-                </div>
-                <div class="right-column">
-                    <div class="upper-row">
-                        <textarea rows="5" cols="50"></textarea>
-                    </div>
 
-                    <div class="lower-row">
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="shared-comment">
-                <div class="left-column">
-                    <div class="user-avatar-small">
-                        <img src="path/to/user/avatar.jpg">
-                    </div>
-                    <div class="user-name">Ali</div>
-                </div>
-                <div class="right-column">
-                    <div class="upper-row">
-                        <textarea rows="5" cols="50"></textarea>
-                    </div>
-
-                    <div class="lower-row">
-
-                    </div>
-                </div>
-            </div>
 
 
 
@@ -717,19 +683,14 @@
         }
 
         document.getElementById('commentForm').addEventListener('submit', function (event) {
-            // Form submitini engelle
 
             const desc = document.getElementById('desc').value;
-
-
-            // Post verilerini obje olarak oluştur
             const postData = {
                 desc: desc,
 
             };
 
-            // POST isteği göndermek için fetch kullanımı
-            fetch(`${url}posts`, {
+            fetch(`${url}comments?postId=${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -743,14 +704,33 @@
                     return response.json();
                 })
                 .then(data => {
-                    console.log('Post eklendi:', data);
-                    fetchPosts();
-                    // İsteğin başarılı olduğu durumda, istediğiniz işlemleri burada gerçekleştirin
+                    console.log('comment eklendi:', data);
                 })
                 .catch(error => {
                     console.error('There was an error!', error);
                 });
         });
+
+        async function displayUserInfo() {
+            try {
+                const response = await fetch('/users');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user info');
+                }
+                const userInfo = await response.json();
+
+                const userInfoDiv = document.getElementById('userInfo');
+
+                userInfoDiv.innerHTML = `               
+          <p>${userInfo.name}</p>          
+        `; userInfoDiv2.innerHTML = `               
+        <div style="text-align: center;">
+    <p style="font-weight: bold;">${userInfo.name}</p>
+</div>        `;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
 
     </script>
 </body>

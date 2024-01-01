@@ -26,7 +26,7 @@ export const addComment = (req, res) => {
         console.log(descValue);
         const values = [
             descValue,
-            req.body.postId,
+            req.query.postId,
             userInfo.id,
 
             moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
