@@ -489,7 +489,7 @@
         <br>
         <input type="password" id="repeatPassword" placeholder="Repeat Password">
         <br>
-        <button id="save-btn" onclick="saveChanges()">Save</button>
+        <button id="save-btn" onclick="">Save</button>
     </div>
 
     <script>
@@ -528,11 +528,7 @@
             dynamicPopup.style.display = "none";
         }
 
-        function saveChanges() {
-            // Burada yapılmak istenen değişiklikleri işleyebilirsiniz.
-            // Örneğin, kullanıcının girdiği bilgileri alıp bir veritabanına kaydetme işlemi gerçekleştirebilirsiniz.
-            alert("Changes saved!");
-        }
+
 
         function openProfilePage() {
             window.location.href = "profile.html";
@@ -549,10 +545,7 @@
             }, 100); // 1 saniye gecikme
         }
 
-        function LogOut() {
 
-            alert("You have been logged out.");
-        }
 
         function openProfilePictureInput() {
             var profilePictureInput = document.getElementById('profilePictureInput');
@@ -628,11 +621,11 @@
                             </div>
                             <div class="right-column">
                                 <div class="upper-row">
-                                    <textarea readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
+                                    <textarea id="post" readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
                              </div>
 
                                 <div class="lower-row">
-                                    <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
+                                    <div id="post-date" style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
                                 </div>
                             </div>
                         </div>
@@ -683,9 +676,10 @@
         }
 
         document.getElementById('commentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
 
             const desc = document.getElementById('desc').value;
-            const postData = {
+            const commentData = {
                 desc: desc,
 
             };
@@ -695,7 +689,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(postData)
+                body: JSON.stringify(commentData)
             })
                 .then(response => {
                     if (!response.ok) {
@@ -711,6 +705,8 @@
                 });
         });
 
+
+        displayUserInfo();
         async function displayUserInfo() {
             try {
                 const response = await fetch('/users');
@@ -723,14 +719,16 @@
 
                 userInfoDiv.innerHTML = `               
           <p>${userInfo.name}</p>          
-        `; userInfoDiv2.innerHTML = `               
+        `; /*userInfoDiv2.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
-</div>        `;
+</div>        `*/;
             } catch (error) {
                 console.error('Error:', error);
             }
         }
+
+
 
     </script>
 </body>
