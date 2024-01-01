@@ -539,26 +539,25 @@
 
                         let postContent = `
                     
-                        <div class="post-view">
-    <div class="left-column">
-        <div class="user-avatar">
-            <img src="${post.profilePic}">
-        </div>
-        <div class="user-name">${post.name}</div>
-    </div>
-    <div class="right-column">
-        <div class="upper-row">
-            <div class="post-text" style="white-space: pre-wrap; overflow: auto; width: 100%;">${post.desc} tarih: ${moment(post.createdAt).fromNow()}</div>
-        </div>
+            <div class="post-view" onclick="postClicked(${post.id})">
+                <div class="left-column">
+                    <div class="user-avatar">
+                        <img src="${post.profilePic}">
+                    </div>
+                    <div class="user-name">${post.name}</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                         ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
+                             </div>
 
-        <div class="lower-row">
-            <button id="commentsButton">
-                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
-            </button>
-        </div>
-    </div>
-</div>
-
+                    <div class="lower-row">
+                      <button id="commentsButton">
+                          <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
                 `;
 
                         postsListContainer.innerHTML += postContent
@@ -570,6 +569,11 @@
                 })
         }
 
+
+        function postClicked(postID) {
+            // alert(postId)
+            window.location = `${url}/posts/${postID}`
+        }
 
         /*
                 function fetchPosts() {
@@ -632,8 +636,6 @@
                     console.error('Logout error:', error);
                 });
         }
-
-
 
         document.getElementById('postForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Form submitini engelle
