@@ -8,7 +8,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Özel Tasarım</title>
+    <title>Anasayfa</title>
     <style>
         body {
             margin: 0;
@@ -414,7 +414,8 @@
                         <div class="lower-row">
 
                             <button type="submit" id="sendButton">
-                                <img src="send.png" alt="Button Image">
+                                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
+                                    alt="Button Image">
                             </button>
                         </div>
                     </div>
@@ -523,6 +524,8 @@
         });
         const url = "https://fin-chat.onrender.com/"
         fetchPosts()
+
+
         function fetchPosts() {
 
             fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -533,30 +536,30 @@
                     const postsListContainer = document.getElementById('postsList');
 
                     posts.forEach(post => {
-                        const postDiv = document.createElement('div');
-                        postDiv.classList.add('post');
 
-                        const postId = document.createElement('p');
-                        postId.textContent = `user:  ${post.name}`;
+                        let postContent = `
+                    
+            <div class="post-view">
+                <div class="left-column">
+                    <div class="user-avatar">
+                        <img src="${post.img}">
+                    </div>
+                    <div class="user-name">${post.name}</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5" cols="50">${post.desc} tarih: ${moment(post.createdAt).fromNow()}</textarea>
+                    </div>
+                    <div class="lower-row">
+                      <button id="commentsButton">
+                          <img src="comment.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
+                `;
 
-                        const postDesc = document.createElement('p');
-                        postDesc.textContent = `Description: ${post.desc}`;
-
-                        const postCreatedAt = document.createElement('p');
-                        postCreatedAt.textContent = `Created At: ${moment(post.createdAt).fromNow()}`;
-
-                        const postImage = document.createElement('img');
-                        postImage.src = post.img; // Resim URL
-                        postImage.alt = 'Post Image';
-
-                        const hr = document.createElement('hr');
-                        postDiv.appendChild(postId);
-                        postDiv.appendChild(postDesc);
-                        postDiv.appendChild(postCreatedAt);
-                        postDiv.appendChild(postImage);
-                        postDiv.appendChild(hr);
-
-                        postsListContainer.appendChild(postDiv);
+                        postsListContainer.innerHTML += postContent
 
                     })
                         .catch(error => {
@@ -564,6 +567,51 @@
                         });
                 })
         }
+
+
+        /*
+                function fetchPosts() {
+        
+                    fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+                        .then(response => response.json())
+                        .then(posts => {
+                            // Sunucudan gelen verileri işleme
+                            console.log(posts);
+                            const postsListContainer = document.getElementById('postsList');
+        
+                            posts.forEach(post => {
+                                const postDiv = document.createElement('div');
+                                postDiv.classList.add('post');
+        
+                                const postId = document.createElement('p');
+                                postId.textContent = `user:  ${post.name}`;
+        
+                                const postDesc = document.createElement('p');
+                                postDesc.textContent = `Description: ${post.desc}`;
+        
+                                const postCreatedAt = document.createElement('p');
+                                postCreatedAt.textContent = `Created At: ${moment(post.createdAt).fromNow()}`;
+        
+                                const postImage = document.createElement('img');
+                                postImage.src = post.img; // Resim URL
+                                postImage.alt = 'Post Image';
+        
+                                const hr = document.createElement('hr');
+                                postDiv.appendChild(postId);
+                                postDiv.appendChild(postDesc);
+                                postDiv.appendChild(postCreatedAt);
+                                postDiv.appendChild(postImage);
+                                postDiv.appendChild(hr);
+        
+                                postsListContainer.appendChild(postDiv);
+        
+                            })
+                                .catch(error => {
+                                    console.error('Error fetching posts:', error);
+                                });
+                        })
+                }
+                */
         //LOGOUT
         function logoutUser() {
             fetch(`${url}auths/logout`, { method: 'POST' })
