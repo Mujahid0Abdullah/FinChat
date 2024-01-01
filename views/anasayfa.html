@@ -540,8 +540,8 @@
             popup.style.display = "none";
         }
 
-        function openDynamicPopup(event) {
-    event.stopPropagation();
+        function openDynamicPopup() {
+    console.log("Opening dynamic popup");
     var dynamicPopup = document.getElementById("dynamic-popup");
     dynamicPopup.style.display = "block";
 }
