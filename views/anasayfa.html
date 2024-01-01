@@ -548,11 +548,8 @@
                 </div>
                 <div class="right-column">
                     <div class="upper-row">
-                 <textarea placeholder="" rows="5" cols="50">
-                  <span readonly>${post.desc}</span> tarih: <span readonly>${moment(post.createdAt).fromNow()}</span>
-                </textarea>
-                </div>
-
+                        <textarea placeholder="etmiştir." rows="5" cols="50">${post.desc} tarih: ${moment(post.createdAt).fromNow()}</textarea>
+                    </div>
 
                     <div class="lower-row">
                       <button id="commentsButton">
