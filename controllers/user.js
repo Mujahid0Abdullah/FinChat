@@ -29,17 +29,23 @@ export const updateUser = (req, res) => {
     jwt.verify(token, "secretkey", (err, userInfo) => {
         if (err) return res.status(403).json("Token is not valid!");
 
+
+        console.log("Password:", req.body.password, data);
+        //yeni kullanıcı oluşturma
+
+        //hash password
+        const Salt = bcrypt.genSaltSync(10); // şifreleme metodu
+        const hashedPassword = bcrypt.hashSync(req.body.password, Salt)
+        console.log("Salt:", Salt);
+
         const q =
-            "UPDATE users SET `name`=?,`city`=?,`website`=?,`profilePic`=?,`coverPic`=? WHERE id=? ";
+            "UPDATE users SET `name`=?,`password`=? WHERE id=? ";
 
         db.query(
             q,
             [
                 req.body.name,
-                req.body.city,
-                req.body.website,
-                req.body.coverPic,
-                req.body.profilePic,
+                hashedPassword,
                 userInfo.id,
             ],
             (err, data) => {
