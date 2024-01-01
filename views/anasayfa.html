@@ -561,14 +561,6 @@
             }, 100); // 1 saniye gecikme
         }
 
-        // Dışında bir yere tıklandığında popup'ları kapat
-        window.addEventListener("click", function () {
-            var popup = document.getElementById("popup");
-            popup.style.display = "none";
-
-            var dynamicPopup = document.getElementById("dynamic-popup");
-            dynamicPopup.style.display = "none";
-        });
         const url = "https://fin-chat.onrender.com/"
         fetchPosts()
 
