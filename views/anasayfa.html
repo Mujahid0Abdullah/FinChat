@@ -403,17 +403,20 @@
         <div id="left-region">
             <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
                 onclick="togglePopup(event)">
-                <!-- Sağ üst köşeye çizgiler buraya gelecek -->
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
+            <div class="user-avatar" style="margin:30px;">
+                <img src="path/to/user/avatar.jpg">
+            </div>
+            <h4 style="margin-left: 90px;">Ali</h4>
             <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()"
                 onclick="closePopup(event)">
-                <!-- Pencere İçeriği Buraya Gelecek -->
                 <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
                 <div class="popup-content" onclick="openProfilePage()">My Profile</div>
-                <div class="popup-content" onclick="logoutUser()">Log Out</div>
+                <div class="popup-content" onclick="LogOut()">Log Out</div>
+
             </div>
         </div>
         <div id="middle-region">
