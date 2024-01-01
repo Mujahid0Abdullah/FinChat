@@ -548,7 +548,7 @@
                 </div>
                 <div class="right-column">
                     <div class="upper-row">
-                         ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
+                         <textarea ${post.desc} tarih: ${moment(post.createdAt).fromNow()}readonly></textarea>
                              </div>
 
                     <div class="lower-row">
@@ -570,10 +570,9 @@
         }
 
 
-        function postClicked(postId) {
+        function postClicked(postID) {
             // alert(postId)
-            window.location = `${url}post?postId=${postId}`
-            //window.location = `${url}posts/${postID}`
+            window.location = `${url}/posts/${postID}`
         }
 
         /*
