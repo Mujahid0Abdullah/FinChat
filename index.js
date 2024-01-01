@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import path from "path";
 import cors from "cors";
+import { db } from "../connect.js";
+
 
 
 console.log("im here listening");
@@ -62,6 +64,33 @@ app.get("/home", (req, res) => {
 
     res.sendFile(htmlPath);
 });
+
+
+app.get("/CommentPage", (req, res) => {
+    // Burada post ID'sini almak istediğiniz postun detaylarını alın
+    // postDetails değişkeni örnek olarak bir postun detaylarını içeriyor olsun
+
+    const q = "SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) WHERE p.id=? ORDER BY p.createdAt DESC";
+    console.log("q" + req.query);
+    //console.log("p" + req.param);
+
+    id = req.query.postId;
+
+    db.query(q, [id], (err, data) => {
+        if (err) { return res.status(500).json(err); }
+
+        return res.status(200).json(data);
+    });
+    /*
+    const postDetails = {
+        id: req.params.postID,
+        title: 'Post Title',
+        content: 'Post Content',
+        // Diğer post özellikleri...
+    };*/
+    // Örnek bir HTML dosyasını göndermek istediğiniz sayfanın dizinini belirtin
+});
+
 
 
 app.get("/register", (req, res) => {

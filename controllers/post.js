@@ -26,7 +26,7 @@ export const getpost = (req, res) => {
     id = req.query.postId;
 
     db.query(q, [id], (err, data) => {
-        if (err) return res.status(500).json(err);
+        if (err) { return res.status(500).json(err); }
 
         return res.status(200).json(data);
     });
