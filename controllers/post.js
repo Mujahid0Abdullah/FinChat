@@ -15,6 +15,32 @@ export const getPosts = (req, res) => {
     });
 };
 
+
+export const addPost = (req, res) => {
+
+    console.log(req.body);
+    //const file = req.file;
+    //const imagePath = `./public/uploads/${file.filename}`;
+    const imagePath = "no image";
+    const descValue = req.body.desc;
+    const userInfo = req.userInfo; // Yetkilendirme adımında doğrulanan kullanıcı bilgileri
+
+    const q = "INSERT INTO posts (`desc`, `img`, `userId`, `createdAt`) VALUES (?)";
+    const values = [
+        descValue,
+        imagePath,
+        userInfo.id,
+        moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+    ];
+
+    // Veritabanına eklemek için isteği işle
+    db.query(q, [values], (err, data) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        return res.status(200).json("post eklendi");
+    });
+}
 /*
 export const getPosts = (req, res) => {
     const token = req.cookies.accessToken;
@@ -36,6 +62,7 @@ export const getPosts = (req, res) => {
 }
 
 */
+/*
 export const addPost = (req, res) => {
     console.log(req.body);
     const token = req.cookies.accessToken;
@@ -64,7 +91,7 @@ export const addPost = (req, res) => {
             return res.status(200).json("post eklendi");//builder pattern
         });
     })
-}
+}*/
 /*
 export const addPost = (req, res) => {
     const token = req.cookies.accessToken;

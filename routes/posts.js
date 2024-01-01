@@ -40,7 +40,11 @@ router.get("/", authorize, getPosts)
 
 //router.post("/", authorize, upload.single('img'), (req, res) => {
 
-router.post("/", authorize, (req, res) => {
+router.post("/", authorize, addPost)
+
+
+/*
+(req, res) => {
 
     console.log(req.body);
     //const file = req.file;
@@ -90,31 +94,9 @@ router.post("/", authorize, (req, res) => {
             if (err) return res.status(500).json(err);
             return res.status(200).json("post eklendi");//builder pattern
         });
-    })*/
-})
+    })
+})*/
 
-export const handlePostRequest = (req, res) => {
-    // Gelen istekten gerekli bilgileri al
-    const file = req.file;
-    const imagePath = `C:/Users/Acer/Documents/GitHub/proje/public/uploads/${file.filename}`;
-    const descValue = req.body.desc;
-    const userInfo = req.userInfo; // Yetkilendirme adımında doğrulanan kullanıcı bilgileri
 
-    const q = "INSERT INTO posts (`desc`, `img`, `userId`, `createdAt`) VALUES (?)";
-    const values = [
-        descValue,
-        imagePath,
-        userInfo.id,
-        moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
-    ];
-
-    // Veritabanına eklemek için isteği işle
-    db.query(q, [values], (err, data) => {
-        if (err) {
-            return res.status(500).json(err);
-        }
-        return res.status(200).json("post eklendi");
-    });
-};
 
 export default router
