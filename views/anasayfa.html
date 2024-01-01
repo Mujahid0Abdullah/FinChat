@@ -368,6 +368,34 @@
             padding-left: 80px;
             color: white;
         }
+
+        #firstnameLastname {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border-radius: 36px;
+            height: 30px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        #password,
+        #repeatPassword {
+            margin-bottom: 5px;
+            border-radius: 36px;
+            height: 30px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        #save-btn {
+            background-color: #9CC2E6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px;
+        }
     </style>
 </head>
 
@@ -468,9 +496,20 @@
     </div>
 
     <div id="dynamic-popup">
-        <div class="popup-content">
-            İçerik Buraya Gelecek
+        <div id="close-btn" onclick="closeDynamicPopup()">X</div>
+        <div class="user-avatar" onclick="openProfilePictureInput()">
+            <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
+            <div id="editProfilePicture"></div>
         </div>
+        <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
+        <br>
+        <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
+        <br>
+        <input type="password" id="password" placeholder="Password">
+        <br>
+        <input type="password" id="repeatPassword" placeholder="Repeat Password">
+        <br>
+        <button id="save-btn" onclick="saveChanges()">Save</button>
     </div>
 
     <script>
