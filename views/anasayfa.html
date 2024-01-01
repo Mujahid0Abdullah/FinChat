@@ -403,7 +403,7 @@
                         <div class="user-avatar">
                             <img src="path/to/user/avatar.jpg">
                         </div>
-                        <div class="user-name">Ali</div>
+                        <div id="input-post-name" class="user-name">Ali</div>
                     </div>
                     <div class="right-column">
                         <div class="upper-row">
@@ -582,37 +582,6 @@
                     console.error('Logout error:', error);
                 });
         }
-        function addpost() {
-            const desc = document.getElementById('desc').value;
-            //const img = document.getElementById('img').files[0];
-            const formdata = new FormData();
-            formdata.append('desc', desc);
-            //formdata.append('img', img);
-            fetch(`${url}posts`, {
-                method: 'POST',
-                /*headers: {
-                    'Content-Type': 'multipart/form-data'
-                },*/
-                body: formdata
-                //JSON.stringify(postData)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('hata oldu , yeniden giriş yapın');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Post eklendi:', data);
-                    fetchPosts();
-                })
-                .catch(error => {
-
-                    const message = error.message
-                    //data.message;
-                    alert(message);
-                });
-        }
 
         document.getElementById('postForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Form submitini engelle
@@ -673,6 +642,8 @@
                 const userInfo = await response.json();
 
                 const userInfoDiv = document.getElementById('userInfo');
+                const user_Info_post = document.getElementById('input-post-name');
+                user_Info_post.value = userInfo.name;
                 userInfoDiv.innerHTML = `               
           <p>Merhaba ${userInfo.name}</p>          
         `;
@@ -817,6 +788,37 @@
             
              fetchPosts()
          })
+        }*/
+
+        /*
+        function addpost() {
+            const desc = document.getElementById('desc').value;
+            //const img = document.getElementById('img').files[0];
+            const formdata = new FormData();
+            formdata.append('desc', desc);
+            //formdata.append('img', img);
+            fetch(`${url}posts`, {
+                method: 'POST',
+                
+                body: formdata
+                //JSON.stringify(postData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('hata oldu , yeniden giriş yapın');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Post eklendi:', data);
+                    fetchPosts();
+                })
+                .catch(error => {
+
+                    const message = error.message
+                    //data.message;
+                    alert(message);
+                });
         }*/
     </script>
 </body>
