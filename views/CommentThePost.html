@@ -433,11 +433,7 @@
                 </div>
                 <div class="right-column">
                     <div class="upper-row">
-                        <textarea
-                            placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "
-                            consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden
-                            hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5"
-                            cols="50"></textarea>
+                        <textarea rows="5" cols="50"></textarea>
                     </div>
 
                     <div class="lower-row">
@@ -455,11 +451,7 @@
                 </div>
                 <div class="right-column">
                     <div class="upper-row">
-                        <textarea
-                            placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "
-                            consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden
-                            hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5"
-                            cols="50"></textarea>
+                        <textarea rows="5" cols="50"></textarea>
                     </div>
 
                     <div class="lower-row">
@@ -598,7 +590,7 @@
 
 
         function fetchPosts() {
-
+            console.log("getpost");
             fetch(`${url}posts/post`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
                 .then(response => response.json())
                 .then(post => {
@@ -606,37 +598,28 @@
                     console.log(post);
                     const postsListContainer = document.getElementById('postsList');
 
-
-
                     let postContent = `
-            
-    <div class="post-view" onclick="postClicked(${post.id})">
-        <div class="left-column">
-            <div class="user-avatar">
-                <img src="${post.profilePic}">
-            </div>
-            <div class="user-name">${post.name}</div>
-        </div>
-        <div class="right-column">
-            <div class="upper-row">
-                 ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
-                     </div>
+                        <div class="post-view" onclick="postClicked(${post.id})">
+                            <div class="left-column">
+                                <div class="user-avatar">
+                                    <img src="${post.profilePic}">
+                                </div>
+                                <div class="user-name">${post.name}</div>
+                            </div>
+                            <div class="right-column">
+                                <div class="upper-row">
+                                    ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
+                                        </div>
 
-            <div class="lower-row">
-              <button id="commentsButton">
-                  <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
-              </button>
-            </div>
-        </div>
-    </div>
-        `;
-
+                                <div class="lower-row">
+                                <button id="commentsButton">
+                                    <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                            `;
                     postsListContainer.innerHTML += postContent
-
-
-                        .catch(error => {
-                            console.error('Error fetching posts:', error);
-                        });
                 })
         }
 
