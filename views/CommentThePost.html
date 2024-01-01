@@ -467,7 +467,7 @@
             <div class="horizontal-line">
                 <img id="dollar-icon" src="dollar-icon.gif" alt="Dollar Icon">
             </div>
-            <h3 class="para-birimleri">Dolar/tl=37</h3>
+            <h3 class="para-birimleri">Dolar/tl=30,9</h3>
             <h3 class="para-birimleri">Euro/tl=39</h3>
             <h3 class="para-birimleri">Sterlin/tl=30</h3>
             <h3 class="para-birimleri">Pln/tl=3</h3>
@@ -507,6 +507,8 @@
     </div>
 
     <script>
+        fetchPosts()
+
         var closePopupTimeout;
 
         function togglePopup(event) {
@@ -566,10 +568,10 @@
             var profilePictureInput = document.getElementById('profilePictureInput');
             profilePictureInput.click();
         }
-
-        document.getElementById('commentsButton').addEventListener('click', function () {
-            window.location.href = 'CommentThePost.html';
-        });
+        /*
+                document.getElementById('commentsButton').addEventListener('click', function () {
+                    window.location.href = 'CommentThePost.html';
+                });*/
 
         function handleProfilePictureChange() {
             var profilePictureInput = document.getElementById('profilePictureInput');
@@ -586,7 +588,6 @@
             }
         }
 
-        fetchPosts()
 
 
         function fetchPosts() {
