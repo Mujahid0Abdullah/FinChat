@@ -661,10 +661,11 @@
                             </div>
                             <div class="right-column">
                                 <div class="upper-row">
-                         <textarea readonly> tarih: ${moment(post.createdAt).fromNow()} \n ${post.desc}</textarea>
+                         <textarea readonly> ${post.desc}</textarea>
                              </div>
 
                                 <div class="lower-row">
+                                    <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
                                 </div>
                             </div>
                         </div>
