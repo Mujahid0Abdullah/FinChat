@@ -18,30 +18,179 @@
         #container {
             display: flex;
             height: 100vh;
+            overflow: hidden;
         }
 
         #left-region {
             flex: 5;
             background-color: #BFBFBF;
             position: relative;
+            overflow: hidden;
         }
 
         #middle-region {
             flex: 21;
             background-color: #FFFFFF;
+            overflow-y: auto;
+            overflow-x: hidden;
+            white-space: nowrap;
+            position: relative;
         }
+
+
 
         #right-region {
             flex: 6;
             background-color: #595959;
-            border-left: 3px solid black;
-            /* Sol kenarlık */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 20px;
-
+            overflow: hidden;
+            border: 2px solid black;
         }
+
+
+
+        .share-post {
+            position: static;
+            left: 0;
+            right: 0;
+            top: 120px;
+            width: 900px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            position: center;
+            margin-left: 30px;
+            box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .8);
+            margin-top: 20px;
+        }
+
+        .post-view {
+            position: static;
+            left: 0;
+            right: 0;
+            top: 120px;
+            width: 900px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            position: center;
+            margin-left: 30px;
+            margin-top: 25px;
+            margin-bottom: 5px;
+        }
+
+        .left-column {
+            flex: 1;
+            flex-direction: column;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: lightgray;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            color: #333;
+            font-weight: bold;
+            position: relative;
+            margin: auto;
+        }
+
+        .right-column {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .upper-row {
+            flex: 3;
+            background-color: white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .upper-row textarea {
+            width: 100%;
+            height: 95%;
+            resize: none;
+            border: none;
+            outline: none;
+        }
+
+        .lower-row {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+        }
+
+        .lower-row button {
+            margin-left: 10px;
+        }
+
+        #sendButton {
+            height: 30px;
+            width: 30px;
+            padding: 0;
+            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+            border: none;
+            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+            background: none;
+            /* Arkaplan rengini kaldırıyoruz */
+            cursor: pointer;
+        }
+
+        #sendButton img {
+            height: 100%;
+            width: 100%;
+        }
+
+
+
+
+        #commentsButton {
+            height: 30px;
+            width: 30px;
+            padding: 0;
+            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+            border: none;
+            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+            background: none;
+            /* Arkaplan rengini kaldırıyoruz */
+            cursor: pointer;
+        }
+
+        #commentsButton img {
+            height: 100%;
+            width: 100%;
+        }
+
+
+
+
 
         .horizontal-line {
             height: 8px;
@@ -69,7 +218,6 @@
             width: 100px;
             height: 100px;
             bottom: -10px;
-            /* İkonu çizginin altına yerleştir */
             left: 50%;
             padding-top: 0px;
             transform: translateX(-50%);
@@ -81,7 +229,6 @@
             width: 100px;
             height: 100px;
             bottom: -10px;
-            /* İkonu çizginin altına yerleştir */
             left: 50%;
             padding-top: 0px;
             transform: translateX(-50%);
@@ -93,7 +240,6 @@
             width: 100px;
             height: 100px;
             bottom: -10px;
-            /* İkonu çizginin altına yerleştir */
             left: 50%;
             padding-top: 0px;
             transform: translateX(-50%);
@@ -107,7 +253,6 @@
             padding: 10px;
             cursor: pointer;
             z-index: 1;
-            /* Popup'un önünde olmasını sağlar */
         }
 
         #clickable-lines span {
@@ -117,42 +262,72 @@
             background-color: black;
             margin-bottom: 4px;
             transition: background-color 0.3s ease;
-            /* Hover efekti için geçiş efekti */
         }
 
         #clickable-lines:hover span {
             background-color: #3498db;
-            /* Hover rengi */
+        }
+
+
+        #close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        #firstnameLastname {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border-radius: 36px;
+            height: 30px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        #password,
+        #repeatPassword {
+            margin-bottom: 5px;
+            border-radius: 36px;
+            height: 30px;
+            width: 200px;
+            padding: 10px;
+        }
+
+        #save-btn {
+            background-color: #9CC2E6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px;
         }
 
         #popup {
             display: none;
             position: absolute;
             top: 40px;
-            right: -100px;
-            /* Popup'ın sağ kenara olan mesafesi */
+            right: 0px;
             width: 100px;
-            height: 40px;
+            height: 50px;
             background-color: white;
             border: 1px solid black;
             padding: 10px;
             text-align: center;
-            /* Yazıları ortala */
             z-index: 2;
-            /* Çizgilerin üzerinde olmasını sağlar */
         }
 
         .popup-content {
             font-weight: bold;
             cursor: pointer;
             transition: color 0.3s ease;
-            /* Renk değişimini yumuşatmak için geçiş efekti */
         }
 
         .popup-content:hover {
             color: #3498db;
-            /* Hover rengi */
         }
+
 
         #imageViewer {
             width: 100px;
@@ -175,25 +350,21 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            /* Popup'ı dikey ve yatay ortala */
             width: 400px;
             height: 400px;
             background-color: white;
             border: 1px solid black;
             padding: 10px;
             text-align: center;
-            /* Yazıları ortala */
             z-index: 3;
-            /* Diğer elementlerin üzerinde olmasını sağlar */
         }
 
-        /* Yeni eklenen stil */
-        /* Yeni eklenen stil */
+
+
         .para-birimleri,
         .altin-degerleri,
         .kripto-degerleri {
             margin: 0;
-            /* H3 etiketlerinin margin'ını sıfırla */
             padding-left: 80px;
             color: white;
         }
@@ -226,13 +397,36 @@
                 </span>
             </div>
             <form id="postForm">
+
+                <div class="share-post">
+                    <div class="left-column">
+                        <div class="user-avatar">
+                            <img src="path/to/user/avatar.jpg">
+                        </div>
+                        <div class="user-name">Ali</div>
+                    </div>
+                    <div class="right-column">
+                        <div class="upper-row">
+                            <textarea id="desc" name="desc" placeholder="Your text here..." rows="5"
+                                cols="50"></textarea>
+                        </div>
+
+                        <div class="lower-row">
+
+                            <button type="button" id="sendButton" onclick="addpost()">
+                                <img src="send.png" alt="Button Image">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!--
                 <label for="desc">Description:</label><br>
                 <input type="text" id="desc" name="desc"><br>
                 <div id="imageViewer"></div>
                 <button type="button" id="uploadImageButton" onclick="openImageView()">Upload Image</button>
                 <label for="img">Image URL:</label><br>
                 <input type="file" id="img" name="img"><br><br>
-                <button type="button" onclick="addpost()">Add Post</button>
+                <button type="button" onclick="addpost()">Add Post</button>-->
             </form>
             <div id="postsList">
 
@@ -241,7 +435,9 @@
         <div id="right-region">
             <!-- Sağ Bölge İçeriği Buraya Gelecek -->
             <div class="horizontal-line">
-                <img id="dollar-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif" alt="Dollar Icon">
+                <img id="dollar-icon"
+                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif"
+                    alt="Dollar Icon">
             </div>
 
             <h3 class="para-birimleri" id="dolar-try"></h3>
@@ -249,14 +445,18 @@
             <h3 class="para-birimleri" id="sterlin-try"></h3>
             <h3 class="para-birimleri" id="pln-try"></h3>
             <div class="horizontal-line">
-                <img id="gold-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif" alt="Dollar Icon">
+                <img id="gold-icon"
+                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif"
+                    alt="Dollar Icon">
             </div>
             <h3 class="altin-degerleri">Gram Altın=300Tl</h3>
             <h3 class="altin-degerleri">Çeyrek Altın=500Tl</h3>
             <h3 class="altin-degerleri">C. Altını=200Tl</h3>
             <h3 class="altin-degerleri">Yatım Altın=100Tl</h3>
             <div class="horizontal-line">
-                <img id="kripto-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/kripto-icon.gif" alt="Dollar Icon">
+                <img id="kripto-icon"
+                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/kripto-icon.gif"
+                    alt="Dollar Icon">
             </div>
             <h3 class="kripto-degerleri">Bitcoin=300Tl</h3>
             <h3 class="kripto-degerleri">Etherium=200Tl</h3>
@@ -384,10 +584,10 @@
         }
         function addpost() {
             const desc = document.getElementById('desc').value;
-            const img = document.getElementById('img').files[0];
+            //const img = document.getElementById('img').files[0];
             const formdata = new FormData();
             formdata.append('desc', desc);
-            formdata.append('img', img);
+            //formdata.append('img', img);
             fetch(`${url}posts`, {
                 method: 'POST',
                 /*headers: {
