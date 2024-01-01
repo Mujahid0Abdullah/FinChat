@@ -188,6 +188,23 @@
             width: 100%;
         }
 
+        #DeleteButton {
+            height: 30px;
+            width: 30px;
+            padding: 0;
+            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+            border: none;
+            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+            background: none;
+            /* Arkaplan rengini kaldırıyoruz */
+            cursor: pointer;
+        }
+
+        #DeleteButton img {
+            height: 100%;
+            width: 100%;
+        }
+
 
 
 
@@ -577,6 +594,9 @@
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
                       <button id="commentsButton">
+                          <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
+                      </button>
+                      <button id="DeleteButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
                       </button>
                     </div>
