@@ -43,7 +43,7 @@ router.get("/", authorize, getPosts)
 router.post("/", authorize, addPost)
 
 
-router.get("/:postID", authorize, getpost)
+router.get("/post", authorize, getpost)
 
 
 

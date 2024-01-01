@@ -20,8 +20,9 @@ export const getpost = (req, res) => {
     // postDetails değişkeni örnek olarak bir postun detaylarını içeriyor olsun
 
     const q = "SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) WHERE p.id=? ORDER BY p.createdAt DESC";
+    console.log(req.query);
+    id = req.query.postId;
 
-    id = req.params.postID;
     db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
 
@@ -34,12 +35,6 @@ export const getpost = (req, res) => {
         content: 'Post Content',
         // Diğer post özellikleri...
     };*/
-    console.log("getpost");
-
-    const htmlPath = path.resolve('views', 'CommentThePost.html');
-    console.log(htmlPath);
-
-    res.sendFile(htmlPath);
     // Örnek bir HTML dosyasını göndermek istediğiniz sayfanın dizinini belirtin
 };
 
