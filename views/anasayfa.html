@@ -69,16 +69,29 @@
         }
 
         .post-view {
-             display: flex;
-             border: 1px solid #ccc;
-             max-width: 600px; /* veya istediğiniz genişlikte */
-             overflow: auto;
+            position: static;
+            left: 0;
+            right: 0;
+            top: 120px;
+            width: 900px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: white;
+            display: flex;
+            position: center;
+            margin-left: 30px;
+            margin-top: 25px;
+            margin-bottom: 5px;
         }
 
         .left-column {
-    flex: 1;
-    padding: 10px;
-}
+            flex: 1;
+            flex-direction: column;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         .user-avatar {
             width: 150px;
@@ -90,26 +103,33 @@
         }
 
         .user-avatar img {
-    max-width: 100%;
-    height: auto;
-}
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.user-name {
-    font-weight: bold;
-}
-
+        .user-name {
+            color: #333;
+            font-weight: bold;
+            position: relative;
+            margin: auto;
+        }
 
         .right-column {
-    flex: 2;
-    padding: 10px;
-    overflow-y: auto;
-}
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
 
-.upper-row {
-    margin-bottom: 10px;
-}
-
-
+        .upper-row {
+            flex: 3;
+            background-color: white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
 
         .upper-row textarea {
             width: 100%;
@@ -120,8 +140,12 @@
         }
 
         .lower-row {
-    text-align: right;
-}
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 20px;
+        }
 
         .lower-row button {
             margin-left: 10px;
@@ -147,11 +171,17 @@
 
 
 
-#commentsButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
+        #commentsButton {
+            height: 30px;
+            width: 30px;
+            padding: 0;
+            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+            border: none;
+            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+            background: none;
+            /* Arkaplan rengini kaldırıyoruz */
+            cursor: pointer;
+        }
 
         #commentsButton img {
             height: 100%;
