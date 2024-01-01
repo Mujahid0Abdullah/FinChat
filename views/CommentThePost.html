@@ -598,8 +598,9 @@
             console.log("getpost");
             fetch(`${url}posts/post?postId=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
                 .then(response => response.json())
-                .then(post => {
+                .then(data => {
                     // Sunucudan gelen verileri işleme
+                    const post = data.data
                     console.log(post);
                     const postsListContainer = document.getElementById('postsList');
 
