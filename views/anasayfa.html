@@ -400,10 +400,11 @@
         }
 
         #finChatTitle {
-        font-size: 40px;
-        font-family: 'Bahnschrift Condensed', sans-serif;
-        color: rgb(0, 0, 0); /* Renk: RGB 156 194 230 */
-    }
+            font-size: 40px;
+            font-family: 'Bahnschrift Condensed', sans-serif;
+            color: rgb(0, 0, 0);
+            /* Renk: RGB 156 194 230 */
+        }
     </style>
 </head>
 
@@ -447,8 +448,7 @@
                     </div>
                     <div class="right-column">
                         <div class="upper-row">
-                            <textarea id="desc" name="desc" placeholder="Paylaş..." rows="5"
-                                cols="50"></textarea>
+                            <textarea id="desc" name="desc" placeholder="Paylaş..." rows="5" cols="50"></textarea>
                         </div>
 
                         <div class="lower-row">
@@ -823,7 +823,7 @@
             </div>*/
 
         document.getElementById('update-user-form').addEventListener('submit', async function (event) {
-            // event.preventDefault();
+            event.preventDefault();
 
             const name = document.getElementById('firstnameLastname').value;
             const password = document.getElementById('password').value;
@@ -842,6 +842,7 @@
 
                     if (response.ok) {
                         alert('bilgileriniz güncellendi');
+                        location.reload();
                         // window.location.href = './home';
                     } else {
                         const errorMessage = await response.json();
