@@ -632,6 +632,12 @@
                 });
         }
 
+        document.getElementById('sendButton').addEventListener('click', function() {
+    // Share post buttonuna tıklanınca sayfayı yeniden yükle
+    location.reload();
+});
+
+
         document.getElementById('postForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Form submitini engelle
 
