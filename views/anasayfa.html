@@ -548,8 +548,9 @@
                 </div>
                 <div class="right-column">
                     <div class="upper-row">
-                        <textarea placeholder="Bilinenin aksine, Lipsum sadece rastgele dizilmiş harflerden oluşan paragraflardan ibaret değildir, tarihi MÖ 45 yıllarına dayanan bir klasik Latin edebiyatı eserine dayanır. Yaklaşık 2000 yıldan fazla bir geçmişi vardır. ABD Virginia'daki Hampden-Sydney Üniversitesi'nden(en:Hampden–Sydney College) Latin dili profesörü Richard McClintock, Lorem Ipsum paragraflarından birinde anlaşılması en güç Latince kelimelerden bir "consectetur" sözcüğüne rastlamış, klasik Latin edebiyatı eserlerinde de gördüğü bu kelimeden hareketle Lipsum’un aslında işe yarar bir kaynak olduğunu fark etmiştir." rows="5" cols="50">${post.desc} tarih: ${moment(post.createdAt).fromNow()}</textarea>
-                    </div>
+                         ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
+                             </div>
+
                     <div class="lower-row">
                       <button id="commentsButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
