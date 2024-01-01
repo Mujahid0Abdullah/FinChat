@@ -45,13 +45,14 @@ router.post("/", authorize, (req, res) => {
     console.log(req.body);
     //const file = req.file;
     //const imagePath = `./public/uploads/${file.filename}`;
+    const imagePath = "no image";
     const descValue = req.body.desc;
     const userInfo = req.userInfo; // Yetkilendirme adımında doğrulanan kullanıcı bilgileri
 
     const q = "INSERT INTO posts (`desc`, `img`, `userId`, `createdAt`) VALUES (?)";
     const values = [
         descValue,
-        //    imagePath,
+        imagePath,
         userInfo.id,
         moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
     ];
