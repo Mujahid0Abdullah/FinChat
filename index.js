@@ -70,6 +70,7 @@ app.get("/CommentPage", (req, res) => {
     // Burada post ID'sini almak istediğiniz postun detaylarını alın
     // postDetails değişkeni örnek olarak bir postun detaylarını içeriyor olsun
 
+
     const q = "SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) WHERE p.id=? ORDER BY p.createdAt DESC";
     console.log("q" + req.query);
     //console.log("p" + req.param);
