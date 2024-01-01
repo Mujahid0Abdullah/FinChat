@@ -453,14 +453,6 @@
                         </div>
                     </div>
                 </div>
-                <!--
-                <label for="desc">Description:</label><br>
-                <input type="text" id="desc" name="desc"><br>
-                <div id="imageViewer"></div>
-                <button type="button" id="uploadImageButton" onclick="openImageView()">Upload Image</button>
-                <label for="img">Image URL:</label><br>
-                <input type="file" id="img" name="img"><br><br>
-                <button type="button" onclick="addpost()">Add Post</button>-->
             </form>
             <div id="postsList">
 
@@ -692,7 +684,7 @@
         }
 
         document.getElementById('postForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Form submitini engelle
+            //event.preventDefault(); // Form submitini engelle
 
             const desc = document.getElementById('desc').value;
 
