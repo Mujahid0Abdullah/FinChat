@@ -73,7 +73,16 @@ app.get("/register", (req, res) => {
     res.sendFile(htmlPath);
 });
 
+app.get("/post", (req, res) => {
+    -
+        console.log("getpost");
 
+    const htmlPath = path.resolve('views', 'CommentThePost.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+
+});
 
 app.get("/", (req, res) => {
     console.log("login");
