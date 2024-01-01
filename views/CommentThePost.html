@@ -408,6 +408,9 @@
 
             <div id="postsList"></div>
 
+
+
+
             <div class="share-comment">
                 <div class="left-column">
                     <div class="user-avatar-small">
@@ -429,6 +432,10 @@
                     </div>
                 </div>
             </div>
+
+
+            <div id="commentsList"></div>
+
 
             <div class="shared-comment">
                 <div class="left-column">
@@ -666,6 +673,47 @@
                 })
         }
 
+        function fetchComments() {
+
+            fetch(`${url}comments?postId=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+                .then(response => response.json())
+                .then(comments => {
+                    // Sunucudan gelen verileri işleme
+                    console.log(comments);
+                    const postsListContainer = document.getElementById('commentsList');
+
+                    comments.forEach(comment => {
+
+                        let postContent = `
+            
+            <div class="shared-comment">
+                <div class="left-column">
+                    <div class="user-avatar-small">
+                        <img src="${comment.profilePic}">
+                    </div>
+                    <div class="user-name">${comment.name}</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea rows="5" cols="50" readonly>tarih: ${moment(comment.createdAt).fromNow()} \n ${comment.desc} </textarea>
+                    </div>
+
+                    <div class="lower-row">
+
+                    </div>
+                </div>
+            </div>
+    
+    `;
+
+                        postsListContainer.innerHTML += postContent
+
+                    })
+                        .catch(error => {
+                            console.error('Error fetching posts:', error);
+                        });
+                })
+        }
 
 
     </script>
