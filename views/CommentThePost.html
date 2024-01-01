@@ -672,7 +672,7 @@
                     postsListContainer.innerHTML += postContent
                 })
         }
-
+        fetchComments()
         function fetchComments() {
 
             fetch(`${url}comments?postId=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -680,7 +680,7 @@
                 .then(comments => {
                     // Sunucudan gelen verileri işleme
                     console.log(comments);
-                    const postsListContainer = document.getElementById('commentsList');
+                    const commetsListContainer = document.getElementById('commentsList');
 
                     comments.forEach(comment => {
 
@@ -706,11 +706,11 @@
     
     `;
 
-                        postsListContainer.innerHTML += postContent
+                        commetsListContainer.innerHTML += postContent
 
                     })
                         .catch(error => {
-                            console.error('Error fetching posts:', error);
+                            console.error('Error fetching comments:', error);
                         });
                 })
         }
