@@ -75,20 +75,15 @@ app.get("/CommentPage", (req, res) => {
     console.log("q" + req.query);
     //console.log("p" + req.param);
 
-    id = req.query.postId;
+    const id = req.query.postId;
 
     db.query(q, [id], (err, data) => {
         if (err) { return res.status(500).json(err); }
 
         return res.status(200).json(data);
     });
-    /*
-    const postDetails = {
-        id: req.params.postID,
-        title: 'Post Title',
-        content: 'Post Content',
-        // Diğer post özellikleri...
-    };*/
+
+
     // Örnek bir HTML dosyasını göndermek istediğiniz sayfanın dizinini belirtin
 });
 
