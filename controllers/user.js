@@ -24,7 +24,7 @@ export const getUser = (req, res) => {
 
 export const updateUser = (req, res) => {
 
-    console.log("Password:", req.body.password, data);
+    console.log("Password:", req.body.password);
     //yeni kullanıcı oluşturma
 
     //hash password
