@@ -742,8 +742,7 @@
                 }
                 const userInfo = await response.json();
 
-                const userInfoDiv = document.getElementById('userInfo');
-                const userInfoDiv2 = document.getElementById('userInfo2');
+                const userInfoDiv = document.getElementById('userInfo2');
                 const user_Info_post = document.getElementById('input-post-name');
                 user_Info_post.value = userInfo.name;
 
@@ -751,10 +750,6 @@
           <p> ${userInfo.name}</p>          
         `;
                 userInfoDiv.innerHTML = `               
-          <p>Merhaba ${userInfo.name}</p>          
-        `;
-
-                userInfoDiv2.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
 </div>        `;
