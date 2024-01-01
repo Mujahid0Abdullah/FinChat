@@ -422,7 +422,8 @@
                     <div class="lower-row">
 
                         <button id="sendButton">
-                            <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png" alt="Button Image">
+                            <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
+                                alt="Button Image">
                         </button>
                     </div>
                 </div>
@@ -469,21 +470,27 @@
         </div>
         <div id="right-region">
             <div class="horizontal-line">
-                <img id="dollar-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif" alt="Dollar Icon">
+                <img id="dollar-icon"
+                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif"
+                    alt="Dollar Icon">
             </div>
             <h3 class="para-birimleri">Dolar/tl=30,9</h3>
             <h3 class="para-birimleri">Euro/tl=39</h3>
             <h3 class="para-birimleri">Sterlin/tl=30</h3>
             <h3 class="para-birimleri">Pln/tl=3</h3>
             <div class="horizontal-line">
-                <img id="gold-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif" alt="Dollar Icon">
+                <img id="gold-icon"
+                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif"
+                    alt="Dollar Icon">
             </div>
             <h3 class="altin-degerleri">Gram Altın=300Tl</h3>
             <h3 class="altin-degerleri">Çeyrek Altın=500Tl</h3>
             <h3 class="altin-degerleri">C. Altını=200Tl</h3>
             <h3 class="altin-degerleri">Yatım Altın=100Tl</h3>
             <div class="horizontal-line">
-                <img id="kripto-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/kripto-icon.gif" alt="Dollar Icon">
+                <img id="kripto-icon"
+                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/kripto-icon.gif"
+                    alt="Dollar Icon">
             </div>
             <h3 class="kripto-degerleri">Bitcoin=300Tl</h3>
             <h3 class="kripto-degerleri">Etherium=200Tl</h3>
@@ -595,21 +602,49 @@
                 reader.readAsDataURL(profilePictureInput.files[0]);
             }
         }
-
-
+        /*
+        
+                function fetchPosts() {
+            console.log("getpost" + id);
+            fetch(`${url}CommentPage?postId=${id}`)
+                .then(response => response.json())
+                .then(posts => {
+                    const post = posts[0]; // Dizi içindeki ilk nesneyi al
+                    console.log(post);
+                    const postsListContainer = document.getElementById('postsList');
+        
+                    let postContent = `
+                        <div class="left-column">
+                            <div class="user-avatar-big">
+                                <img src="${post.profilePic}">
+                            </div>
+                            <div class="user-name">${post.name}</div>
+                        </div>
+                        <div class="right-column">
+                            <div class="upper-row">
+                                ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
+                            </div>
+                            <div class="lower-row">
+                            </div>
+                        </div>
+                    </div>`;
+        
+                    postsListContainer.innerHTML += postContent;
+                })
+        }*/
 
         function fetchPosts() {
             console.log("getpost" + id);
             fetch(`${url}CommentPage?postId=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
                 .then(response => response.json())
-                .then(post => {
+                .then(posts => {
                     // Sunucudan gelen verileri işleme
-
+                    const post = posts[0];
                     console.log(post);
                     const postsListContainer = document.getElementById('postsList');
 
                     let postContent = `
-                        <div class="post-view" onclick="postClicked(${post.id})">
+                        <div class="post-view">
                             <div class="left-column">
                                 <div class="user-avatar-big">
                                     <img src="${post.profilePic}">
