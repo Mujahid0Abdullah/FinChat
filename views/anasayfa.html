@@ -404,7 +404,7 @@
                             <img src="path/to/user/avatar.jpg">
                         </div>
                         <div id="input-post-name" class="user-name"></div>
-                    </div>
+                    </div> 
                     <div class="right-column">
                         <div class="upper-row">
                             <textarea id="desc" name="desc" placeholder="Your text here..." rows="5"
@@ -698,6 +698,10 @@
                 const userInfoDiv = document.getElementById('userInfo');
                 const user_Info_post = document.getElementById('input-post-name');
                 user_Info_post.value = userInfo.name;
+
+                user_Info_post.innerHTML = `               
+          <p> ${userInfo.name}</p>          
+        `;
                 userInfoDiv.innerHTML = `               
           <p>Merhaba ${userInfo.name}</p>          
         `;
