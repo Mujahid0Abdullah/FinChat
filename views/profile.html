@@ -437,30 +437,7 @@
                 </span>
             </div>
 
-            <form id="postForm">
 
-                <div class="share-post">
-                    <div class="left-column">
-                        <div class="user-avatar">
-                            <img src="path/to/user/avatar.jpg">
-                        </div>
-                        <div id="input-post-name" class="user-name"></div>
-                    </div>
-                    <div class="right-column">
-                        <div class="upper-row">
-                            <textarea id="desc" name="desc" placeholder="Paylaş..." rows="5" cols="50"></textarea>
-                        </div>
-
-                        <div class="lower-row">
-
-                            <button type="submit" id="sendButton">
-                                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
-                                    alt="Button Image">
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
             <div id="postsList">
 
             </div>
@@ -689,41 +666,7 @@
                 });
         }
 
-        document.getElementById('postForm').addEventListener('submit', function (event) {
-            //event.preventDefault(); // Form submitini engelle
-
-            const desc = document.getElementById('desc').value;
-
-
-            // Post verilerini obje olarak oluştur
-            const postData = {
-                desc: desc,
-
-            };
-
-            // POST isteği göndermek için fetch kullanımı
-            fetch(`${url}posts`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(postData)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Post eklendi:', data);
-                    fetchPosts();
-                    // İsteğin başarılı olduğu durumda, istediğiniz işlemleri burada gerçekleştirin
-                })
-                .catch(error => {
-                    console.error('There was an error!', error);
-                });
-        });
+      
         function openImageView() {
             var fileInput = document.createElement("input");
             fileInput.type = "file";
@@ -763,6 +706,9 @@
             }
         }
         displayUserInfo()
+
+
+        
         function getExchangeRates() {
             const apiKey = '1bcf3f77aed6bcf6430e283f';
             const baseCurrency = 'USD';
@@ -804,23 +750,7 @@
 
         // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
         getExchangeRates();
-        /*
-                <div id="dynamic-popup">
-                <div id="close-btn" onclick="closeDynamicPopup()">X</div>
-                <div class="user-avatar" onclick="openProfilePictureInput()">
-                    <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
-                    <div id="editProfilePicture"></div>
-                </div>
-                <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
-                <br>
-                <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
-                <br>
-                <input type="password" id="password" placeholder="Password">
-                <br>
-                <input type="password" id="repeatPassword" placeholder="Repeat Password">
-                <br>
-                <button  id="save-btn" onclick="saveChanges()">Save</button>
-            </div>*/
+      
 
         document.getElementById('update-user-form').addEventListener('submit', async function (event) {
             event.preventDefault();
@@ -863,131 +793,7 @@
 
         });
 
-        //ADD POST
-        /*
-        document.getElementById('postForm').addEventListener('submit', function (event) {
-
-            event.preventDefault(); // Form submitini engelle
-
-            const desc = document.getElementById('desc').value;
-            const img = document.getElementById('img').files[0];
-
-            const formdata = new FormData();
-            formdata.append('desc', desc);
-            formdata.append('img', img);
-            // Post verilerini obje olarak oluştur
-            const postData = {
-                des: desc,
-                img: img
-            };
-
-            // POST isteği göndermek için fetch kullanımı
-            fetch('http://localhost:8800/posts', {
-                method: 'POST',
-            headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: formdata
-                //JSON.stringify(postData)
-             })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('hata oldu , yeniden giriş yapın');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Post eklendi:', data);
-                    fetchPosts();
-                })
-                .catch(error => {
-
-                    const message = error.message
-                    //data.message;
-                    alert(message);
-                });
-                });
-
-        /*
-        GetData()
-        function GetData() {
-            fetch("http://localhost:8800/posts", {
-                method: "GET"
-            }).then(Request => Request.json())
-                .then(data => {
-                    ShowData(data)
-                })
-        }
-*/
-        /*
-                function ShowData(data) {
-                    let Table = `<table class="table">`
-                    Table += `<tr> 
-                                    <th>Name</th> 
-                                    <th>Email</th> 
-                                    <th>Password</th> 
-                                    <th style="color:red;">Delete</th>
-                                    <th style="color:dark;">Update</th>
-                                 </tr>`
-                    Users.forEach(User => {
-                        Table += `<tr> 
-                                        <td contenteditable id="Name${User.Id}">${User.desc}</td> 
-                                        <td contenteditable id="Email${User.Id}">${User.userid}</td> 
-                                        <td contenteditable id="Password${User.Id}">${User.img}</td> 
-                                        <td onclick="Remove(${User.createdAt})"><button class="btn btn-danger">x</button> </td>
-                                        <td onclick="Update(${User.Id})"><img src="update.png" width="45"></td>  
-                                    </tr>`
-                    });
-                    Table += ` </table>`
-                    //document.getElementById("Users").innerHTML = Table
-                }
-                    
-                /*
-        function Create() {
-         fetch("http://localhost:8800/auths/login", {
-             method: "POST",
-             headers: { 'Content-Type': 'application/json' },
-             body: JSON.stringify({
-                 username: document.getElementById("username").value,
-        
-                 password: document.getElementById("password").value
-             })
-         }).then(Request => Request.json()).then(Answer => {
-            
-             fetchPosts()
-         })
-        }*/
-
-        /*
-        function addpost() {
-            const desc = document.getElementById('desc').value;
-            //const img = document.getElementById('img').files[0];
-            const formdata = new FormData();
-            formdata.append('desc', desc);
-            //formdata.append('img', img);
-            fetch(`${url}posts`, {
-                method: 'POST',
-                
-                body: formdata
-                //JSON.stringify(postData)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('hata oldu , yeniden giriş yapın');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Post eklendi:', data);
-                    fetchPosts();
-                })
-                .catch(error => {
-
-                    const message = error.message
-                    //data.message;
-                    alert(message);
-                });
-        }*/
+  
     </script>
 </body>
 
