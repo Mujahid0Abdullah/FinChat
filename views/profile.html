@@ -574,7 +574,7 @@
 
         function fetchPosts() {
 
-            fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+            fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
                 .then(response => response.json())
                 .then(posts => {
                     // Sunucudan gelen verileri işleme

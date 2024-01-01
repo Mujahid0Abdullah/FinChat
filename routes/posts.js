@@ -2,7 +2,7 @@ import Express from "express";
 import bodyParser from "body-parser";
 import multer from "multer"
 import path from "path";
-import { getPosts, addPost, getpost } from "../controllers/post.js"; //.js
+import { getPosts, addPost, getpost, getmyPosts } from "../controllers/post.js"; //.js
 import jwt from "jsonwebtoken";
 import moment from "moment/moment.js";
 import { db } from "../connect.js";
@@ -37,6 +37,8 @@ const upload = multer({ storage: storage });
 
 //authorize,
 router.get("/", authorize, getPosts)
+router.get("/myposts", authorize, getmyPosts)
+
 
 //router.post("/", authorize, upload.single('img'), (req, res) => {
 
