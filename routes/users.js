@@ -8,9 +8,7 @@ import multer from "multer";
 import { getUser, updateUser } from "../controllers/user.js"; //.js
 
 const router = Express.Router()
-const publicPath = path.resolve('public');
 
-console.log(publicPath);
 
 
 router.get("/", getUser)
@@ -22,6 +20,8 @@ router.put("/", authorize, updateUser)
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
+        const publicPath = path.resolve('public');
+        console.log(publicPath);
         cb(null, publicPath); // Dosyanın kaydedileceği yol
 
     },
@@ -34,8 +34,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-//upload.single('img')
-router.post("/", authorize, (req, res) => {
+//
+router.post("/", authorize, upload.single('img'), (req, res) => {
 
     console.log(req.body);
     const file = req.file;
