@@ -151,61 +151,23 @@
             margin-left: 10px;
         }
 
-        #sendButton {
-            height: 30px;
-            width: 30px;
-            padding: 0;
-            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
-            border: none;
-            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
-            background: none;
-            /* Arkaplan rengini kaldırıyoruz */
-            cursor: pointer;
-        }
-
-        #sendButton img {
-            height: 100%;
-            width: 100%;
-        }
-
-
-
-
-        #commentsButton {
-            height: 30px;
-            width: 30px;
-            padding: 0;
-            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
-            border: none;
-            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
-            background: none;
-            /* Arkaplan rengini kaldırıyoruz */
-            cursor: pointer;
-        }
-
-        #commentsButton img {
-            height: 100%;
-            width: 100%;
-        }
-
+        #sendButton,
+        #commentsButton,
         #DeleteButton {
             height: 30px;
             width: 30px;
             padding: 0;
-            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
             border: none;
-            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
             background: none;
-            /* Arkaplan rengini kaldırıyoruz */
             cursor: pointer;
         }
 
+        #sendButton img,
+        #commentsButton img,
         #DeleteButton img {
             height: 100%;
             width: 100%;
         }
-
-
 
 
 
@@ -593,10 +555,10 @@
 
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
-                      <button onclick="postClicked(${post.id})" id="commentsButton">
+                      <button onclick="Deletepost(${post.id})" id="DeleteButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/delete.png" alt="Button Image">
                       </button>
-                      <button onclick="Deletepost(${post.id})" id="DeleteButton">
+                      <button onclick="postClicked(${post.id})"  id="commentsButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
                       </button>
                     </div>
