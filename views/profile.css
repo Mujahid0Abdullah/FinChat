@@ -82,7 +82,16 @@
             justify-content: center;
         }
 
-        .user-avatar {
+        .user-avatar-small {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: lightgray;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .user-avatar-big {
             width: 150px;
             height: 150px;
             border-radius: 50%;
