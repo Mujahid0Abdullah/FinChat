@@ -44,7 +44,7 @@ router.get("/myposts", authorize, getmyPosts)
 
 router.post("/", authorize, addPost)
 
-router.post("/", authorize, deletePost)
+router.delete("/", authorize, deletePost)
 
 router.get("/post", authorize, getpost)
 
