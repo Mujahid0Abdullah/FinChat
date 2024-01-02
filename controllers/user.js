@@ -33,8 +33,6 @@ export const updateUser = (req, res) => {
     // Resim dosyasını bul
     console.log(req.file)
     console.log(req.files)
-
-    console.log(imageFile)
     const formData = req.body;
     const imgFile = formData.get('file');
 
