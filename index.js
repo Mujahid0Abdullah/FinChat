@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import path from "path";
 import cors from "cors";
 import { db } from "./connect.js";
+import multer from "multer";
 
 
 
@@ -152,6 +153,15 @@ app.get("/upload", (req, res) => {
     console.log(htmlPath);
 
     res.sendFile(htmlPath);
+});
+
+const htmlPath = path.resolve('public', "uploads");
+const upload = multer({ dest: htmlPath })
+
+app.post("/upload", upload.single("img"), (req, res) => {
+
+
+
 });
 
 app.use("/comments", commentRoutes);
