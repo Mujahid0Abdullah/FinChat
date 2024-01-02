@@ -1,6 +1,8 @@
 import Express from "express";
 import { authorize } from '../proxy.js';
 import path from "path";
+import multer from "multer";
+
 
 
 import { getUser, updateUser } from "../controllers/user.js"; //.js
@@ -16,7 +18,7 @@ router.get("/", getUser)
 router.put("/", authorize, updateUser)
 
 
-/*
+
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
@@ -37,7 +39,7 @@ router.post("/", authorize, upload.single('img'), (req, res) => {
 
     console.log(req.body);
     const file = req.file;
-    const imagePath = `${publicPath}/${file.filename}`;
+    const imagePath = `${file.filename}`;
     const descValue = req.body.desc;
     const userInfo = req.userInfo; // Yetkilendirme adımında doğrulanan kullanıcı bilgileri
 
@@ -56,7 +58,7 @@ router.post("/", authorize, upload.single('img'), (req, res) => {
         }
         return res.status(200).json("post eklendi");
     });
-})*/
+})
 
 
 export default router

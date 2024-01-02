@@ -145,6 +145,15 @@ app.get("/profilecss", (req, res) => {
 
 
 
+app.get("/upload", (req, res) => {
+    console.log("photo");
+
+    const htmlPath = path.resolve('public', "uploads", '1703618127158.png');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 app.use("/comments", commentRoutes);
 app.use("/auths", authRoutes);
 app.use("/posts", postRoutes);
