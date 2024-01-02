@@ -16,7 +16,7 @@ export const getUser = (req, res) => {
         db.query(q, [userId], (err, data) => {
             if (err) return res.status(500).json(err);
             const { password, ...info } = data[0];
-            console.log(data.profilePic)
+            console.log(data[0].profilePic)
             return res.json(info);
         });
     })
