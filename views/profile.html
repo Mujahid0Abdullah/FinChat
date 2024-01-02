@@ -328,13 +328,8 @@
                 const userInfo = await response.json();
 
                 const userInfoDive = document.getElementById('userInfo222');
-                const user_Info_post = document.getElementById('input-post-name');
-                user_Info_post.value = userInfo.name;
 
-                user_Info_post.innerHTML = `               
-          <p> ${userInfo.name}</p>          
-        `;
-        userInfoDive.innerHTML = `               
+                userInfoDive.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
 </div>        `;
