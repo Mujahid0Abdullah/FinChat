@@ -158,7 +158,7 @@ app.get("/upload", (req, res) => {
 });
 
 const htmlPath = path.resolve('public', "uploads");
-const upload = multer({ dest: htmlPath })
+const upload = multer({ dest: 'public/' })
 
 app.post("/upload", upload.single("img"), (req, res) => {
 
