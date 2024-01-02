@@ -66,6 +66,8 @@ app.get("/home", (req, res) => {
 });
 
 
+
+
 app.get("/CommentPage", (req, res) => {
     // Burada post ID'sini almak istediğiniz postun detaylarını alın
     // postDetails değişkeni örnek olarak bir postun detaylarını içeriyor olsun
@@ -130,6 +132,16 @@ app.get("/", (req, res) => {
     res.sendFile(htmlPath);
 });
 
+
+
+app.get("/profilecss", (req, res) => {
+    console.log("css");
+
+    const htmlPath = path.resolve('views', 'profile.css');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
 
 
 
