@@ -579,7 +579,7 @@
 
                         let postContent = `
                     
-            <div class="post-view" onclick="postClicked(${post.id})">
+            <div class="post-view" >
                 <div class="left-column">
                     <div class="user-avatar">
                         <img src="${post.profilePic}">
@@ -593,10 +593,10 @@
 
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
-                      <button id="commentsButton">
+                      <button onclick="postClicked(${post.id}) id="commentsButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/delete.png" alt="Button Image">
                       </button>
-                      <button id="DeleteButton">
+                      <button onclick="Deletepost(${post.id})" id="DeleteButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
                       </button>
                     </div>
@@ -622,6 +622,35 @@
         function postClicked(postId) {
             // alert(postId)
             window.location = `${url}post?postId=${postId}`
+        }
+
+
+        async function Deletepost(postId) {
+
+            try {
+                const response = await fetch('https://fin-chat.onrender.com/posts', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ postId })
+                });
+
+                if (response.ok) {
+                    alert('post Silindi');
+                    location.reload();
+                    // window.location.href = './home';
+                } else {
+                    const errorMessage = await response.json();
+                    alert(`Hata çıktı : ${errorMessage}`);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle error if fetch fails
+                alert('An error occurred while processing your request.');
+            }
+
         }
 
         /*
@@ -686,7 +715,7 @@
                 });
         }
 
-      
+
         function openImageView() {
             var fileInput = document.createElement("input");
             fileInput.type = "file";
@@ -728,7 +757,7 @@
         displayUserInfo()
 
 
-        
+
         function getExchangeRates() {
             const apiKey = '1bcf3f77aed6bcf6430e283f';
             const baseCurrency = 'USD';
@@ -770,7 +799,7 @@
 
         // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
         getExchangeRates();
-      
+
 
         document.getElementById('update-user-form').addEventListener('submit', async function (event) {
             event.preventDefault();
@@ -813,7 +842,7 @@
 
         });
 
-  
+
     </script>
 </body>
 
