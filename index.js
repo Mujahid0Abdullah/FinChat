@@ -145,6 +145,15 @@ app.get("/profilecss", (req, res) => {
 });
 
 
+app.get("/anasayfaJs", (req, res) => {
+    console.log("js");
+
+    const htmlPath = path.resolve('views', 'anasayfa.js');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 
 
 
