@@ -585,7 +585,7 @@
 
                         let postContent = `
                     
-            <div class="post-view" onclick="postClicked(${post.id})">
+            <div class="post-view" >
                 <div class="left-column">
                     <div class="user-avatar">
                         <img src="${post.profilePic}">
@@ -599,7 +599,7 @@
 
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
-                      <button id="commentsButton">
+                      <button onclick="postClicked(${post.id})" id="commentsButton">
                           <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
                       </button>
                     </div>
