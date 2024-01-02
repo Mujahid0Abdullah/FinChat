@@ -157,13 +157,21 @@ app.get("/upload", (req, res) => {
     res.sendFile(htmlPath);
 });
 
-const htmlPath = path.resolve('public', "uploads");
-const upload = multer({ dest: 'public/' })
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "/public")
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+})
+const upload = multer({ storage })
 
 app.post("/upload", upload.single("img"), (req, res) => {
 
 
-
+    res.json(req.file)
 });
 
 app.use("/comments", commentRoutes);
