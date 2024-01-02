@@ -16,7 +16,7 @@ router.get("/", getUser)
 router.put("/", authorize, updateUser)
 
 
-
+/*
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
@@ -58,7 +58,7 @@ router.post("/", authorize, upload.single('img'), (req, res) => {
         }
         return res.status(200).json("post eklendi");
     });
-})
+})*/
 
 
 export default router

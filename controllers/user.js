@@ -4,6 +4,7 @@ import { db } from "../connect.js"
 import bcrypt from "bcryptjs";
 // kullanıcı kimlik doğrulama
 import jwt from "jsonwebtoken";
+import { uploadFile } from "../googleimage.js"; //.js
 
 export const getUser = (req, res) => {
     const token = req.cookies.accessToken;
@@ -27,6 +28,16 @@ export const updateUser = (req, res) => {
 
     console.log("Password:", req.body.password);
     //yeni kullanıcı oluşturma
+    const files = req.files;
+
+    // Resim dosyasını bul
+    const imageFile = files.find((file) => file.type === 'image/jpeg');
+    console.log(req.file)
+    console.log(req.files)
+
+    console.log(imageFile)
+
+    uploadFile(imageFile);
 
     //hash password
     const Salt = bcrypt.genSaltSync(10); // şifreleme metodu

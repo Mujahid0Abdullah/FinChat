@@ -5,6 +5,7 @@ import { db } from "../connect.js";
 import multer from "multer";
 import { authorize } from '../proxy.js';
 
+
 export const getPosts = (req, res) => {
     const q = "SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) ORDER BY p.createdAt DESC";
     db.query(q, (err, data) => {
@@ -92,27 +93,7 @@ export const deletePost = (req, res) => {
     });
 };
 
-/*
-export const getPosts = (req, res) => {
-    const token = req.cookies.accessToken;
-    //const token = req.headers.authorization; // Authorization header'ından token'i alın
 
-    console.log(token);
-    if (!token) return res.status(401).json("Not logged in")
-
-    jwt.verify(token, "SecretKey", (err, userInfo) => {
-        console.log(userInfo)
-        if (err) return res.status(403).json("Token is not valid");
-        console.log("getposts");
-        const q = "SELECT p.* ,u.id AS userId , name , profilePic FROM posts p JOIN users u ON (u.id= p.userId) ORDER BY p.createdAt DESC "
-        db.query(q, (err, data) => {
-            if (err) return res.status(500).json(err);
-            return res.status(200).json(data);
-        });
-    })
-}
-
-*/
 /*
 export const addPost = (req, res) => {
     console.log(req.body);
