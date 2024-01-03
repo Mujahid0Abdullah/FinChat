@@ -3,10 +3,9 @@ const followedUserId = urlParamss.get('userid');
 const urls = "https://fin-chat.onrender.com/"
 
 check();
-document.getElementById('follow-unfollowButton').addEventListener('click', function (event) {
+document.getElementById('follow-unfollowButton').addEventListener('click', function () {
 
-    if (check()) { }
-    else { setfollow(); }
+    if (check()) { } else { setfollow(); }
     check();
 
 });
