@@ -35,17 +35,17 @@ const upload = multer({ storage: storage });
 
 
 
-//authorize,
+
 router.get("/", authorize, getPosts)
-router.get("/myposts", authorize, getmyPosts)
+router.post("/", authorize, addPost)
+router.delete("/", authorize, deletePost)
+
+
 
 
 //router.post("/", authorize, upload.single('img'), (req, res) => {
 
-router.post("/", authorize, addPost)
-
-router.delete("/", authorize, deletePost)
-
+router.get("/myposts", authorize, getmyPosts)
 router.get("/post", authorize, getpost)
 
 
