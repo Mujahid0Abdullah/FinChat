@@ -5,7 +5,7 @@ import multer from "multer";
 
 
 
-import { getUser, updateUser } from "../controllers/user.js"; //.js
+import { getUser, updateUser, finduser } from "../controllers/user.js"; //.js
 
 const router = Express.Router()
 
@@ -14,5 +14,8 @@ const router = Express.Router()
 router.get("/", authorize, getUser)
 
 router.put("/", authorize, updateUser)
+
+router.get("/find", authorize, finduser)
+
 
 export default router

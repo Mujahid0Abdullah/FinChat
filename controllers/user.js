@@ -20,6 +20,21 @@ export const getUser = (req, res) => {
 };
 
 
+
+export const finduser = (req, res) => {
+
+    const q = "SELECT * FROM users WHERE name LIKE '%?%'";
+    const name = req.body.name;
+    db.query(q, [name], (err, data) => {
+        if (err) return res.status(500).json(err);
+        const { password, ...info } = data[0];
+
+        return res.json(info);
+    });
+
+}
+
+
 export const updateUser = (req, res) => {
 
     console.log("Password:", req.body.password);
