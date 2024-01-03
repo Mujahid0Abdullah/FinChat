@@ -1,455 +1,489 @@
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        #container {
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #left-region {
-            flex: 5;
-            background-color: #BFBFBF;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #middle-region {
-            flex: 21;
-            background-color: #FFFFFF;
-            overflow-y: auto;
-            overflow-x: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
-
-
-
-        #right-region {
-            flex: 6;
-            background-color: #595959;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px;
-            overflow: hidden;
-            border: 2px solid black;
-        }
-
-
-
-        .share-post {
-            position: static;
-            left: 0;
-            right: 0;
-            top: 120px;
-            width: 900px;
-            height: 200px;
-            border: 2px solid black;
-            background-color: white;
-            display: flex;
-            position: center;
-            margin-left: 30px;
-            box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .8);
-            margin-top: 20px;
-        }
-
-        .post-view {
-            position: static;
-            left: 0;
-            right: 0;
-            top: 120px;
-            width: 900px;
-            height: 200px;
-            border: 2px solid black;
-            background-color: white;
-            display: flex;
-            position: center;
-            margin-left: 30px;
-            margin-top: 25px;
-            margin-bottom: 5px;
-        }
-
-        .share-comment {
-            position: static;
-            left: 0;
-            right: 0;
-            top: 120px;
-            width: 900px;
-            height: 150px;
-            border: 2px solid black;
-            background-color: white;
-            display: flex;
-            position: center;
-            margin-left: 30px;
-            box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .8);
-            margin-top: 20px;
-        }
-
-        .shared-comment {
-            position: static;
-            left: 0;
-            right: 0;
-            top: 120px;
-            width: 900px;
-            height: 150px;
-            border: 2px solid black;
-            background-color: white;
-            display: flex;
-            position: center;
-            margin-left: 30px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-
-        .left-column {
-            flex: 1;
-            flex-direction: column;
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .user-avatar-small {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: lightgray;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .user-avatar-big {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: lightgray;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .user-name {
-            color: #333;
-            font-weight: bold;
-            position: relative;
-            margin: auto;
-        }
-
-        .right-column {
-            flex: 3;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .upper-row {
-            flex: 3;
-            background-color: white;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .upper-row textarea {
-            width: 100%;
-            height: 95%;
-            resize: none;
-            border: none;
-            outline: none;
-        }
-
-        .lower-row {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding-right: 20px;
-        }
-
-        .lower-row button {
-            margin-left: 10px;
-        }
-
-        #sendButton {
-            height: 30px;
-            width: 30px;
-            padding: 0;
-            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
-            border: none;
-            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
-            background: none;
-            /* Arkaplan rengini kaldırıyoruz */
-            cursor: pointer;
-        }
-
-        #sendButton img {
-            height: 100%;
-            width: 100%;
-        }
-
-
-
-
-        #commentsButton {
-            height: 30px;
-            width: 30px;
-            padding: 0;
-            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
-            border: none;
-            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
-            background: none;
-            /* Arkaplan rengini kaldırıyoruz */
-            cursor: pointer;
-        }
-
-        #commentsButton img {
-            height: 100%;
-            width: 100%;
-        }
-
-        #DeleteButton {
-            height: 30px;
-            width: 30px;
-            padding: 0;
-            /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
-            border: none;
-            /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
-            background: none;
-            /* Arkaplan rengini kaldırıyoruz */
-            cursor: pointer;
-        }
-
-        #DeleteButton img {
-            height: 100%;
-            width: 100%;
-        }
-
-
-
-
-
-        .horizontal-line {
-            height: 8px;
-            background-color: #F2F2F2;
-            border-radius: 36px;
-            position: relative;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border-style: double;
-            border: 2px solid black;
-        }
-
-        .horizontal-middle-line {
-            height: 50px;
-            background-color: #F2F2F2;
-            position: relative;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-
-        }
-
-        #dollar-icon {
-            position: left;
-            width: 100px;
-            height: 100px;
-            bottom: -10px;
-            left: 50%;
-            padding-top: 0px;
-            transform: translateX(-50%);
-            padding-left: 20px;
-        }
-
-        #gold-icon {
-            position: left;
-            width: 100px;
-            height: 100px;
-            bottom: -10px;
-            left: 50%;
-            padding-top: 0px;
-            transform: translateX(-50%);
-            padding-left: 40px;
-        }
-
-        #kripto-icon {
-            position: left;
-            width: 100px;
-            height: 100px;
-            bottom: -10px;
-            left: 50%;
-            padding-top: 0px;
-            transform: translateX(-50%);
-            padding-left: 40px;
-        }
-
-        #clickable-lines {
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 10px;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        #clickable-lines span {
-            display: block;
-            width: 20px;
-            height: 4px;
-            background-color: black;
-            margin-bottom: 4px;
-            transition: background-color 0.3s ease;
-        }
-
-        #clickable-lines:hover span {
-            background-color: #3498db;
-        }
-
-
-
-
-        #popup {
-            display: none;
-            position: absolute;
-            top: 40px;
-            right: 0px;
-            width: 100px;
-            height: 50px;
-            background-color: white;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        .popup-content {
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .popup-content:hover {
-            color: #3498db;
-        }
-
-        #dynamic-popup {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
-            background-color: white;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
-            z-index: 3;
-        }
-
-        #close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-
-        #firstnameLastname {
-            margin-top: 10px;
-            margin-bottom: 5px;
-            border-radius: 36px;
-            height: 30px;
-            width: 200px;
-            padding: 10px;
-        }
-
-        #password,
-        #repeatPassword {
-            margin-bottom: 5px;
-            border-radius: 36px;
-            height: 30px;
-            width: 200px;
-            padding: 10px;
-        }
-
-        #save-btn {
-            background-color: #9CC2E6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            border: 2px;
-        }
-
-        #imageViewer {
-            width: 100px;
-            height: 80px;
-            border: 1px solid #ccc;
-            overflow: hidden;
-            border-radius: 10px;
-            border-style: dashed;
-        }
-
-        #imageViewer img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-
-
-
-        .para-birimleri,
-        .altin-degerleri,
-        .kripto-degerleri {
-            margin: 0;
-            padding-left: 80px;
-            color: white;
-        }
-
-        #firstnameLastname {
-            margin-top: 10px;
-            margin-bottom: 5px;
-            border-radius: 36px;
-            height: 30px;
-            width: 200px;
-            padding: 10px;
-        }
-
-        #password,
-        #repeatPassword {
-            margin-bottom: 5px;
-            border-radius: 36px;
-            height: 30px;
-            width: 200px;
-            padding: 10px;
-        }
-
-        #save-btn {
-            background-color: #9CC2E6;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            border: 2px;
-        }
-
-        #finChatTitle {
-            font-size: 40px;
-            font-family: 'Bahnschrift Condensed', sans-serif;
-            color: rgb(0, 0, 0);
-            /* Renk: RGB 156 194 230 */
-        }
-
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#left-region {
+    flex: 5;
+    background-color: #BFBFBF;
+    position: relative;
+    overflow: hidden;
+}
+
+#middle-region {
+    flex: 21;
+    background-color: #FFFFFF;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+
+
+#right-region {
+    flex: 6;
+    background-color: #595959;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    overflow: hidden;
+    border: 2px solid black;
+}
+
+
+
+.share-post {
+    position: static;
+    left: 0;
+    right: 0;
+    top: 120px;
+    width: 900px;
+    height: 200px;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    position: center;
+    margin-left: 30px;
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .8);
+    margin-top: 20px;
+}
+
+.post-view {
+    position: static;
+    left: 0;
+    right: 0;
+    top: 120px;
+    width: 900px;
+    height: 200px;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    position: center;
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.share-comment {
+    position: static;
+    left: 0;
+    right: 0;
+    top: 120px;
+    width: 900px;
+    height: 150px;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    position: center;
+    margin-left: 30px;
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, .8);
+    margin-top: 20px;
+}
+
+.shared-comment {
+    position: static;
+    left: 0;
+    right: 0;
+    top: 120px;
+    width: 900px;
+    height: 150px;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    position: center;
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.left-column {
+    flex: 1;
+    flex-direction: column;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-avatar-small {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: lightgray;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.user-avatar-big {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: lightgray;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    margin: auto;
+}
+
+.right-column {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.upper-row {
+    flex: 3;
+    background-color: white;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.upper-row textarea {
+    width: 100%;
+    height: 95%;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.lower-row {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.lower-row button {
+    margin-left: 10px;
+}
+
+#sendButton {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+    border: none;
+    /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+    background: none;
+    /* Arkaplan rengini kaldırıyoruz */
+    cursor: pointer;
+}
+
+#sendButton img {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+#commentsButton {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+    border: none;
+    /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+    background: none;
+    /* Arkaplan rengini kaldırıyoruz */
+    cursor: pointer;
+}
+
+#commentsButton img {
+    height: 100%;
+    width: 100%;
+}
+
+#DeleteButton {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+    border: none;
+    /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+    background: none;
+    /* Arkaplan rengini kaldırıyoruz */
+    cursor: pointer;
+}
+
+#DeleteButton img {
+    height: 100%;
+    width: 100%;
+}
+
+
+#DeleteButton {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+    border: none;
+    /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+    background: none;
+    /* Arkaplan rengini kaldırıyoruz */
+    cursor: pointer;
+}
+
+#DeleteButton img {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+#gptButton {
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+    border: none;
+    /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+    background: none;
+    /* Arkaplan rengini kaldırıyoruz */
+    cursor: pointer;
+}
+
+#gptButton img {
+    height: 100%;
+    width: 100%;
+}
+
+
+
+
+.horizontal-line {
+    height: 8px;
+    background-color: #F2F2F2;
+    border-radius: 36px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-style: double;
+    border: 2px solid black;
+}
+
+.horizontal-middle-line {
+    height: 50px;
+    background-color: #F2F2F2;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+#dollar-icon {
+    position: left;
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+    left: 50%;
+    padding-top: 0px;
+    transform: translateX(-50%);
+    padding-left: 20px;
+}
+
+#gold-icon {
+    position: left;
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+    left: 50%;
+    padding-top: 0px;
+    transform: translateX(-50%);
+    padding-left: 40px;
+}
+
+#kripto-icon {
+    position: left;
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+    left: 50%;
+    padding-top: 0px;
+    transform: translateX(-50%);
+    padding-left: 40px;
+}
+
+#clickable-lines {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#clickable-lines span {
+    display: block;
+    width: 20px;
+    height: 4px;
+    background-color: black;
+    margin-bottom: 4px;
+    transition: background-color 0.3s ease;
+}
+
+#clickable-lines:hover span {
+    background-color: #3498db;
+}
+
+
+
+
+#popup {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    z-index: 2;
+}
+
+.popup-content {
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.popup-content:hover {
+    color: #3498db;
+}
+
+#dynamic-popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    z-index: 3;
+}
+
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#firstnameLastname {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 36px;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+}
+
+#password,
+#repeatPassword {
+    margin-bottom: 5px;
+    border-radius: 36px;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+}
+
+#save-btn {
+    background-color: #9CC2E6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px;
+}
+
+#imageViewer {
+    width: 100px;
+    height: 80px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 10px;
+    border-style: dashed;
+}
+
+#imageViewer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+.para-birimleri,
+.altin-degerleri,
+.kripto-degerleri {
+    margin: 0;
+    padding-left: 80px;
+    color: white;
+}
+
+#firstnameLastname {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 36px;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+}
+
+#password,
+#repeatPassword {
+    margin-bottom: 5px;
+    border-radius: 36px;
+    height: 30px;
+    width: 200px;
+    padding: 10px;
+}
+
+#save-btn {
+    background-color: #9CC2E6;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px;
+}
+
+#finChatTitle {
+    font-size: 40px;
+    font-family: 'Bahnschrift Condensed', sans-serif;
+    color: rgb(0, 0, 0);
+    /* Renk: RGB 156 194 230 */
+}

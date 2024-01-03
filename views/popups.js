@@ -1,4 +1,3 @@
-var closePopupTimeout;
 
 function togglePopup(event) {
     event.stopPropagation();
@@ -25,24 +24,24 @@ function openDynamicPopup() {
     dynamicPopup.style.display = "block";
 }
 
-
 function closeDynamicPopup() {
     var dynamicPopup = document.getElementById("dynamic-popup");
     dynamicPopup.style.display = "none";
 }
 
 function openProfilePage() {
-    window.location.href = "profile.html";
+    window.location.href = "./profile";
 }
 
 function cancelClosePopup() {
-    clearTimeout(closePopupTimeout);
+    clearTimeout(this.closePopupTimeout);
 }
 
 function closePopupWithDelay() {
-    closePopupTimeout = setTimeout(function () {
+    this.closePopupTimeout = setTimeout(() => {
         var popup = document.getElementById("popup");
         popup.style.display = "none";
+<<<<<<< HEAD
     }, 100); // 1 saniye gecikme
 };
 
@@ -87,3 +86,9 @@ function getExchangeRates() {
 
 // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
 getExchangeRates();
+=======
+    })
+}
+
+
+>>>>>>> 1f812a0ff14aa7c79172ad3fc4476092765001fa
