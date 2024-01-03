@@ -282,32 +282,38 @@
 
         function sendComment() {
 
+
+
             const desc = document.getElementById('desc').value;
             const commentData = {
                 desc: desc,
 
             };
 
-            fetch(`${url}comments?postId=${id}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(commentData)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('comment eklendi:', data);
-                })
+            if (desc != null) {
 
-                .catch(error => {
-                    console.error('There was an error!', error);
-                });
+                fetch(`${url}comments?postId=${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(commentData)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('comment eklendi:', data);
+                    })
+
+                    .catch(error => {
+                        console.error('There was an error!', error);
+                    });
+
+            } else { alert("yorum boş olmaz") }
 
         }
 
