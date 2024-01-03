@@ -74,6 +74,18 @@ export const getmyPosts = (req, res) => {
     });
 };
 
+
+
+export const gethisPosts = (req, res) => {
+    const q = "SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) WHERE u.id=? ORDER BY p.createdAt DESC";
+    db.query(q, [req.query.userid], (err, data) => {
+        if (err) {
+            return res.status(500).json(err);
+        }
+        return res.status(200).json(data);
+    });
+};
+
 export const getpost = (req, res) => {
     // Burada post ID'sini almak istediğiniz postun detaylarını alın
     // postDetails değişkeni örnek olarak bir postun detaylarını içeriyor olsun
