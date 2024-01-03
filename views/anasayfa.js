@@ -328,6 +328,7 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
         try {
             const response = await fetch('https://fin-chat.onrender.com/img', {
                 method: 'PUT',
+
                 /* headers: {
                      'Content-Type': 'application/json'
                  },*/
