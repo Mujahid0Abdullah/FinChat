@@ -106,6 +106,15 @@ app.get("/profile", (req, res) => {
     res.sendFile(htmlPath);
 });
 
+app.get("/OthersProfile", (req, res) => {
+    console.log("profile");
+
+    const htmlPath = path.resolve('views', 'OthersProfile.html');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 
 
 app.get("/post", (req, res) => {
