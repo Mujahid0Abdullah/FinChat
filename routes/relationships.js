@@ -14,7 +14,7 @@ router.get("/", getRelationships)
 router.post("/", authorize, addRelationship)
 //router.delete("/", deleteRelationship)
 
-router.post("/check", authorize, getRelation2)
+router.get("/check", authorize, getRelation2)
 
 
 
