@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import Express from "express";
-import { authorize } from '../proxy.js';
+import { authorize } from './proxy.js';
 import bcrypt from "bcryptjs";
 
 const router = Express.Router()
