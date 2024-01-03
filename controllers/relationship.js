@@ -21,8 +21,12 @@ export const getRelation2 = (req, res) => {
 
     db.query(q, [req.query.followedUserId, req.userInfo.id], (err, data) => {
         if (err) return res.status(500).json(err);
-        const relationshipAdded = data || data.affectedRows > 0; // Veri varsa ve etkilenen satır sayısı pozitifse true döndür
-        return res.status(200).json(relationshipAdded);
+        if (data !== null) {
+            return res.status(200).json(true); // Veri var ve etkilenen satır sayısı pozitifse true döndür
+        } else {
+            return res.status(200).json(false); // Veri null veya etkilenen satır sayısı 0 veya negatifse false döndür
+        }
+
 
     });
 }
