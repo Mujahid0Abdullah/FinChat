@@ -63,6 +63,10 @@
                         </div>
 
                         <div class="lower-row">
+                            <button type="submit" id="gptButton" style="background-color: aquamarine;">
+                                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
+                                    alt="Button Image">
+                            </button>
 
                             <button type="submit" id="sendButton">
                                 <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
@@ -179,36 +183,13 @@
                 reader.readAsDataURL(profilePictureInput.files[0]);
             }
         }
-        /*
-        
-                function fetchPosts() {
-            console.log("getpost" + id);
-            fetch(`${url}CommentPage?postId=${id}`)
-                .then(response => response.json())
-                .then(posts => {
-                    const post = posts[0]; // Dizi içindeki ilk nesneyi al
-                    console.log(post);
-                    const postsListContainer = document.getElementById('postsList');
-        
-                    let postContent = `
-                        <div class="left-column">
-                            <div class="user-avatar-big">
-                                <img src="${post.profilePic}">
-                            </div>
-                            <div class="user-name">${post.name}</div>
-                        </div>
-                        <div class="right-column">
-                            <div class="upper-row">
-                                ${post.desc} tarih: ${moment(post.createdAt).fromNow()}
-                            </div>
-                            <div class="lower-row">
-                            </div>
-                        </div>
-                    </div>`;
-        
-                    postsListContainer.innerHTML += postContent;
-                })
-        }*/
+
+
+
+
+
+        //-----------------GET POST---------------------//
+
 
         function fetchPosts() {
             console.log("getpost" + id);
@@ -242,6 +223,10 @@
                     postsListContainer.innerHTML += postContent
                 })
         }
+
+
+        //-----------------GET COMMENTS---------------------//
+
         fetchComments()
         function fetchComments() {
 
@@ -264,7 +249,7 @@
                 </div>
                 <div class="right-column">
                     <div class="upper-row">
-                        <textarea readonly style="font-weight: bold; font-size: 16px;">${comment.desc}</textarea>
+                        <textarea id="comment${comment.id}" readonly style="font-weight: bold; font-size: 16px;">${comment.desc}</textarea>
                     </div>
 
                     <div class="lower-row">
@@ -284,8 +269,18 @@
                 })
         }
 
+
+        //-------------SET COMMENT------------//
+
+
         document.getElementById('commentForm').addEventListener('submit', function (event) {
             event.preventDefault();
+            sendComment();
+
+        });
+
+
+        function sendComment() {
 
             const desc = document.getElementById('desc').value;
             const commentData = {
@@ -313,10 +308,60 @@
                 .catch(error => {
                     console.error('There was an error!', error);
                 });
+
+        }
+
+
+        document.getElementById("gptButton").addEventListener("click", function () {
+            sendToChatGPT();
         });
 
-        document.getElementById("sendButton").addEventListener("click", function() {
-        location.reload();
+        function sendToChatGPT() {
+            let value = document.getElementById("post").value;
+            let date = document.getElementById("post-date").value;
+
+            let body = {
+                model: "gpt-3.5-turbo",
+                messages: [{ role: "user", content: `"bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` }],
+                tempreture: "1",
+                max_tokens: "30"
+
+            };
+
+            let headers = {
+                Authorization: "Bearer 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",
+                "Content-Type": "application/json", // Eklediğimiz header, JSON içeriğini belirtiyor
+            };
+
+            fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: headers,
+                body: JSON.stringify(body), // JSON formatına dönüştürüyoruz
+            })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return response.json(); // Yanıtı JSON olarak alıyoruz
+                })
+                .then((data) => {
+                    let reply = data.choices[0].message.content;
+                    document.getElementById('desc').textContent = reply;
+                    sendComment();
+
+                })
+                .catch((error) => {
+                    console.error("There was a problem with the fetch operation:", error);
+                });
+        }
+
+
+
+
+
+        //
+        document.getElementById("sendButton").addEventListener("click", function () {
+            location.reload();
         });
 
         displayUserInfo();
@@ -334,8 +379,8 @@
 
                 userInfoDiv.innerHTML = `               
           <p>${userInfo.name}</p>          
-        `; 
-        
+        `;
+
                 userInfoDiv2.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
@@ -354,4 +399,5 @@
     </script>
 </body>
 <script src="./popupJs"></script>
+
 </html>
