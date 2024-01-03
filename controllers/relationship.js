@@ -25,7 +25,7 @@ export const addRelationship = (req, res) => {
 
     db.query(q, [values], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json("Following");
+        return res.status(200).json("Following" + data);
     });
 
 };
