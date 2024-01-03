@@ -17,6 +17,14 @@
 <body>
     <div id="container">
         <div id="left-region">
+            <button onclick="goToHome()" id="homeButton" style="margin-top: 5px; margin-left: 5px;">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
+            </button>
+
+            <button onclick="openProfilePage()" id="ProfileButton" style="margin-top: 5px; margin-left: 5px;">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/user.png" alt="Button Image">
+            </button>
+            
             <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
                 onclick="togglePopup(event)">
                 <span></span>
@@ -91,10 +99,10 @@
                     src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif"
                     alt="Dollar Icon">
             </div>
-            <h3 class="para-birimleri">Dolar/tl=30,9</h3>
-            <h3 class="para-birimleri">Euro/tl=39</h3>
-            <h3 class="para-birimleri">Sterlin/tl=30</h3>
-            <h3 class="para-birimleri">Pln/tl=3</h3>
+            <h3 class="para-birimleri" id="dolar-try"></h3>
+            <h3 class="para-birimleri" id="euro-try"></h3>
+            <h3 class="para-birimleri" id="sterlin-try"></h3>
+            <h3 class="para-birimleri" id="pln-try"></h3>
             <div class="horizontal-line">
                 <img id="gold-icon"
                     src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif"

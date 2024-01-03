@@ -16,6 +16,10 @@
 <body>
     <div id="container">
         <div id="left-region">
+            <button onclick="goToHome()" id="homeButton" style="margin-top: 5px; margin-left: 5px;">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
+            </button>
+            
             <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
                 onclick="togglePopup(event)">
                 <span></span>
@@ -38,7 +42,7 @@
             <!-- Orta Bölge İçeriği Buraya Gelecek -->
             <div class="horizontal-middle-line">
                 <span style="font-size: 36px;">
-                    <div id="finChatTitle">FinChat</div>
+                    <div id="finChatTitle">My Profile</div>
                 </span>
             </div>
 
@@ -165,6 +169,7 @@
         }
 
 
+    
         async function Deletepost(postId) {
 
             try {
