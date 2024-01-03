@@ -137,35 +137,6 @@
 
         fetchPosts()
 
-        var closePopupTimeout;
-
-        function togglePopup(event) {
-            event.stopPropagation();
-            var popup = document.getElementById("popup");
-            popup.style.display = popup.style.display === "none" ? "block" : "none";
-        }
-
-        function openPopup() {
-            var popup = document.getElementById("popup");
-            popup.style.display = "block";
-        }
-
-        function closePopup(event) {
-            event.stopPropagation();
-            var popup = document.getElementById("popup");
-            popup.style.display = "none";
-        }
-
-        function openDynamicPopup() {
-            var dynamicPopup = document.getElementById("dynamic-popup");
-            dynamicPopup.style.display = "block";
-        }
-
-        function closeDynamicPopup() {
-            var dynamicPopup = document.getElementById("dynamic-popup");
-            dynamicPopup.style.display = "none";
-        }
-
 
 
         function openProfilePage() {
@@ -382,5 +353,5 @@
 
     </script>
 </body>
-
+<script src="./popupJs"></script>
 </html>
