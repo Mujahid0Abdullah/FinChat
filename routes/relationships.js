@@ -12,7 +12,7 @@ import { authorize } from '../proxy.js';
 const router = Express.Router()
 
 router.get("/", getRelationships)
-router.post("/", addRelationship)
+router.post("/", authorize, addRelationship)
 //router.delete("/", deleteRelationship)
 
 
