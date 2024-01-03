@@ -316,7 +316,7 @@
             sendToChatGPT();
         });
 
-        function sendToChatGPT() {
+        async function sendToChatGPT() {
             let value = document.getElementById("post").value;
             let date = document.getElementById("post-date").value;
 
@@ -333,7 +333,7 @@
                 "Content-Type": "application/json", // Eklediğimiz header, JSON içeriğini belirtiyor
             };
 
-            fetch("https://api.openai.com/v1/chat/completions", {
+            await fetch("https://api.openai.com/v1/chat/completions", {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(body), // JSON formatına dönüştürüyoruz
@@ -346,6 +346,7 @@
                 })
                 .then((data) => {
                     let reply = data.choices[0].message.content;
+                    console.log(reply)
                     document.getElementById('desc').textContent = reply;
                     sendComment();
 
