@@ -14,6 +14,19 @@ export const getRelationships = (req, res) => {
     });
 }
 
+
+
+export const getRelation2 = (req, res) => {
+    const q = "SELECT followerUserId FROM relationships WHERE followedUserId = ? and followerUserId= ? ";
+
+    db.query(q, [req.query.followedUserId, req.userInfo.id], (err, data) => {
+        if (err) return res.status(500).json(err);
+        const relationshipAdded = data && data.affectedRows > 0; // Veri varsa ve etkilenen satır sayısı pozitifse true döndür
+        return res.status(200).json(relationshipAdded);
+
+    });
+}
+
 export const addRelationship = (req, res) => {
 
 
