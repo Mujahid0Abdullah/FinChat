@@ -38,9 +38,10 @@ function cancelClosePopup() {
 }
 
 function closePopupWithDelay() {
-    this.closePopupTimeout = setTimeout(() => {
+    closePopupTimeout = setTimeout(function () {
         var popup = document.getElementById("popup");
         popup.style.display = "none";
+<<<<<<< HEAD
 <<<<<<< HEAD
     }, 100); // 1 saniye gecikme
 };
@@ -88,6 +89,9 @@ function getExchangeRates() {
 getExchangeRates();
 =======
     })
+=======
+    }, 100); // 1 saniye gecikme
+>>>>>>> 291f8860bc5563d67378721ae3c4296cc69a4142
 }
 
 
