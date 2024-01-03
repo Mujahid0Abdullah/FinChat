@@ -1,5 +1,5 @@
-const urlParams = new URLSearchParams(window.location.search);
-const followedUserId = urlParams.get('userid');
+const urlParamss = new URLSearchParams(window.location.search);
+const followedUserId = urlParamss.get('userid');
 const url = "https://fin-chat.onrender.com/"
 
 
