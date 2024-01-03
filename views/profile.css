@@ -285,6 +285,7 @@ body {
     border: 2px solid black;
 }
 
+/*
 .horizontal-middle-line {
     height: 50px;
     background-color: #F2F2F2;
@@ -293,6 +294,21 @@ body {
     margin-bottom: 20px;
     text-align: center;
 
+}
+*/
+
+.horizontal-middle-line {
+    height: 50px;
+    background-color: #F2F2F2;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* Add a border line if needed */
+    padding-bottom: 10px; /* Add some padding if needed */
 }
 
 #dollar-icon {
