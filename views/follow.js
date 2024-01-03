@@ -5,7 +5,7 @@ const urls = "https://fin-chat.onrender.com/"
 check();
 document.getElementById('follow-unfollowButton').addEventListener('click', function () {
 
-    if (check()) { } else { setfollow(); }
+    if (check()) { delfollow() } else { setfollow(); }
     check();
 
 });
@@ -42,11 +42,42 @@ function check() {
 
 }
 
-
 function setfollow() {
 
 
 
+    const commentData = {
+        userId: followedUserId,
+
+    };
+
+
+    fetch(`${urls}follow`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(commentData)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('comment eklendi:', data);
+
+        })
+
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
+
+}
+
+
+function delfollow() {
     const commentData = {
         userId: followedUserId,
 
@@ -74,7 +105,5 @@ function setfollow() {
         .catch(error => {
             console.error('There was an error!', error);
         });
-
-
 
 }
