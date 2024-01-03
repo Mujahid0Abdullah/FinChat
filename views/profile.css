@@ -207,7 +207,7 @@ body {
     background-color: rgb(57, 174, 212);
     color: black;
     border-radius: 50px 50px 50px 50px;
-
+    cursor: pointer;
 }
 
 #follow-unfollowButton:hover {
@@ -215,10 +215,6 @@ body {
     color: white;
 }
 
-#follow-unfollowButton img {
-    height: 100%;
-    width: 100%;
-}
 
 
 #commentsButton,#homeButton, #ProfileButton {
