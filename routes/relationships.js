@@ -1,6 +1,5 @@
 import Express from "express";
 import bodyParser from "body-parser";
-import multer from "multer"
 import path from "path";
 import { getRelationships, addRelationship } from "../controllers/relationship.js"; //.js
 import jwt from "jsonwebtoken";
@@ -12,7 +11,7 @@ import { authorize } from '../proxy.js';
 const router = Express.Router()
 
 router.get("/", getRelationships)
-router.post("/", addRelationship)
+router.post("/", authorize, addRelationship)
 //router.delete("/", deleteRelationship)
 
 
