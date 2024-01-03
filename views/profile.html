@@ -17,7 +17,7 @@
     <div id="container">
         <div id="left-region">
             <button onclick="goToHome()" id="homeButton">
-                <img src="https://github.com/Mujahid0Abdullah/FinChat/blob/main/views/home.png" alt="Button Image">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
             </button>
             <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
                 onclick="togglePopup(event)">
@@ -167,10 +167,8 @@
             window.location = `${url}post?postId=${postId}`
         }
 
-        function goToHome( ) {
-            window.location = `${url}home`
-        }
 
+    
         async function Deletepost(postId) {
 
             try {

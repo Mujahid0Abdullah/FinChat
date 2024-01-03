@@ -37,6 +37,10 @@ function cancelClosePopup() {
     clearTimeout(this.closePopupTimeout);
 }
 
+function goToHome( ) {
+    window.location = `${url}home`
+}
+
 function closePopupWithDelay() {
     closePopupTimeout = setTimeout(function () {
         var popup = document.getElementById("popup");
