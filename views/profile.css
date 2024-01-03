@@ -204,7 +204,15 @@ body {
     margin-right: 5px;
     margin-bottom: 10px;
     float: right;
+    background-color: rgb(57, 174, 212);
+    color: black;
+    border-radius: 50px 50px 50px 50px;
 
+}
+
+#follow-unfollowButton:hover {
+    background-color: darkblue;
+    color: white;
 }
 
 #follow-unfollowButton img {
