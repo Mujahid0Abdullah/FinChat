@@ -41,8 +41,7 @@ function closePopupWithDelay() {
     closePopupTimeout = setTimeout(function () {
         var popup = document.getElementById("popup");
         popup.style.display = "none";
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     }, 100); // 1 saniye gecikme
 };
 
@@ -87,12 +86,4 @@ function getExchangeRates() {
 
 // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
 getExchangeRates();
-=======
-    })
-=======
-    }, 100); // 1 saniye gecikme
->>>>>>> 291f8860bc5563d67378721ae3c4296cc69a4142
-}
 
-
->>>>>>> 1f812a0ff14aa7c79172ad3fc4476092765001fa
