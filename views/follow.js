@@ -3,7 +3,7 @@ const followedUserId = urlParamss.get('userid');
 const urls = "https://fin-chat.onrender.com/"
 
 check();
-document.getElementById('commentForm').addEventListener('click', function (event) {
+document.getElementById('follow-unfollowButton').addEventListener('click', function (event) {
     setfollow();
     check();
 
@@ -11,7 +11,7 @@ document.getElementById('commentForm').addEventListener('click', function (event
 function check() {
 
 
-    fetch(`${urls}/follow/check?followedUserId=${followedUserId}`)
+    fetch(`${urls}follow/check?followedUserId=${followedUserId}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
