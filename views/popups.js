@@ -47,4 +47,5 @@ class PopupManager {
             popup.style.display = "none";
         }, 100); // 1 saniye gecikme
     }
+
 }
