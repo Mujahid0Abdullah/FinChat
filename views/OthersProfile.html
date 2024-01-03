@@ -42,7 +42,7 @@
             <!-- Orta Bölge İçeriği Buraya Gelecek -->
             <div class="horizontal-middle-line">
                 <span style="font-size: 36px;">
-                    <div id="finChatTitle"></div>
+                    <div id="finChatTitle">$$Users.Name profile</div>
                 </span>
             </div>
 
@@ -121,10 +121,7 @@
                     // Sunucudan gelen verileri işleme
                     console.log(posts);
                     const postsListContainer = document.getElementById('postsList');
-                    const username = document.getElementById('finChatTitle');
-                    username.value=posts[1].name;
-                    console.log(post[1].name);
-                    console.log(post[0][4]);
+
 
 
                     posts.forEach(post => {
