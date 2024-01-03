@@ -18,8 +18,10 @@ function checkAndToggleFollowButton() {
 
             if (data === true) {
                 relationshipButton.textContent = 'Unfollow';
+                console.log("un");
             } else {
                 relationshipButton.textContent = 'Follow';
+                console.log("fo");
             }
         })
         .catch(error => {
@@ -33,7 +35,11 @@ checkAndToggleFollowButton(); // Sayfa yüklendiğinde durumu kontrol et
 document.getElementById('follow-unfollowButton').addEventListener('click', function () {
     if (document.getElementById('follow-unfollowButton').textContent === 'Follow') {
         setfollow();
+        console.log("set");
+
     } else {
+        console.log("del");
+
         delfollow();
     }
     checkAndToggleFollowButton(); // Butona tıklandığında durumu yeniden kontrol et
@@ -92,7 +98,7 @@ function setfollow() {
 
 
     fetch(`${urls}follow`, {
-        method: 'DELETE',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -105,7 +111,7 @@ function setfollow() {
             return response.json();
         })
         .then(data => {
-            console.log('comment eklendi:', data);
+            console.log('POST', data);
 
         })
 
@@ -124,7 +130,7 @@ function delfollow() {
 
 
     fetch(`${urls}follow`, {
-        method: 'POST',
+        method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -137,7 +143,7 @@ function delfollow() {
             return response.json();
         })
         .then(data => {
-            console.log('comment eklendi:', data);
+            console.log('DELETE', data);
 
         })
 
