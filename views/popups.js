@@ -38,10 +38,10 @@ function cancelClosePopup() {
 }
 
 function closePopupWithDelay() {
-    this.closePopupTimeout = setTimeout(() => {
+    closePopupTimeout = setTimeout(function () {
         var popup = document.getElementById("popup");
         popup.style.display = "none";
-    })
+    }, 100); // 1 saniye gecikme
 }
 
 
