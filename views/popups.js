@@ -30,7 +30,7 @@ function closeDynamicPopup() {
 }
 
 function openProfilePage() {
-    window.location.href = "profile.html";
+    window.location.href = "./profile";
 }
 
 function cancelClosePopup() {
