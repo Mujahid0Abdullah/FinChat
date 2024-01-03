@@ -8,7 +8,6 @@ import { uploadFile } from "../googleimage.js"; //.js
 
 export const getUser = (req, res) => {
 
-    if (err) return res.status(403).json("Token is not valid");
     const q = "SELECT * FROM users WHERE id=?";
     const userId = req.userInfo.id;
     db.query(q, [userId], (err, data) => {
