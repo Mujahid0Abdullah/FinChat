@@ -122,7 +122,10 @@
                     console.log(posts);
                     const postsListContainer = document.getElementById('postsList');
                     const username = document.getElementById('finChatTitle');
-                    username.value=posts[0].name;
+                    username.value=posts[1].name;
+                    console.log(post[1].name);
+                    console.log(post[0][4]);
+
 
                     posts.forEach(post => {
 
