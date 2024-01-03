@@ -4,7 +4,9 @@ const urls = "https://fin-chat.onrender.com/"
 
 check();
 document.getElementById('follow-unfollowButton').addEventListener('click', function (event) {
-    setfollow();
+
+    if (check()) { }
+    else { setfollow(); }
     check();
 
 });
