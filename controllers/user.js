@@ -33,10 +33,9 @@ export const updateUser = (req, res) => {
     // Resim dosyasını bul
     console.log(req.file)
     console.log(req.files)
-    const formData = req.body;
-    const imgFile = formData.get('file');
+    const formData = req.body
 
-    uploadFile(imgFile);
+    uploadFile(req.files.file);
 
     //hash password
     const Salt = bcrypt.genSaltSync(10); // şifreleme metodu
