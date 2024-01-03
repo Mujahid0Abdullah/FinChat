@@ -42,7 +42,7 @@
             <!-- Orta Bölge İçeriği Buraya Gelecek -->
             <div class="horizontal-middle-line">
                 <span style="font-size: 36px;">
-                    <div id="finChatTitle">FinChat</div>
+                    <div id="finChatTitle"></div>
                 </span>
             </div>
 
@@ -121,6 +121,8 @@
                     // Sunucudan gelen verileri işleme
                     console.log(posts);
                     const postsListContainer = document.getElementById('postsList');
+                    const username = document.getElementById('finChatTitle');
+                    username.value=posts[0].name;
 
                     posts.forEach(post => {
 
