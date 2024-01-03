@@ -15,6 +15,7 @@ import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 import imgRoutes from "./googleimage.js";
 import cookieParser from "cookie-parser";
+import relationshipRoutes from "./routes/relationships.js"
 
 
 
@@ -201,6 +202,7 @@ app.use("/auths", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
 app.use("/img", imgRoutes);
+app.use("/follow", relationshipRoutes)
 
 
 

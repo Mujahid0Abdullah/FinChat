@@ -9,5 +9,13 @@ import { db } from "../connect.js";
 import { authorize } from '../proxy.js';
 
 
+const router = express.Router()
+
+router.get("/", getRelationships)
+router.post("/", addRelationship)
+//router.delete("/", deleteRelationship)
+
+
+export default router
 
 
