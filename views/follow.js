@@ -1,7 +1,45 @@
 const urlParamss = new URLSearchParams(window.location.search);
 const followedUserId = urlParamss.get('userid');
-const urls = "https://fin-chat.onrender.com/"
+const urls = "https://fin-chat.onrender.com/";
 
+
+function checkAndToggleFollowButton() {
+    const relationshipButton = document.getElementById('follow-unfollowButton');
+
+    fetch(`${urls}follow/check?followedUserId=${followedUserId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('İlişki var mı?', data); // İlişki varsa true, yoksa false
+
+            if (data === true) {
+                relationshipButton.textContent = 'Unfollow';
+            } else {
+                relationshipButton.textContent = 'Follow';
+            }
+        })
+        .catch(error => {
+            console.error('Hata oluştu:', error);
+            // Hata durumunda gerekli işlemler burada yapılabilir
+        });
+}
+
+// Sayfa yüklendiğinde ve butona tıklandığında tetiklenecek fonksiyonlar
+checkAndToggleFollowButton(); // Sayfa yüklendiğinde durumu kontrol et
+document.getElementById('follow-unfollowButton').addEventListener('click', function () {
+    if (document.getElementById('follow-unfollowButton').textContent === 'Follow') {
+        setfollow();
+    } else {
+        delfollow();
+    }
+    checkAndToggleFollowButton(); // Butona tıklandığında durumu yeniden kontrol et
+});
+
+/*
 check();
 document.getElementById('follow-unfollowButton').addEventListener('click', function () {
 
@@ -41,6 +79,7 @@ function check() {
 
 
 }
+*/
 
 function setfollow() {
 
