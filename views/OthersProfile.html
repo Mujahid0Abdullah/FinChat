@@ -17,9 +17,10 @@
     <div id="container">
         <div id="left-region">
             <button onclick="goToHome()" id="homeButton" style="margin-top: 5px; margin-left: 5px;">
-                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png"
+                    alt="Button Image">
             </button>
-            
+
             <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
                 onclick="togglePopup(event)">
                 <span></span>
@@ -40,17 +41,17 @@
         </div>
         <div id="middle-region">
             <!-- Orta Bölge İçeriği Buraya Gelecek -->
-            
+
             <div class="horizontal-middle-line">
                 <span>
                     <!-- Bu div içindeki metni ortala -->
                     <div id="finChatTitle">Users Profile</div>
                 </span>
-            
+
                 <!-- Butonu sağa al -->
-                <button onclick="followUnfollow()" id="follow-unfollowButton">Follow</button>
+                <button onclick="followUnfollow()" id="follow-unfollowButton"></button>
             </div>
-            
+
 
 
             <div id="postsList">
@@ -111,7 +112,7 @@
     </div>
 
     <script>
-//jj
+        //jj
 
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -309,5 +310,7 @@
     </script>
 </body>
 <script src="./popupJs"></script>
+<script src="./followJs"></script>
+
 
 </html>

@@ -170,6 +170,15 @@ app.get("/popupJs", (req, res) => {
 });
 
 
+app.get("/followJs", (req, res) => {
+    console.log("js");
+
+    const htmlPath = path.resolve('views', 'follow.js');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 
 app.get("/upload", (req, res) => {
     console.log("photo");

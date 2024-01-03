@@ -22,7 +22,7 @@ function check() {
             console.log('İlişki var mı?', data); // İlişki varsa true, yoksa false
 
 
-            const relationshipButton = document.getElementById('relationshipButton');
+            const relationshipButton = document.getElementById('follow-unfollowButton');
 
             if (data === true) {
                 relationshipButton.textContent = 'Unfollow';
@@ -46,36 +46,34 @@ function setfollow() {
 
 
 
-    const desc = document.getElementById('desc').value;
     const commentData = {
         userId: followedUserId,
 
     };
 
-    if (desc != null || desc != "") {
 
-        fetch(`${url}follow`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(commentData)
+    fetch(`${url}follow`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(commentData)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('comment eklendi:', data);
+        .then(data => {
+            console.log('comment eklendi:', data);
 
-            })
+        })
 
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
 
-    } else { alert("yorum boş olmaz") }
+
 
 }
