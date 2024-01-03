@@ -18,7 +18,7 @@ function fetchPosts() {
             
     <div class="post-view" >
         <div class="left-column">
-            <div class="user-avatar-big" onclick="openProfilePage()">
+            <div class="user-avatar-big" onclick="openHisProfilePage()">
                 <img src="${post.profilePic}">
             </div>
             <div class="user-name">${post.name}</div>
@@ -50,6 +50,10 @@ function fetchPosts() {
 
 function openProfilePage() {
     window.location = `${url}profile`
+}
+
+function openHisProfilePage() {
+    window.location = `${url}OthersProfile`
 }
 
 
