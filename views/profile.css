@@ -199,19 +199,19 @@ body {
 
 #follow-unfollowButton {
     height: 50px;
-    width: 50px;
+    width: 100px;
     margin-top: 5px;
     margin-right: 5px;
     margin-bottom: 10px;
     float: right;
-    background-color: rgb(57, 174, 212);
+    background-color: #F2F2F2;
     color: black;
     border-radius: 50px 50px 50px 50px;
     cursor: pointer;
 }
 
 #follow-unfollowButton:hover {
-    background-color: darkblue;
+    background-color: rgb(25, 154, 219);
     color: white;
 }
 
