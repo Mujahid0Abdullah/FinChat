@@ -150,6 +150,15 @@ app.get("/anasayfaJs", (req, res) => {
 });
 
 
+app.get("/popupJs", (req, res) => {
+    console.log("js");
+
+    const htmlPath = path.resolve('views', 'popup.js');
+    console.log(htmlPath);
+
+    res.sendFile(htmlPath);
+});
+
 
 
 app.get("/upload", (req, res) => {
