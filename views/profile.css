@@ -198,23 +198,23 @@ body {
 }
 
 #follow-unfollowButton {
-    height: 30px;
-    width: 30px;
+    height: 50px;
+    width: 100px;
     margin-top: 5px;
     margin-right: 5px;
+    margin-bottom: 10px;
     float: right;
-       /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
-       border: none;
-       /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
-       background: none;
-       /* Arkaplan rengini kaldırıyoruz */
-       cursor: pointer;
+    background-color: #F2F2F2;
+    color: black;
+    border-radius: 50px 50px 50px 50px;
+    cursor: pointer;
 }
 
-#follow-unfollowButton img {
-    height: 100%;
-    width: 100%;
+#follow-unfollowButton:hover {
+    background-color: rgb(25, 154, 219);
+    color: white;
 }
+
 
 
 #commentsButton,#homeButton, #ProfileButton {

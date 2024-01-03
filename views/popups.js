@@ -1,3 +1,12 @@
+function followUnfollow() {
+
+
+
+
+}
+
+
+
 
 function togglePopup(event) {
     event.stopPropagation();
