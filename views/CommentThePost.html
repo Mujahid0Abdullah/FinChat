@@ -290,7 +290,7 @@
 
             };
 
-            if (desc != null) {
+            if (desc != null || desc != "") {
 
                 fetch(`${url}comments?postId=${id}`, {
                     method: 'POST',
