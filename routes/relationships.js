@@ -9,7 +9,7 @@ import { db } from "../connect.js";
 import { authorize } from '../proxy.js';
 
 
-const router = express.Router()
+const router = Express.Router()
 
 router.get("/", getRelationships)
 router.post("/", addRelationship)

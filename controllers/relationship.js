@@ -2,8 +2,6 @@ import Express from "express";
 import jwt from "jsonwebtoken";
 import moment from "moment/moment.js";
 import { db } from "../connect.js";
-import multer from "multer";
-import { authorize } from '../proxy.js';
 
 
 
