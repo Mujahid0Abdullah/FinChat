@@ -203,6 +203,12 @@ body {
     margin-top: 5px;
     margin-right: 5px;
     float: right;
+       /* Padding'i sıfırlayarak butonun boyutlarına tam olarak sığmasını sağlıyoruz */
+       border: none;
+       /* Kenarlık olmasını istemiyorsak sınırı kaldırabiliriz */
+       background: none;
+       /* Arkaplan rengini kaldırıyoruz */
+       cursor: pointer;
 }
 
 #follow-unfollowButton img {
