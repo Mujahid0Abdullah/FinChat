@@ -14,7 +14,6 @@ import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
 import imgRoutes from "./googleimage.js";
-
 import cookieParser from "cookie-parser";
 
 
@@ -24,29 +23,24 @@ app.use(bodyParser.json());
 
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*"); // Tüm kaynaklara erişime izin verir
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); // İzin verilen HTTP metodları
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"); // İzin verilen headerlar
-    res.header("Access-Control-Allow-Credentials", true); // Kimlik doğrulaması yapılan isteklere izin verir
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Credentials", true);
     next();
 });
 
-// CORS politikalarını uygulamak için cors modülünü kullanmaya gerek kalmayabilir
-// Ancak, cors modülünü kullanmaya devam etmek isterseniz:
+
 app.use(
     cors({
-        origin: "*", // Tüm kaynaklara erişime izin verir
-        methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // İzin verilen HTTP metodları
-        credentials: true, // Kimlik doğrulaması yapılan isteklere izin verir
-        preflightContinue: false, // OPTIONS ön isteklerini işleme alır
-        optionsSuccessStatus: 204 // OPTIONS isteğine başarılı bir yanıt döndürür
+        origin: "*",
+        methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+        credentials: true,
+        preflightContinue: false,
+        optionsSuccessStatus: 204
     })
 );
-/*
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Credential", true);
-    next();
-})*/
+
 app.use(express.json())
 app.listen(8800, () => {
     console.log("listening");

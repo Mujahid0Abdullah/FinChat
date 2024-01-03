@@ -167,8 +167,12 @@ function logoutUser() {
         });
 }
 
+
+
+
+//Post eklendi//
+
 document.getElementById('postForm').addEventListener('submit', function (event) {
-    //event.preventDefault(); // Form submitini engelle
 
     const desc = document.getElementById('desc').value;
 
@@ -202,21 +206,14 @@ document.getElementById('postForm').addEventListener('submit', function (event) 
             console.error('There was an error!', error);
         });
 });
-function openImageView() {
-    var fileInput = document.createElement("input");
-    fileInput.type = "file";
 
-    fileInput.addEventListener("change", function () {
-        var selectedFile = fileInput.files[0];
-        if (selectedFile) {
-            var imageViewer = document.getElementById("imageViewer");
-            imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
-        }
-    });
 
-    fileInput.click();
-}
 
+
+
+
+
+//KULLANCI BİLGİLERİ GETİRMEK//
 async function displayUserInfo() {
     try {
         const response = await fetch('/users');
@@ -242,6 +239,9 @@ async function displayUserInfo() {
 }
 
 displayUserInfo()
+
+
+//DÖVİZ GETİRMEK//
 function getExchangeRates() {
     const apiKey = '1bcf3f77aed6bcf6430e283f';
     const baseCurrency = 'USD';
@@ -281,104 +281,25 @@ function getExchangeRates() {
         });
 }
 
-// API'den döviz kuru verilerini almak için fonksiyonu çağıralım
 getExchangeRates();
-/*
-        <div id="dynamic-popup">
-        <div id="close-btn" onclick="closeDynamicPopup()">X</div>
-        <div class="user-avatar-big" onclick="openProfilePictureInput()">
-            <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
-            <div id="editProfilePicture"></div>
-        </div>
-        <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
-        <br>
-        <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
-        <br>
-        <input type="password" id="password" placeholder="Password">
-        <br>
-        <input type="password" id="repeatPassword" placeholder="Repeat Password">
-        <br>
-        <button  id="save-btn" onclick="saveChanges()">Save</button>
-    </div>*/
 
 
-
+//UPDATE USER //
 
 document.getElementById('update-user-form').addEventListener('submit', async function (event) {
     event.preventDefault();
 
-
     const name = document.getElementById('firstnameLastname').value;
     const password = document.getElementById('password').value;
     const repeatPassword = document.getElementById('repeatPassword').value;
-
-
-    const formData = new FormData();
-    const fileInput = document.getElementById('profileImage');
-    const file = fileInput.files[0]; // İlk dosyayı al
-
-    formData.append('name', name);
-    formData.append('password', password);
-    formData.append('file', file);
-
-
-
     if (password == repeatPassword || name == null) {
-
-        try {
-            const response = await fetch('https://fin-chat.onrender.com/img', {
-                method: 'PUT',
-
-                /* headers: {
-                     'Content-Type': 'application/json'
-                 },*/
-                body: formData
-                //JSON.stringify({ name, password })
-            });
-
-            if (response.ok) {
-                alert('bilgileriniz güncellendi');
-                location.reload();
-                // window.location.href = './home';
-            } else {
-                const errorMessage = await response.json();
-                alert(`Login failed: ${errorMessage}`);
-            }
-
-        } catch (error) {
-            console.error('Error:', error);
-            // Handle error if fetch fails
-            alert('An error occurred while processing your request.');
-        }
-
-
-
-    } else { alert("password aynı değil yada adı boş") }
-
-
-
-})
-/*
-document.getElementById('update-user-form').addEventListener('submit', async function (event) {
-    event.preventDefault();
-
-
-    const img = document.getElementById('img').files[0];
-    const name = document.getElementById('firstnameLastname').value;
-    const password = document.getElementById('password').value;
-    const repeatPassword = document.getElementById('repeatPassword').value;
-
-    const formdata = new FormData();
-    formdata.append('name', name);
-    formdata.append('img', img);
-    formdata.append('password', password);
-    if (password == repeatPassword || name == null) {
-
         try {
             const response = await fetch('https://fin-chat.onrender.com/users', {
                 method: 'PUT',
-
-                body: formdata//JSON.stringify({ name, password })
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, password })
             });
 
             if (response.ok) {
@@ -389,143 +310,27 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
                 const errorMessage = await response.json();
                 alert(`Login failed: ${errorMessage}`);
             }
-
         } catch (error) {
             console.error('Error:', error);
             // Handle error if fetch fails
             alert('An error occurred while processing your request.');
         }
-
-
-
     } else { alert("password aynı değil yada adı boş") }
+});
 
 
+//İMG GÖSTERMEK
+function openImageView() {
+    var fileInput = document.createElement("input");
+    fileInput.type = "file";
 
-});*/
-
-//ADD POST
-/*
-document.getElementById('postForm').addEventListener('submit', function (event) {
-
-    event.preventDefault(); // Form submitini engelle
-
-    const desc = document.getElementById('desc').value;
-    const img = document.getElementById('img').files[0];
-
-    const formdata = new FormData();
-    formdata.append('desc', desc);
-    formdata.append('img', img);
-    // Post verilerini obje olarak oluştur
-    const postData = {
-        des: desc,
-        img: img
-    };
-
-    // POST isteği göndermek için fetch kullanımı
-    fetch('http://localhost:8800/posts', {
-        method: 'POST',
-    headers: {
-            'Content-Type': 'application/json'
-        },
-        body: formdata
-        //JSON.stringify(postData)
-     })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('hata oldu , yeniden giriş yapın');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Post eklendi:', data);
-            fetchPosts();
-        })
-        .catch(error => {
-
-            const message = error.message
-            //data.message;
-            alert(message);
-        });
-        });
-
-/*
-GetData()
-function GetData() {
-    fetch("http://localhost:8800/posts", {
-        method: "GET"
-    }).then(Request => Request.json())
-        .then(data => {
-            ShowData(data)
-        })
-}
-*/
-/*
-        function ShowData(data) {
-            let Table = `<table class="table">`
-            Table += `<tr> 
-                            <th>Name</th> 
-                            <th>Email</th> 
-                            <th>Password</th> 
-                            <th style="color:red;">Delete</th>
-                            <th style="color:dark;">Update</th>
-                         </tr>`
-            Users.forEach(User => {
-                Table += `<tr> 
-                                <td contenteditable id="Name${User.Id}">${User.desc}</td> 
-                                <td contenteditable id="Email${User.Id}">${User.userid}</td> 
-                                <td contenteditable id="Password${User.Id}">${User.img}</td> 
-                                <td onclick="Remove(${User.createdAt})"><button class="btn btn-danger">x</button> </td>
-                                <td onclick="Update(${User.Id})"><img src="update.png" width="45"></td>  
-                            </tr>`
-            });
-            Table += ` </table>`
-            //document.getElementById("Users").innerHTML = Table
+    fileInput.addEventListener("change", function () {
+        var selectedFile = fileInput.files[0];
+        if (selectedFile) {
+            var imageViewer = document.getElementById("imageViewer");
+            imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
         }
-            
-        /*
-function Create() {
- fetch("http://localhost:8800/auths/login", {
-     method: "POST",
-     headers: { 'Content-Type': 'application/json' },
-     body: JSON.stringify({
-         username: document.getElementById("username").value,
+    });
 
-         password: document.getElementById("password").value
-     })
- }).then(Request => Request.json()).then(Answer => {
-    
-     fetchPosts()
- })
-}*/
-
-/*
-function addpost() {
-    const desc = document.getElementById('desc').value;
-    //const img = document.getElementById('img').files[0];
-    const formdata = new FormData();
-    formdata.append('desc', desc);
-    //formdata.append('img', img);
-    fetch(`${url}posts`, {
-        method: 'POST',
-        
-        body: formdata
-        //JSON.stringify(postData)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('hata oldu , yeniden giriş yapın');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Post eklendi:', data);
-            fetchPosts();
-        })
-        .catch(error => {
-
-            const message = error.message
-            //data.message;
-            alert(message);
-        });
-}*/
+    fileInput.click();
+}
