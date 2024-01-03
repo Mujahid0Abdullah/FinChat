@@ -2,7 +2,7 @@ const urlParamss = new URLSearchParams(window.location.search);
 const followedUserId = urlParamss.get('userid');
 const url = "https://fin-chat.onrender.com/"
 
-
+check();
 document.getElementById('commentForm').addEventListener('click', function (event) {
     setfollow();
     check();
