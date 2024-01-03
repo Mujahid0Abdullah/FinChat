@@ -326,7 +326,7 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
     if (password == repeatPassword || name == null) {
 
         try {
-            const response = await fetch('https://fin-chat.onrender.com/users', {
+            const response = await fetch('https://fin-chat.onrender.com/img', {
                 method: 'PUT',
                 /* headers: {
                      'Content-Type': 'application/json'

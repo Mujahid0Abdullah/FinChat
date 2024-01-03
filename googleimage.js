@@ -1,6 +1,9 @@
 import { google } from 'googleapis';
+import Express from "express";
+import { authorize } from '../proxy.js';
+import bcrypt from "bcryptjs";
 
-
+const router = Express.Router()
 const CLIENT_ID = '722858064637-u2nac9ejnl8car1hovq8g66u2oev3hm0.apps.googleusercontent.com';
 const CLIENT_SECRET = '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';
 const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
@@ -85,3 +88,60 @@ async function generatePublicUrl() {
         console.log(error.message);
     }
 }
+
+router.put("/", authorize, async (req, res) => {
+
+    console.log("Password:", req.body.password);
+    //yeni kullanıcı oluşturma
+    const files = req.files;
+
+    // Resim dosyasını bul
+    console.log(req.file)
+    console.log(req.files)
+    const formData = req.body
+
+    try {
+        const response = await drive.files.create({
+            requestBody: {
+                name: Date.now() + 'example.jpg', //This can be name of your choice
+                mimeType: 'image/jpg',
+            },
+            media: {
+                mimeType: 'image/jpg',
+                body: req.files.file,
+            },
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.log(error.message);
+    }
+
+
+
+    //hash password
+    const Salt = bcrypt.genSaltSync(10); // şifreleme metodu
+    const hashedPassword = bcrypt.hashSync(req.body.password, Salt)
+    console.log("Salt:", Salt);
+
+    const q =
+        "UPDATE users SET `name`=?,`password`=? WHERE id=? ";
+
+    db.query(
+        q,
+        [
+            req.body.name,
+            hashedPassword,
+            req.userInfo.id,
+        ],
+        (err, data) => {
+            if (err) res.status(500).json(err);
+            if (data.affectedRows > 0) return res.json("Updated!");
+            return res.status(403).json("You can update only your post!");
+        }
+    );
+
+});
+
+
+export default router

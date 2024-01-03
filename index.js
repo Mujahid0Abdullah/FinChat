@@ -13,6 +13,7 @@ import authRoutes from "./routes/auths.js";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
+import imgRoutes from "./googleimage.js";
 
 import cookieParser from "cookie-parser";
 
@@ -187,6 +188,8 @@ app.use("/comments", commentRoutes);
 app.use("/auths", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
+app.use("/img", imgRoutes);
+
 
 
 
