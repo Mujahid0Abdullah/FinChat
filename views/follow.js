@@ -32,7 +32,27 @@ function checkAndToggleFollowButton() {
 
 // Sayfa yüklendiğinde ve butona tıklandığında tetiklenecek fonksiyonlar
 checkAndToggleFollowButton(); // Sayfa yüklendiğinde durumu kontrol et
-document.getElementById('follow-unfollowButton').addEventListener('click', function () {
+
+
+document.getElementById('follow-unfollowButton').addEventListener('click', async function () {
+    try {
+        if (document.getElementById('follow-unfollowButton').textContent === 'Follow') {
+            await setfollow(); // setfollow'un async olmasını bekliyor
+            console.log("set");
+        } else {
+            console.log("del");
+            await delfollow(); // delfollow'un async olmasını bekliyor
+        }
+        await checkAndToggleFollowButton(); // checkAndToggleFollowButton'un async olmasını bekliyor
+    } catch (error) {
+        console.error("Hata:", error);
+        // Hata durumunda yapılacak işlemler
+    }
+});
+
+
+
+/*document.getElementById('follow-unfollowButton').addEventListener('click', function () {
     if (document.getElementById('follow-unfollowButton').textContent === 'Follow') {
         setfollow();
         console.log("set");
@@ -43,7 +63,7 @@ document.getElementById('follow-unfollowButton').addEventListener('click', funct
         delfollow();
     }
     checkAndToggleFollowButton(); // Butona tıklandığında durumu yeniden kontrol et
-});
+});*/
 
 /*
 check();
