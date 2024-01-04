@@ -52,13 +52,14 @@ export const updateUser = (req, res) => {
     console.log("Salt:", Salt);
 
     const q =
-        "UPDATE users SET `name`=?,`password`=? WHERE id=? ";
+        "UPDATE users SET `name`=?,`password`=? ,`profilePic`=? WHERE id=? ";
 
     db.query(
         q,
         [
             req.body.name,
             hashedPassword,
+            req.body.resImg,
             req.userInfo.id,
         ],
         (err, data) => {

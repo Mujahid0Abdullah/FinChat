@@ -65,6 +65,16 @@ export async function uploadFile(filename) {
         });
 
         console.log(response.data);
+        drive.permissions.create({
+            fileId: response.data.id,
+            requestBody: {
+                role: 'reader',
+                type: 'anyone',
+            },
+        });
+
+        return response.data.id;
+
     } catch (error) {
         console.log(error.message);
     }
@@ -85,9 +95,9 @@ async function deleteFile() {
 
 // deleteFile();
 
-async function generatePublicUrl() {
+export async function generatePublicUrl(id) {
     try {
-        const fileId = 'YOUR FILE ID';
+        const fileId = id;
         await drive.permissions.create({
             fileId: fileId,
             requestBody: {

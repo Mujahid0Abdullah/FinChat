@@ -4,7 +4,7 @@ import path from "path";
 import cors from "cors";
 import { db } from "./connect.js";
 import multer from "multer";
-import { uploadFile } from "./googleimage.js"; //.js
+import { uploadFile, generatePublicUrl } from "./googleimage.js"; //.js
 
 
 
@@ -212,8 +212,8 @@ const upload = multer({ storage: storage });
 
 app.post("/upload", upload.single("file"), (req, res) => {
     const file = req.file;
-    uploadFile(file.filename);
-    res.status(200).json(file.filename);
+    res.status(200).json(uploadFile(file.filename));
+    //json(file.filename);
 });
 
 app.use("/comments", commentRoutes);

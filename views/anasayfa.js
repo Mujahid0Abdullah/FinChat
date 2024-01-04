@@ -237,18 +237,28 @@ displayUserInfo();
 
 document.getElementById('update-user-form').addEventListener('submit', async function (event) {
     event.preventDefault();
+    const fileInput = document.getElementById('fileInput');
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
 
     const name = document.getElementById('firstnameLastname').value;
     const password = document.getElementById('password').value;
     const repeatPassword = document.getElementById('repeatPassword').value;
     if (password == repeatPassword || name == null) {
         try {
+
+            const resImg = await fetch('https://fin-chat.onrender.com/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+
             const response = await fetch('https://fin-chat.onrender.com/users', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ name, password })
+                body: JSON.stringify({ name, password, resImg })
             });
 
             if (response.ok) {
