@@ -26,12 +26,19 @@ export const getmyRelationships = (req, res) => {
 
 export const getRelation2 = (req, res) => {
     const q = "SELECT followerUserId FROM relationships WHERE followedUserId = ? and followerUserId= ? ";
+    console.log("qu" + req.query.followedUserId);
+    console.log(req.userInfo.id);
 
     db.query(q, [req.query.followedUserId, req.userInfo.id], (err, data) => {
         if (err) return res.status(500).json(err);
         if (data !== null && data.length > 0) {
+            console.log(data + "t" + data.length);
+
             return res.status(200).json(true); // Veri var ve etkilenen satır sayısı pozitifse true döndür
+
         } else {
+            console.log(data + "f" + data.length);
+
             return res.status(200).json(false); // Veri null veya etkilenen satır sayısı 0 veya negatifse false döndür
         }
 
