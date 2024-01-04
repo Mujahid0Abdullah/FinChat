@@ -14,7 +14,7 @@ import authRoutes from "./routes/auths.js";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 import commentRoutes from "./routes/comments.js";
-import imgRoutes from "./googleimage.js";
+
 import cookieParser from "cookie-parser";
 import relationshipRoutes from "./routes/relationships.js"
 
@@ -240,11 +240,3 @@ app.use("/follow", relationshipRoutes)
 
 
 
-
-
-/*
-app.use(
-    cors({
-        origin: "http://127.0.0.1:5500",
-    })
-);*/
