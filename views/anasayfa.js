@@ -214,7 +214,7 @@ async function displayUserInfo() {
 
         const userInfoDiv = document.getElementById('userInfo2');
         const userimage = document.getElementById('currentProfilePicture');
-        userimage.src = userInfo.profilePic; // Resim URL
+        userimage.src = "https://lh3.googleusercontent.com/d/" + userInfo.profilePic; // Resim URL
         userimage.alt = 'Post Image';
         const user_Info_post = document.getElementById('input-post-name');
         user_Info_post.value = userInfo.name;

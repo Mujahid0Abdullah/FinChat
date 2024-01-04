@@ -210,11 +210,24 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+app.post("/upload", upload.single("file"), async (req, res) => {
+    const file = req.file;
+    const fileId = await uploadFile(file.filename);
+
+    // uploadFile fonksiyonu dosyanın ID'sini döndürdüyse
+    if (fileId) {
+        // Dosya başarıyla yüklendi, fileId değeri kullanılabilir
+        res.status(200).json({ fileId });
+    } else {
+        // Dosya yüklenemedi, hata oluştu
+        res.status(500).json({ error: "Dosya yüklenemedi" });
+    }
+});/*
 app.post("/upload", upload.single("file"), (req, res) => {
     const file = req.file;
     res.status(200).json(uploadFile(file.filename));
     //json(file.filename);
-});
+});*/
 
 app.use("/comments", commentRoutes);
 app.use("/auths", authRoutes);

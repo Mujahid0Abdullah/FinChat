@@ -55,7 +55,7 @@ export async function uploadFile(filename) {
     try {
         const response = await drive.files.create({
             requestBody: {
-                name: filename, //This can be name of your choice
+                name: Date.now() + filename, //This can be name of your choice
                 mimeType: 'image/jpg',
             },
             media: {
@@ -77,6 +77,7 @@ export async function uploadFile(filename) {
 
     } catch (error) {
         console.log(error.message);
+        return null
     }
 }
 
