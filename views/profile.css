@@ -156,10 +156,6 @@ body {
     overflow: hidden;
   }
   
-  .user-name-vp {
-      font-size: 100px;
-      font-family: 'GüzelFont', sans-serif; /* 'GüzelFont' yerine kullanmak istediğiniz gerçek bir font adını ekleyin */
-  }
 
 .left-column {
     flex: 1;
