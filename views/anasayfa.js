@@ -275,8 +275,9 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
                 method: 'POST',
                 body: formData,
             });
-            const data = resImg.json();
+            const data = await resImg.json();
             const imgId = data.fileId;
+
 
             const response = await fetch('https://fin-chat.onrender.com/users', {
                 method: 'PUT',
