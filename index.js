@@ -21,7 +21,9 @@ import relationshipRoutes from "./routes/relationships.js"
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("views"))
+app.use('/static', express.static("views"))
+app.use(express.static("public"))
+
 
 
 app.use((req, res, next) => {
@@ -180,7 +182,7 @@ app.get("/followJs", (req, res) => {
     res.sendFile(htmlPath);
 });
 
-
+/*
 app.get("/upload", (req, res) => {
     console.log("photo");
 
@@ -188,23 +190,23 @@ app.get("/upload", (req, res) => {
     console.log(htmlPath);
 
     res.sendFile(htmlPath);
-});
+});*/
 
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.resolve("public"))
+        cb(null, "./public");
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
-    }
-})
-const upload = multer({ storage })
+        cb(null, Date.now() + file.originalname);
+    },
+});
 
-app.post("/upload", upload.single("img"), (req, res) => {
+const upload = multer({ storage: storage });
 
-
-    res.json(req.file)
+app.post("/upload", upload.single("file"), (req, res) => {
+    const file = req.file;
+    res.status(200).json(file.filename);
 });
 
 app.use("/comments", commentRoutes);
