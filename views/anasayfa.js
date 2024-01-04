@@ -52,7 +52,7 @@ function fetchPosts() {
     <div class="post-view" >
         <div class="left-column">
             <div class="user-avatar-big" onclick="openHisProfilePage(${post.userId})">
-                <img src="${post.profilePic}">
+                <img src="https://lh3.googleusercontent.com/d/${post.profilePic}">
             </div>
             <div class="user-name">${post.name}</div>
         </div>
