@@ -3,6 +3,37 @@ const url = "https://fin-chat.onrender.com/"
 fetchPosts()
 
 
+const inputElement = document.getElementById('searchInput'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
+
+inputElement.addEventListener('input', function (event) {
+    const searchData = {
+        name: event.target.value // Input'taki değeri alıp API çağrısı için kullanıyoruz
+    };
+
+    fetch('/finduser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(searchData)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Kullanıcı bilgileri:', data); // API'den dönen kullanıcı bilgileri
+
+            // Veri ile yapılacak işlemleri burada gerçekleştirebilirsiniz
+        })
+        .catch(error => {
+            console.error('Hata oluştu:', error);
+            // Hata durumunda gerekli işlemler burada yapılabilir
+        });
+});
+
 function fetchPosts() {
 
     fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
