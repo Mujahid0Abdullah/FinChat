@@ -59,7 +59,7 @@ export const updateUser = (req, res) => {
         [
             req.body.name,
             hashedPassword,
-            req.body.resImg,
+            req.body.imgId,
             req.userInfo.id,
         ],
         (err, data) => {
