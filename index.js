@@ -19,14 +19,17 @@ import cookieParser from "cookie-parser";
 import relationshipRoutes from "./routes/relationships.js"
 
 
-
+//JSON PARSER
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+
+//STATİC FİLES
 app.use('/static', express.static("views"))
 app.use(express.static("public"))
 
 
-
+//CORS//-----------------------------------------------------
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -45,14 +48,16 @@ app.use(
         optionsSuccessStatus: 204
     })
 );
+//-----------------------------------------------------
 
+//--------------------------------------
 app.use(express.json())
 app.listen(8800, () => {
     console.log("listening");
     console.log("listeningZekeriyya");
 });
 app.use(cookieParser());
-
+//--------------------------------
 
 
 
@@ -215,7 +220,6 @@ app.use("/comments", commentRoutes);
 app.use("/auths", authRoutes);
 app.use("/posts", postRoutes);
 app.use("/users", userRoutes);
-app.use("/img", imgRoutes);
 app.use("/follow", relationshipRoutes)
 
 
