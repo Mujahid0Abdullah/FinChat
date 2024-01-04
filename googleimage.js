@@ -49,7 +49,7 @@ export async function uploadFile(img) {
     }
 }*/
 
-async function uploadFile(filename) {
+export async function uploadFile(filename) {
     try {
         const response = await drive.files.create({
             requestBody: {
