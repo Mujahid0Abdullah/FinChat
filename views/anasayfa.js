@@ -4,16 +4,16 @@ fetchPosts()
 
 
 //SEARCH BAR//
-/*
-const inputElement = document.getElementById('searchInput'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
+
+const inputElement = document.getElementById('search'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
 
 inputElement.addEventListener('input', function (event) {
     const searchData = {
         name: event.target.value // Input'taki değeri alıp API çağrısı için kullanıyoruz
     };
 
-    fetch('/finduser', {
-        method: 'POST',
+    fetch(`${url}users/find`, {
+        method: 'GET',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -25,17 +25,41 @@ inputElement.addEventListener('input', function (event) {
             }
             return response.json();
         })
-        .then(data => {
-            console.log('Kullanıcı bilgileri:', data); // API'den dönen kullanıcı bilgileri
+        .then(users => {
+            // Sunucudan gelen verileri işleme
+            console.log(users);
+            const postsListContainer = document.getElementById('usersList');
 
-            // Veri ile yapılacak işlemleri burada gerçekleştirebilirsiniz
+            users.forEach(user => {
+
+                let postContent = `
+            
+                <div class="view-profiles-container">
+                <div class="view-profiles">
+                  <div class="left-column-vp">
+                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id}">
+                      <img src="${user.profilePic}">
+                    </div>
+                  </div>
+                  <div class="right-column-vp">
+                    Zekeriyya
+                  </div>
+                </div>
+        `;
+
+                postsListContainer.innerHTML += postContent
+
+            })
+                .catch(error => {
+                    console.error('Error fetching posts:', error);
+                });
         })
         .catch(error => {
             console.error('Hata oluştu:', error);
             // Hata durumunda gerekli işlemler burada yapılabilir
         });
 });
-*/
+
 function fetchPosts() {
 
     fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
