@@ -106,7 +106,7 @@ body {
 
 .You-Follow-Follows-You-container {
     overflow-y: auto;
-    max-height: 250px; /* İstenilen maksimum yüksekliği ayarlayabilirsiniz */
+    max-height: 150px; /* İstenilen maksimum yüksekliği ayarlayabilirsiniz */
     margin-bottom: 10px; /* İstenilen boşluk ekleyebilirsiniz */
   }
 
