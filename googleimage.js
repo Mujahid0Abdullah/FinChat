@@ -29,7 +29,7 @@ Note: Assumes example.jpg file is in root directory,
 though this can be any filePath
 */
 //const filePath = path.join(__dirname, 'example.jpg');
-
+/*
 export async function uploadFile(img) {
     try {
         const response = await drive.files.create({
@@ -40,6 +40,25 @@ export async function uploadFile(img) {
             media: {
                 mimeType: 'image/jpg',
                 body: img,
+            },
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.log(error.message);
+    }
+}*/
+
+async function uploadFile(filename) {
+    try {
+        const response = await drive.files.create({
+            requestBody: {
+                name: filename, //This can be name of your choice
+                mimeType: 'image/jpg',
+            },
+            media: {
+                mimeType: 'image/jpg',
+                body: "public/" + filename,
             },
         });
 
