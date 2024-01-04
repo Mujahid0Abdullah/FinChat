@@ -58,7 +58,7 @@ export async function uploadFile(filename) {
             },
             media: {
                 mimeType: 'image/jpg',
-                body: "public/" + filename,
+                body: fs.createReadStream("public/" + filename),
             },
         });
 
