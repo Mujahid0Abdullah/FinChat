@@ -29,6 +29,7 @@ inputElement.addEventListener('input', function (event) {
             // Sunucudan gelen verileri işleme
             console.log(users);
             const postsListContainer = document.getElementById('usersList');
+            postsListContainer.innerHTML = "";
 
             users.forEach(user => {
 
@@ -37,12 +38,12 @@ inputElement.addEventListener('input', function (event) {
                 <div class="view-profiles-container">
                 <div class="view-profiles">
                   <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id}">
+                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
                       <img src="${user.profilePic}">
                     </div>
                   </div>
                   <div class="right-column-vp">
-                    Zekeriyya
+                  ${user.name}
                   </div>
                 </div>
         `;
