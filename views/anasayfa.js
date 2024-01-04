@@ -3,6 +3,8 @@ const url = "https://fin-chat.onrender.com/"
 fetchPosts()
 
 
+//SEARCH BAR//
+/*
 const inputElement = document.getElementById('searchInput'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
 
 inputElement.addEventListener('input', function (event) {
@@ -33,7 +35,7 @@ inputElement.addEventListener('input', function (event) {
             // Hata durumunda gerekli işlemler burada yapılabilir
         });
 });
-
+*/
 function fetchPosts() {
 
     fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa

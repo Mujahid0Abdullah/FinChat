@@ -163,4 +163,3 @@ router.put("/", authorize, async (req, res) => {
 });
 
 
-export default router
