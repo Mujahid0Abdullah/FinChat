@@ -237,7 +237,7 @@ displayUserInfo();
 
 document.getElementById('update-user-form').addEventListener('submit', async function (event) {
     event.preventDefault();
-    const fileInput = document.getElementById('fileInput');
+    const fileInput = document.getElementById('profileImage');
     const formData = new FormData();
     formData.append('file', fileInput.files[0]);
 
