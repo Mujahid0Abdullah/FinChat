@@ -52,7 +52,7 @@ document.getElementById('follow-unfollowButton').addEventListener('click', async
 
 
 
-/*document.getElementById('follow-unfollowButton').addEventListener('click', function () {
+/*document.getElementById( 'follow-unfollowButton').addEventListener('click', function () {
     if (document.getElementById('follow-unfollowButton').textContent === 'Follow') {
         setfollow();
         console.log("set");
