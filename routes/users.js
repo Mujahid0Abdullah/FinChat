@@ -15,7 +15,7 @@ router.get("/", authorize, getUser)
 
 router.put("/", authorize, updateUser)
 
-router.get("/find", authorize, finduser)
+router.post("/find", authorize, finduser)
 
 
 export default router

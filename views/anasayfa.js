@@ -13,7 +13,7 @@ inputElement.addEventListener('input', function (event) {
     };
 
     fetch(`${url}users/find`, {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
