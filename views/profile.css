@@ -104,6 +104,63 @@ body {
     margin-bottom: 10px;
 }
 
+
+.view-profiles-container {
+    overflow-y: auto;
+    max-height: 250px; /* İstenilen maksimum yüksekliği ayarlayabilirsiniz */
+    margin-bottom: 10px; /* İstenilen boşluk ekleyebilirsiniz */
+  }
+  
+  .view-profiles {
+    position: static;
+    left: 0;
+    right: 0;
+    top: 120px;
+    width: 130px;
+    height: 50px;
+    background-color: #BFBFBF;
+    display: flex;
+    position: center;
+    margin-left: 30px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    align-items: center;
+    overflow-y: auto; /* Dikey scroll bar ekleme */
+    margin-top: 10px;
+  
+  }
+  
+  .right-column-vp {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  .left-column-vp {
+    flex: 1;
+    flex-direction: column;
+    background-color: #BFBFBF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-right: 10px;
+  }
+  
+  .user-avatar-vp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    overflow: hidden;
+  }
+  
+  .user-name-vp {
+      font-size: 100px;
+      font-family: 'GüzelFont', sans-serif; /* 'GüzelFont' yerine kullanmak istediğiniz gerçek bir font adını ekleyin */
+  }
+
 .left-column {
     flex: 1;
     flex-direction: column;
