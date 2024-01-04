@@ -264,6 +264,31 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
     } else { alert("password aynı değil yada adı boş") }
 });
 
+/*
+document.getElementById('uploadButton').addEventListener('click', () => {
+    const fileInput = document.getElementById('fileInput');
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+
+    fetch('/api/upload', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Dosya yüklendi:', data);
+        // İşlem tamamlandıktan sonra yapılacak işlemler
+      })
+      .catch(error => {
+        console.error('Hata:', error);
+        // Hata durumunda yapılacak işlemler
+      });
+  });*/
 
 //İMG GÖSTERMEK
 function openImageView() {
