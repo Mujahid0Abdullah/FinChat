@@ -104,6 +104,11 @@ body {
     margin-bottom: 10px;
 }
 
+.You-Follow-Follows-You-container {
+    overflow-y: auto;
+    max-height: 250px; /* İstenilen maksimum yüksekliği ayarlayabilirsiniz */
+    margin-bottom: 10px; /* İstenilen boşluk ekleyebilirsiniz */
+  }
 
 .view-profiles-container {
     overflow-y: auto;
