@@ -30,7 +30,7 @@ class post {
             })
             .then(data => {
                 console.log('Post eklendi:', data);
-                fetchPosts();
+                this.fetchPosts();
                 // İsteğin başarılı olduğu durumda, istediğiniz işlemleri burada gerçekleştirin
             })
             .catch(error => {
@@ -46,6 +46,7 @@ class post {
                 // Sunucudan gelen verileri işleme
                 console.log(posts);
                 const postsListContainer = document.getElementById('postsList');
+                postsListContainer.innerHTML="";
     
                 posts.forEach(post => {
     

@@ -4,7 +4,7 @@ const url = "https://fin-chat.onrender.com/"
 const facade= new Facade();
 facade.commonInterface();
 
-document.getElementById('postForm').addEventListener('submit',facade.post.setpost())
+
 //fetchPosts()
 
 
@@ -153,8 +153,11 @@ function logoutUser() {
 
 
 
+document.getElementById('postForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Sayfanın yenilenmesini engellemek için formun varsayılan davranışını engeller
 
-//Post eklendi//
+    facade.post.setpost(); // Olay gerçekleştiğinde setpost() metodu çalışacak
+});//Post eklendi//
 /*
 document.getElementById('postForm').addEventListener('submit', function () {
 
