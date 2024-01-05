@@ -104,7 +104,7 @@ class post {
       this.subsystemC = new SubsystemC();
     }
    
-    commonInterface() {
+    anasayfaInterface() {
       this.post.fetchPosts();
       this.subsystemB.method();
       this.subsystemC.method();

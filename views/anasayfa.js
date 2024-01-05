@@ -2,7 +2,7 @@
 const url = "https://fin-chat.onrender.com/"
 
 const facade= new Facade();
-facade.commonInterface();
+facade.anasayfaInterface();
 
 
 //fetchPosts()
@@ -211,13 +211,15 @@ async function displayUserInfo() {
             throw new Error('Failed to fetch user info');
         }
         const userInfo = await response.json();
-
+        const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
         const userInfoDiv = document.getElementById('userInfo2');
         const userimage = document.getElementById('currentProfilePicture');
         const userimage2 = document.getElementById('user-avatar-big');
+         document.getElementById('user-avatar-big3').src =img;
 
-        userimage.src = "https://lh3.googleusercontent.com/d/" + userInfo.profilePic; // Resim URL
-        userimage2.src = "https://lh3.googleusercontent.com/d/" + userInfo.profilePic; // Resim URL
+
+        userimage.src = img; // Resim URL
+        userimage2.src = img; // Resim URL
 
         userimage.alt = 'user Image';
         userimage2.alt = 'user Image';
