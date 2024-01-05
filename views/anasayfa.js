@@ -272,13 +272,14 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
     if (password == repeatPassword || name == null) {
         try {
 
-            const resImg = await fetch('https://fin-chat.onrender.com/upload', {
+            const resImg = fetch('https://fin-chat.onrender.com/upload', {
                 method: 'POST',
                 body: formData,
             });
-            const data = await resImg.json();
+            const data = resImg.json();
+            console.log(data);
             const imgId = data.fileId;
-
+            console.log(imgId)
 
             const response = await fetch('https://fin-chat.onrender.com/users', {
                 method: 'PUT',

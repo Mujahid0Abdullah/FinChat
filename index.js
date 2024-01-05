@@ -217,6 +217,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     // uploadFile fonksiyonu dosyanın ID'sini döndürdüyse
     if (fileId) {
         // Dosya başarıyla yüklendi, fileId değeri kullanılabilir
+        console.log(fileId);
         res.status(200).json({ fileId });
     } else {
         // Dosya yüklenemedi, hata oluştu
