@@ -11,9 +11,11 @@ export const getRelationships = (req, res) => {
     console.log(id)
     if (id == 0) { id = req.userInfo.id }
     console.log(id)
-    db.query(q, [req.query.followedUserId], (err, data) => {
+    db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
-        return res.status(200).json(data.map(relationship => relationship.followerUserId));
+        console.log(data)
+
+        return res.status(200).json(data);
     });
 }
 
@@ -26,6 +28,8 @@ export const getmyRelationships = (req, res) => {
 
     db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
+        console.log(data)
+
         return res.status(200).json(data);
     });
 }
