@@ -113,7 +113,3 @@ class post {
 
 
 
-  export {
-    Facade,
-    post
-  }
