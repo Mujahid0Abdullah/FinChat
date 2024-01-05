@@ -64,6 +64,7 @@ export async function uploadFile(filename) {
             },
         });
 
+
         console.log(response.data);
         drive.permissions.create({
             fileId: response.data.id,
