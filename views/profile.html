@@ -187,6 +187,8 @@
 
     const url = "https://fin-chat.onrender.com/"
     fetchPosts()
+    getfollowed()
+    getfollower()
 
     const inputElement = document.getElementById('search'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
 
@@ -287,8 +289,7 @@
             });
         })
     }
-    getfollowed();
-    getfollower();
+
     function getfollower() {
 
       fetch(`${url}follow/?followedUserId=${followedUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
