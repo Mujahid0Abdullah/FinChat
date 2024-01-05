@@ -180,6 +180,7 @@
         }
 
 
+        //DELETE POST--------------------------------------
         async function Deletepost(postId) {
 
             try {
@@ -207,9 +208,10 @@
             }
 
         }
+        //---------------------------------------------------
 
 
-        //LOGOUT
+        //LOGOUT-----------------------------------------------
         function logoutUser() {
             fetch(`${url}auths/logout`, { method: 'POST' })
                 .then(response => {
@@ -227,7 +229,7 @@
                     console.error('Logout error:', error);
                 });
         }
-
+        //-----------------------------------------------------------
 
         function openImageView() {
             var fileInput = document.createElement("input");
@@ -244,6 +246,7 @@
             fileInput.click();
         }
 
+        //USER DATA________---------------------------------------------
         async function displayUserInfo() {
             try {
                 const response = await fetch('/users');
@@ -264,7 +267,7 @@
         }
         displayUserInfo();
 
-
+        //UPDATE USER DATA---------------------------------------------------------
         document.getElementById('update-user-form').addEventListener('submit', async function (event) {
             event.preventDefault();
 
