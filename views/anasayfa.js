@@ -1,6 +1,11 @@
-
+import { Facade,post } from "./AnasayfaFacade";
 const url = "https://fin-chat.onrender.com/"
-fetchPosts()
+
+const facade= new Facade();
+facade.commonInterface();
+
+document.getElementById('postForm').addEventListener('submit',facade.post.setpost())
+//fetchPosts()
 
 
 //SEARCH BAR//
@@ -65,6 +70,8 @@ inputElement.addEventListener('input', function (event) {
         });
 });
 
+
+/*
 function fetchPosts() {
 
     fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -107,7 +114,7 @@ function fetchPosts() {
                     console.error('Error fetching posts:', error);
                 });
         })
-}
+}*/
 
 
 function openProfilePage() {
@@ -124,49 +131,7 @@ function postClicked(postId) {
     window.location = `${url}post?postId=${postId}`
 }
 
-/*
-        function fetchPosts() {
 
-            fetch(`${url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-                .then(response => response.json())
-                .then(posts => {
-                    // Sunucudan gelen verileri işleme
-                    console.log(posts);
-                    const postsListContainer = document.getElementById('postsList');
-
-                    posts.forEach(post => {
-                        const postDiv = document.createElement('div');
-                        postDiv.classList.add('post');
-
-                        const postId = document.createElement('p');
-                        postId.textContent = `user:  ${post.name}`;
-
-                        const postDesc = document.createElement('p');
-                        postDesc.textContent = `Description: ${post.desc}`;
-
-                        const postCreatedAt = document.createElement('p');
-                        postCreatedAt.textContent = `Created At: ${moment(post.createdAt).fromNow()}`;
-
-                        const postImage = document.createElement('img');
-                        postImage.src = post.img; // Resim URL
-                        postImage.alt = 'Post Image';
-
-                        const hr = document.createElement('hr');
-                        postDiv.appendChild(postId);
-                        postDiv.appendChild(postDesc);
-                        postDiv.appendChild(postCreatedAt);
-                        postDiv.appendChild(postImage);
-                        postDiv.appendChild(hr);
-
-                        postsListContainer.appendChild(postDiv);
-
-                    })
-                        .catch(error => {
-                            console.error('Error fetching posts:', error);
-                        });
-                })
-        }
-        */
 //LOGOUT
 function logoutUser() {
     fetch(`${url}auths/logout`, { method: 'POST' })
@@ -190,8 +155,8 @@ function logoutUser() {
 
 
 //Post eklendi//
-
-document.getElementById('postForm').addEventListener('submit', function (event) {
+/*
+document.getElementById('postForm').addEventListener('submit', function () {
 
     const desc = document.getElementById('desc').value;
 
@@ -224,7 +189,7 @@ document.getElementById('postForm').addEventListener('submit', function (event) 
         .catch(error => {
             console.error('There was an error!', error);
         });
-});
+});*/
 
 
 
