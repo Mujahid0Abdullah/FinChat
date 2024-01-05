@@ -1,4 +1,4 @@
-import { Facade,post } from "./static/AnasayfaFacade.js";
+//import { Facade,post } from "https://fin-chat.onrender.com/static/AnasayfaFacade.js";
 const url = "https://fin-chat.onrender.com/"
 
 const facade= new Facade();
