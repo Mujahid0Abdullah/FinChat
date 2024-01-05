@@ -192,93 +192,164 @@
 
     //------------getfollowed----------------------
     const followerUserId = 0;
-    function getfollowed() {
-
-      fetch(`${url}follow/my?followerUserId=${followerUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-        .then(response => response.json())
-        .then(users => {
-          // Sunucudan gelen verileri işleme
-          console.log(users);
-          const postsListContainer = document.getElementById('followedList');
-          postsListContainer.innerHTML = "";
-
-          users.forEach(user => {
-
-            let postContent = `
-        
-
-            <div class="view-profiles">
-
-              <div class="left-column-vp">
-
-                <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
-                  <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
-                </div>
-
-              </div>
-
-              <div class="right-column-vp">
-              ${user.name}
-              </div>
-            </div>
-    `;
-
-            postsListContainer.innerHTML += postContent
-
-          })
-            .catch(error => {
-              console.error('Error fetching posts:', error);
-            });
-        })
-    }
+    /* function getfollowed() {
+ 
+       fetch(`${url}follow/my?followerUserId=${followerUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+         .then(response => response.json())
+         .then(users => {
+           // Sunucudan gelen verileri işleme
+           console.log(users);
+           const postsListContainer = document.getElementById('followedList');
+           postsListContainer.innerHTML = "";
+ 
+           users.forEach(user => {
+ 
+             let postContent = `
+         
+ 
+             <div class="view-profiles">
+ 
+               <div class="left-column-vp">
+ 
+                 <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                   <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+                 </div>
+ 
+               </div>
+ 
+               <div class="right-column-vp">
+               ${user.name}
+               </div>
+             </div>
+     `;
+ 
+             postsListContainer.innerHTML += postContent
+ 
+           })
+             .catch(error => {
+               console.error('Error fetching posts:', error);
+             });
+         })
+     }*/
 
 
 
 
     //------------getfollower---------------------
-
-    function getfollower() {
-
-      fetch(`${url}follow/?followedUserId=${followedUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-        .then(response => response.json())
+    /*
+        function getfollower() {
+    
+          fetch(`${url}follow/?followedUserId=${followedUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+            .then(response => response.json())
+            .then(users => {
+              // Sunucudan gelen verileri işleme
+              console.log(users);
+              const postsListContainer = document.getElementById('followerList');
+              postsListContainer.innerHTML = "";
+    
+              users.forEach(user => {
+    
+                let postContent = `
+            
+    
+                <div class="view-profiles">
+    
+                  <div class="left-column-vp">
+    
+                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                      <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+                    </div>
+    
+                  </div>
+    
+                  <div class="right-column-vp">
+                  ${user.name}
+                  </div>
+                </div>
+        `;
+    
+                postsListContainer.innerHTML += postContent
+    
+              })
+                .catch(error => {
+                  console.error('Error fetching posts:', error);
+                });
+            })
+        }*/
+    // getfollowed işlevi güncellenmiş hali
+    function getfollowed() {
+      fetch(`${url}follow/my?followerUserId=${followerUserId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
         .then(users => {
-          // Sunucudan gelen verileri işleme
+          console.log(users);
+          const postsListContainer = document.getElementById('followedList');
+          postsListContainer.innerHTML = "";
+
+          users.forEach(user => {
+            let postContent = `
+          <div class="view-profiles">
+            <div class="left-column-vp">
+              <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+              </div>
+            </div>
+            <div class="right-column-vp">
+              ${user.name}
+            </div>
+          </div>
+        `;
+            postsListContainer.innerHTML += postContent;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching followed users:', error);
+        });
+    }
+
+    // getfollower işlevi güncellenmiş hali
+    function getfollower() {
+      fetch(`${url}follow/?followedUserId=${followedUserId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(users => {
           console.log(users);
           const postsListContainer = document.getElementById('followerList');
           postsListContainer.innerHTML = "";
 
           users.forEach(user => {
-
             let postContent = `
-        
-
-            <div class="view-profiles">
-
-              <div class="left-column-vp">
-
-                <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
-                  <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
-                </div>
-
-              </div>
-
-              <div class="right-column-vp">
-              ${user.name}
+          <div class="view-profiles">
+            <div class="left-column-vp">
+              <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
               </div>
             </div>
-    `;
-
-            postsListContainer.innerHTML += postContent
-
-          })
-            .catch(error => {
-              console.error('Error fetching posts:', error);
-            });
+            <div class="right-column-vp">
+              ${user.name}
+            </div>
+          </div>
+        `;
+            postsListContainer.innerHTML += postContent;
+          });
         })
+        .catch(error => {
+          console.error('Error fetching followers:', error);
+        });
     }
 
 
     //--------------------------------GET POST------------------------------------
+
+
     function fetchPosts() {
 
       fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
