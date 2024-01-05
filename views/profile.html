@@ -190,65 +190,7 @@
     getfollowed()
     getfollower()
 
-    const inputElement = document.getElementById('search'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
-
-    inputElement.addEventListener('input', function (event) {
-      const searchData = {
-        name: event.target.value // Input'taki değeri alıp API çağrısı için kullanıyoruz
-      };
-
-      fetch(`${url}users/find`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(searchData)
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(users => {
-          // Sunucudan gelen verileri işleme
-          console.log(users);
-          const postsListContainer = document.getElementById('usersList');
-          postsListContainer.innerHTML = "";
-
-          users.forEach(user => {
-
-            let postContent = `
-            
-
-                <div class="view-profiles">
-
-                  <div class="left-column-vp">
-
-                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
-                      <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
-                    </div>
-
-                  </div>
-
-                  <div class="right-column-vp">
-                  ${user.name}
-                  </div>
-                </div>
-        `;
-
-            postsListContainer.innerHTML += postContent
-
-          })
-            .catch(error => {
-              console.error('Error fetching posts:', error);
-            });
-        })
-        .catch(error => {
-          console.error('Hata oluştu:', error);
-          // Hata durumunda gerekli işlemler burada yapılabilir
-        });
-    });
+    //------------getfollowed----------------------
     const followerUserId = 0;
     function getfollowed() {
 
@@ -290,6 +232,11 @@
         })
     }
 
+
+
+
+    //------------getfollower---------------------
+
     function getfollower() {
 
       fetch(`${url}follow/?followedUserId=${followedUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -330,6 +277,8 @@
         })
     }
 
+
+    //--------------------------------GET POST------------------------------------
     function fetchPosts() {
 
       fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -377,7 +326,7 @@
         })
     }
 
-
+    //--------------------------------------------------------------------
     function openProfilePage() {
       window.location = `${url}profile`
     }
@@ -389,6 +338,9 @@
     }
 
 
+
+
+    //--------------------------------DELETE POST------------------------------------
 
     async function Deletepost(postId) {
 
@@ -419,7 +371,7 @@
     }
 
 
-    //LOGOUT
+    //-----------------------LOGOUT-------------------------------------
     function logoutUser() {
       fetch(`${url}auths/logout`, { method: 'POST' })
         .then(response => {
