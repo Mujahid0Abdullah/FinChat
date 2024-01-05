@@ -18,13 +18,15 @@
     <div id="container">
         <div id="left-region">
             <button onclick="goToHome()" id="homeButton" style="margin-top: 5px; margin-left: 5px;">
-                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png"
+                    alt="Button Image">
             </button>
 
             <button onclick="openProfilePage()" id="ProfileButton" style="margin-top: 5px; margin-left: 5px;">
-                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/user.png" alt="Button Image">
+                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/user.png"
+                    alt="Button Image">
             </button>
-            
+
             <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
                 onclick="togglePopup(event)">
                 <span></span>
@@ -333,6 +335,8 @@
         function sendToChatGPT() {
             let value = document.getElementById("post").value;
             let date = document.getElementById("post-date").value;
+            console.log(value);
+            console.log(date);
 
             let body = {
                 model: "gpt-3.5-turbo",
@@ -342,7 +346,7 @@
             };
 
             let headers = {
-                Authorization: "Bearer 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",
+                Authorization: "Bearer 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",
                 "Content-Type": "application/json",
             };
 
