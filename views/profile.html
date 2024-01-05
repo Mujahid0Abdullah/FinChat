@@ -187,11 +187,11 @@
 
     const url = "https://fin-chat.onrender.com/"
     fetchPosts()
-    getfollowed()
-    getfollower()
+    getfollowed(0)
+    getfollower(0)
 
     //------------getfollowed----------------------
-    const followerUserId = 0;
+
     /* function getfollowed() {
  
        fetch(`${url}follow/my?followerUserId=${followerUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -278,7 +278,7 @@
         }*/
     // getfollowed işlevi güncellenmiş hali
 
-    function getfollowed() {
+    function getfollowed(followerUserId) {
       fetch(`${url}follow/my?followerUserId=${followerUserId}`)
         .then(response => {
           if (!response.ok) {
@@ -313,7 +313,7 @@
     }
 
     // getfollower işlevi güncellenmiş hali
-    function getfollower() {
+    function getfollower(followedUserId) {
       fetch(`${url}follow/?followedUserId=${followedUserId}`)
         .then(response => {
           if (!response.ok) {
