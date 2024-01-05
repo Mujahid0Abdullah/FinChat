@@ -35,13 +35,17 @@ inputElement.addEventListener('input', function (event) {
 
                 let postContent = `
             
-                <div class="view-profiles-container">
+
                 <div class="view-profiles">
+
                   <div class="left-column-vp">
+
                     <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
                       <img src="${user.profilePic}">
                     </div>
+
                   </div>
+
                   <div class="right-column-vp">
                   ${user.name}
                   </div>
