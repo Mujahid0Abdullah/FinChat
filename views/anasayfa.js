@@ -157,6 +157,9 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Sayfanın yenilenmesini engellemek için formun varsayılan davranışını engeller
 
     facade.post.setpost(); // Olay gerçekleştiğinde setpost() metodu çalışacak
+    const desc = document.getElementById('desc').value;
+    desc.value="";
+
 });//Post eklendi//
 /*
 document.getElementById('postForm').addEventListener('submit', function () {
