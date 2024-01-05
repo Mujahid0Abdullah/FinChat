@@ -41,7 +41,7 @@ inputElement.addEventListener('input', function (event) {
                   <div class="left-column-vp">
 
                     <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
-                      <img src="${user.profilePic}">
+                      <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
                     </div>
 
                   </div>
@@ -243,8 +243,14 @@ async function displayUserInfo() {
 
         const userInfoDiv = document.getElementById('userInfo2');
         const userimage = document.getElementById('currentProfilePicture');
+        const userimage2 = document.getElementById('user-avatar-big');
+
         userimage.src = "https://lh3.googleusercontent.com/d/" + userInfo.profilePic; // Resim URL
-        userimage.alt = 'Post Image';
+        userimage2.src = "https://lh3.googleusercontent.com/d/" + userInfo.profilePic; // Resim URL
+
+        userimage.alt = 'user Image';
+        userimage2.alt = 'user Image';
+
         const user_Info_post = document.getElementById('input-post-name');
         user_Info_post.value = userInfo.name;
 

@@ -3,266 +3,344 @@
 
 
 <head>
-    <meta charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="js/main.js"></script>
+  <meta charset="UTF-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="js/main.js"></script>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <link rel="stylesheet" type="text/css" href="https://fin-chat.onrender.com/profilecss">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" type="text/css" href="https://fin-chat.onrender.com/profilecss">
 </head>
 
 <body>
-    <div id="container">
-        <div id="left-region">
-            <button onclick="goToHome()" id="homeButton" style="margin-top: 5px; margin-left: 5px;">
-                <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
-            </button>
+  <div id="container">
+    <div id="left-region">
+      <button onclick="goToHome()" id="homeButton" style="margin-top: 5px; margin-left: 5px;">
+        <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/home.png" alt="Button Image">
+      </button>
+
+      <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
+        onclick="togglePopup(event)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="user-avatar-big" style="margin:40px;">
+        <img src="path/to/user/avatar.jpg">
+      </div>
+      <div id="userInfo222"></div>
+      <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()" onclick="closePopup(event)">
+        <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
+        <div class="popup-content" onclick="openProfilePage()">My Profile</div>
+        <div class="popup-content" onclick="logoutUser()">Log Out</div>
+      </div>
+      <label for="search"
+        style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">You
+        Follow</label>
+
+      <div id="followerList" class="You-Follow-Follows-You-container">
+        <div class="view-profiles">
+          <div class="left-column-vp">
+            <div class="user-avatar-vp" onclick="">
+              <img src="${post.profilePic}">
+            </div>
+          </div>
+          <div class="right-column-vp">
+            Zekeriyya
+          </div>
+        </div>
+
+        <div class="view-profiles">
+          <div class="left-column-vp">
+            <div class="user-avatar-vp" onclick="">
+              <img src="${post.profilePic}">
+            </div>
+          </div>
+          <div class="right-column-vp">
+            Zekeriyya
+          </div>
+        </div>
+
+        <div class="view-profiles">
+          <div class="left-column-vp">
+            <div class="user-avatar-vp" onclick="">
+              <img src="${post.profilePic}">
+            </div>
+          </div>
+          <div class="right-column-vp">
+            Zekeriyya
+          </div>
+        </div>
+
+        <div class="view-profiles">
+          <div class="left-column-vp">
+            <div class="user-avatar-vp" onclick="">
+              <img src="${post.profilePic}">
+            </div>
+          </div>
+          <div class="right-column-vp">
+            Zekeriyya
+          </div>
+        </div>
+
+        <div class="view-profiles">
+          <div class="left-column-vp">
+            <div class="user-avatar-vp" onclick="">
+              <img src="${post.profilePic}">
+            </div>
+          </div>
+          <div class="right-column-vp">
+            Zekeriyya
+          </div>
+        </div>
+
+        <div class="view-profiles">
+          <div class="left-column-vp">
+            <div class="user-avatar-vp" onclick="">
+              <img src="${post.profilePic}">
+            </div>
+          </div>
+          <div class="right-column-vp">
+            Zekeriyya
+          </div>
+        </div>
+
+      </div>
+
+      <label for="search"
+        style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Follow's
+        You</label>
+
+      <div id="followedList" class="You-Follow-Follows-You-container">
+
+
+      </div>
+
+    </div>
+    <div id="middle-region">
+      <!-- Orta Bölge İçeriği Buraya Gelecek -->
+      <div class="horizontal-middle-line">
+        <span style="font-size: 36px;">
+          <div id="finChatTitle">My Profile</div>
+        </span>
+      </div>
+
+
+      <div id="postsList">
+
+      </div>
+    </div>
+    <div id="right-region">
+      <!-- Sağ Bölge İçeriği Buraya Gelecek -->
+      <div class="horizontal-line">
+        <img id="dollar-icon"
+          src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif"
+          alt="Dollar Icon">
+      </div>
+
+      <h3 class="para-birimleri" id="dolar-try"></h3>
+      <h3 class="para-birimleri" id="euro-try"></h3>
+      <h3 class="para-birimleri" id="sterlin-try"></h3>
+      <h3 class="para-birimleri" id="pln-try"></h3>
+      <div class="horizontal-line">
+        <img id="gold-icon" src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif"
+          alt="Dollar Icon">
+      </div>
+      <h3 class="altin-degerleri">Gram Altın=300Tl</h3>
+      <h3 class="altin-degerleri">Çeyrek Altın=500Tl</h3>
+      <h3 class="altin-degerleri">C. Altını=200Tl</h3>
+      <h3 class="altin-degerleri">Yatım Altın=100Tl</h3>
+      <div class="horizontal-line">
+        <img id="kripto-icon"
+          src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/kripto-icon.gif"
+          alt="Dollar Icon">
+      </div>
+      <h3 class="kripto-degerleri">Bitcoin=300Tl</h3>
+      <h3 class="kripto-degerleri">Etherium=200Tl</h3>
+      <h3 class="kripto-degerleri">DogeCoin=100Tl</h3>
+      <h3 class="kripto-degerleri">ZırtCoin=50Tl</h3>
+      <div class="horizontal-line"></div>
+    </div>
+  </div>
+
+  <div id="dynamic-popup">
+    <form id="update-user-form">
+      <div id="close-btn" onclick="closeDynamicPopup()">X</div>
+      <div class="user-avatar-big" onclick="openProfilePictureInput()">
+        <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
+        <div id="editProfilePicture"></div>
+      </div>
+      <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
+      <br>
+      <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
+      <br>
+      <input type="password" id="password" placeholder="Password">
+      <br>
+      <input type="password" id="repeatPassword" placeholder="Repeat Password">
+      <br>
+      <button type="submit" id="save-btn">Save</button>
+    </form>
+  </div>
+
+  <script>
+
+    const url = "https://fin-chat.onrender.com/"
+    fetchPosts()
+
+    const inputElement = document.getElementById('search'); // Örnek bir input id'si kullanılmıştır, kendi projenizdeki id'ye uygun olarak değiştirin
+
+    inputElement.addEventListener('input', function (event) {
+      const searchData = {
+        name: event.target.value // Input'taki değeri alıp API çağrısı için kullanıyoruz
+      };
+
+      fetch(`${url}users/find`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(searchData)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(users => {
+          // Sunucudan gelen verileri işleme
+          console.log(users);
+          const postsListContainer = document.getElementById('usersList');
+          postsListContainer.innerHTML = "";
+
+          users.forEach(user => {
+
+            let postContent = `
             
-            <div id="clickable-lines" onmouseover="openPopup()" onmouseleave="closePopupWithDelay()"
-                onclick="togglePopup(event)">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="user-avatar-big" style="margin:40px;">
-                <img src="path/to/user/avatar.jpg">
-            </div>
-            <div id="userInfo222"></div>
-            <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()"
-                onclick="closePopup(event)">
-                <div class="popup-content" onclick="openDynamicPopup()">Edit Profile</div>
-                <div class="popup-content" onclick="openProfilePage()">My Profile</div>
-                <div class="popup-content" onclick="logoutUser()">Log Out</div>
-            </div>
-            <label for="search" style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">You Follow</label>
 
-            <div class="You-Follow-Follows-You-container">
                 <div class="view-profiles">
+
                   <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
+
+                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                      <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
                     </div>
+
                   </div>
+
                   <div class="right-column-vp">
-                    Zekeriyya
+                  ${user.name}
                   </div>
                 </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
+        `;
+
+            postsListContainer.innerHTML += postContent
+
+          })
+            .catch(error => {
+              console.error('Error fetching posts:', error);
+            });
+        })
+        .catch(error => {
+          console.error('Hata oluştu:', error);
+          // Hata durumunda gerekli işlemler burada yapılabilir
+        });
+    });
+    const followerUserId = 0;
+    function getfollowed() {
+
+      fetch(`${url}follow/my?followerUserId=${followerUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+        .then(response => response.json())
+        .then(users => {
+          // Sunucudan gelen verileri işleme
+          console.log(users);
+          const postsListContainer = document.getElementById('followedList');
+          postsListContainer.innerHTML = "";
+
+          users.forEach(user => {
+
+            let postContent = `
+        
+
+            <div class="view-profiles">
+
+              <div class="left-column-vp">
+
+                <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                  <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
                 </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
+
               </div>
 
-            <label for="search" style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Follow's You</label>
+              <div class="right-column-vp">
+              ${user.name}
+              </div>
+            </div>
+    `;
 
-            <div class="You-Follow-Follows-You-container">
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
+            postsListContainer.innerHTML += postContent
+
+          })
+            .catch(error => {
+              console.error('Error fetching posts:', error);
+            });
+        })
+    }
+    getfollowed();
+    getfollower();
+    function getfollower() {
+
+      fetch(`${url}follow/?followedUserId=${followedUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+        .then(response => response.json())
+        .then(users => {
+          // Sunucudan gelen verileri işleme
+          console.log(users);
+          const postsListContainer = document.getElementById('followerList');
+          postsListContainer.innerHTML = "";
+
+          users.forEach(user => {
+
+            let postContent = `
+        
+
+            <div class="view-profiles">
+
+              <div class="left-column-vp">
+
+                <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                  <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
                 </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
-                <div class="view-profiles">
-                  <div class="left-column-vp">
-                    <div class="user-avatar-vp" onclick="">
-                      <img src="${post.profilePic}">
-                    </div>
-                  </div>
-                  <div class="right-column-vp">
-                    Zekeriyya
-                  </div>
-                </div>
-  
+
               </div>
 
-        </div>
-        <div id="middle-region">
-            <!-- Orta Bölge İçeriği Buraya Gelecek -->
-            <div class="horizontal-middle-line">
-                <span style="font-size: 36px;">
-                    <div id="finChatTitle">My Profile</div>
-                </span>
+              <div class="right-column-vp">
+              ${user.name}
+              </div>
             </div>
+    `;
 
+            postsListContainer.innerHTML += postContent
 
-            <div id="postsList">
+          })
+            .catch(error => {
+              console.error('Error fetching posts:', error);
+            });
+        })
+    }
 
-            </div>
-        </div>
-        <div id="right-region">
-            <!-- Sağ Bölge İçeriği Buraya Gelecek -->
-            <div class="horizontal-line">
-                <img id="dollar-icon"
-                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/dollar-icon.gif"
-                    alt="Dollar Icon">
-            </div>
+    function fetchPosts() {
 
-            <h3 class="para-birimleri" id="dolar-try"></h3>
-            <h3 class="para-birimleri" id="euro-try"></h3>
-            <h3 class="para-birimleri" id="sterlin-try"></h3>
-            <h3 class="para-birimleri" id="pln-try"></h3>
-            <div class="horizontal-line">
-                <img id="gold-icon"
-                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/gold-icon.gif"
-                    alt="Dollar Icon">
-            </div>
-            <h3 class="altin-degerleri">Gram Altın=300Tl</h3>
-            <h3 class="altin-degerleri">Çeyrek Altın=500Tl</h3>
-            <h3 class="altin-degerleri">C. Altını=200Tl</h3>
-            <h3 class="altin-degerleri">Yatım Altın=100Tl</h3>
-            <div class="horizontal-line">
-                <img id="kripto-icon"
-                    src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/frontend/kripto-icon.gif"
-                    alt="Dollar Icon">
-            </div>
-            <h3 class="kripto-degerleri">Bitcoin=300Tl</h3>
-            <h3 class="kripto-degerleri">Etherium=200Tl</h3>
-            <h3 class="kripto-degerleri">DogeCoin=100Tl</h3>
-            <h3 class="kripto-degerleri">ZırtCoin=50Tl</h3>
-            <div class="horizontal-line"></div>
-        </div>
-    </div>
+      fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+        .then(response => response.json())
+        .then(posts => {
+          // Sunucudan gelen verileri işleme
+          console.log(posts);
+          const postsListContainer = document.getElementById('postsList');
 
-    <div id="dynamic-popup">
-        <form id="update-user-form">
-            <div id="close-btn" onclick="closeDynamicPopup()">X</div>
-            <div class="user-avatar-big" onclick="openProfilePictureInput()">
-                <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
-                <div id="editProfilePicture"></div>
-            </div>
-            <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
-            <br>
-            <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
-            <br>
-            <input type="password" id="password" placeholder="Password">
-            <br>
-            <input type="password" id="repeatPassword" placeholder="Repeat Password">
-            <br>
-            <button type="submit" id="save-btn">Save</button>
-        </form>
-    </div>
+          posts.forEach(post => {
 
-    <script>
-
-        const url = "https://fin-chat.onrender.com/"
-        fetchPosts()
-
-
-        function fetchPosts() {
-
-            fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-                .then(response => response.json())
-                .then(posts => {
-                    // Sunucudan gelen verileri işleme
-                    console.log(posts);
-                    const postsListContainer = document.getElementById('postsList');
-
-                    posts.forEach(post => {
-
-                        let postContent = `
+            let postContent = `
                     
             <div class="post-view" >
                 <div class="left-column">
@@ -289,156 +367,156 @@
             </div>
                 `;
 
-                        postsListContainer.innerHTML += postContent
+            postsListContainer.innerHTML += postContent
 
-                    })
-                        .catch(error => {
-                            console.error('Error fetching posts:', error);
-                        });
-                })
-        }
-
-
-        function openProfilePage() {
-            window.location = `${url}profile`
-        }
-
-
-        function postClicked(postId) {
-            // alert(postId)
-            window.location = `${url}post?postId=${postId}`
-        }
-
-
-    
-        async function Deletepost(postId) {
-
-            try {
-                const response = await fetch('https://fin-chat.onrender.com/posts', {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ postId })
-                });
-
-                if (response.ok) {
-                    alert('post Silindi');
-                    location.reload();
-                    // window.location.href = './home';
-                } else {
-                    const errorMessage = await response.json();
-                    alert(`Hata çıktı : ${errorMessage}`);
-                }
-
-            } catch (error) {
-                console.error('Error:', error);
-                // Handle error if fetch fails
-                alert('An error occurred while processing your request.');
-            }
-
-        }
-
-
-        //LOGOUT
-        function logoutUser() {
-            fetch(`${url}auths/logout`, { method: 'POST' })
-                .then(response => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error('Logout failed');
-                })
-                .then(data => {
-                    console.log(data);
-
-                    window.location.href = `${url}`;
-                })
-                .catch(error => {
-                    console.error('Logout error:', error);
-                });
-        }
-
-
-        function openImageView() {
-            var fileInput = document.createElement("input");
-            fileInput.type = "file";
-
-            fileInput.addEventListener("change", function () {
-                var selectedFile = fileInput.files[0];
-                if (selectedFile) {
-                    var imageViewer = document.getElementById("imageViewer");
-                    imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
-                }
+          })
+            .catch(error => {
+              console.error('Error fetching posts:', error);
             });
+        })
+    }
 
-            fileInput.click();
+
+    function openProfilePage() {
+      window.location = `${url}profile`
+    }
+
+
+    function postClicked(postId) {
+      // alert(postId)
+      window.location = `${url}post?postId=${postId}`
+    }
+
+
+
+    async function Deletepost(postId) {
+
+      try {
+        const response = await fetch('https://fin-chat.onrender.com/posts', {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ postId })
+        });
+
+        if (response.ok) {
+          alert('post Silindi');
+          location.reload();
+          // window.location.href = './home';
+        } else {
+          const errorMessage = await response.json();
+          alert(`Hata çıktı : ${errorMessage}`);
         }
 
-        async function displayUserInfo() {
-            try {
-                const response = await fetch('/users');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user info');
-                }
-                const userInfo = await response.json();
+      } catch (error) {
+        console.error('Error:', error);
+        // Handle error if fetch fails
+        alert('An error occurred while processing your request.');
+      }
 
-                const userInfoDive = document.getElementById('userInfo222');
+    }
 
-                userInfoDive.innerHTML = `               
+
+    //LOGOUT
+    function logoutUser() {
+      fetch(`${url}auths/logout`, { method: 'POST' })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Logout failed');
+        })
+        .then(data => {
+          console.log(data);
+
+          window.location.href = `${url}`;
+        })
+        .catch(error => {
+          console.error('Logout error:', error);
+        });
+    }
+
+
+    function openImageView() {
+      var fileInput = document.createElement("input");
+      fileInput.type = "file";
+
+      fileInput.addEventListener("change", function () {
+        var selectedFile = fileInput.files[0];
+        if (selectedFile) {
+          var imageViewer = document.getElementById("imageViewer");
+          imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
+        }
+      });
+
+      fileInput.click();
+    }
+
+    async function displayUserInfo() {
+      try {
+        const response = await fetch('/users');
+        if (!response.ok) {
+          throw new Error('Failed to fetch user info');
+        }
+        const userInfo = await response.json();
+
+        const userInfoDive = document.getElementById('userInfo222');
+
+        userInfoDive.innerHTML = `               
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
 </div>        `;
-            } catch (error) {
-                console.error('Error:', error);
-            }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    displayUserInfo();
+
+
+    document.getElementById('update-user-form').addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('firstnameLastname').value;
+      const password = document.getElementById('password').value;
+      const repeatPassword = document.getElementById('repeatPassword').value;
+
+      if (password == repeatPassword || name == null) {
+
+        try {
+          const response = await fetch('https://fin-chat.onrender.com/users', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, password })
+          });
+
+          if (response.ok) {
+            alert('bilgileriniz güncellendi');
+            location.reload();
+            // window.location.href = './home';
+          } else {
+            const errorMessage = await response.json();
+            alert(`Login failed: ${errorMessage}`);
+          }
+
+        } catch (error) {
+          console.error('Error:', error);
+          // Handle error if fetch fails
+          alert('An error occurred while processing your request.');
         }
-        displayUserInfo();
-
-        
-        document.getElementById('update-user-form').addEventListener('submit', async function (event) {
-            event.preventDefault();
-
-            const name = document.getElementById('firstnameLastname').value;
-            const password = document.getElementById('password').value;
-            const repeatPassword = document.getElementById('repeatPassword').value;
-
-            if (password == repeatPassword || name == null) {
-
-                try {
-                    const response = await fetch('https://fin-chat.onrender.com/users', {
-                        method: 'PUT',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ name, password })
-                    });
-
-                    if (response.ok) {
-                        alert('bilgileriniz güncellendi');
-                        location.reload();
-                        // window.location.href = './home';
-                    } else {
-                        const errorMessage = await response.json();
-                        alert(`Login failed: ${errorMessage}`);
-                    }
-
-                } catch (error) {
-                    console.error('Error:', error);
-                    // Handle error if fetch fails
-                    alert('An error occurred while processing your request.');
-                }
 
 
 
-            } else { alert("password aynı değil yada adı boş") }
+      } else { alert("password aynı değil yada adı boş") }
 
 
 
-        });
+    });
 
 
-    </script>
+  </script>
 </body>
 <script src="./popupJs"></script>
 

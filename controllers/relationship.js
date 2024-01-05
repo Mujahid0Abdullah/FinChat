@@ -7,7 +7,8 @@ import { db } from "../connect.js";
 
 export const getRelationships = (req, res) => {
     const q = "SELECT followerUserId FROM relationships WHERE followedUserId = ?";
-
+    let id = req.query.followedUserId;
+    if (id == 0) { id = req.userInfo.id }
     db.query(q, [req.query.followedUserId], (err, data) => {
         if (err) return res.status(500).json(err);
         return res.status(200).json(data.map(relationship => relationship.followerUserId));
@@ -16,8 +17,11 @@ export const getRelationships = (req, res) => {
 
 export const getmyRelationships = (req, res) => {
     const q = "SELECT followedUserId FROM relationships WHERE followerUserId = ?";
+    let id = req.query.followerUserId;
+    if (id == 0) { id = req.userInfo.id }
 
-    db.query(q, [req.query.followedUserId], (err, data) => {
+
+    db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
         return res.status(200).json(data);
     });
