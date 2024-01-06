@@ -183,35 +183,8 @@
         }
 
 
-        //DELETE POST--------------------------------------
-        async function Deletepost(postId) {
-
-            try {
-                const response = await fetch('https://fin-chat.onrender.com/posts', {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ postId })
-                });
-
-                if (response.ok) {
-                    alert('post Silindi');
-                    location.reload();
-                    // window.location.href = './home';
-                } else {
-                    const errorMessage = await response.json();
-                    alert(`Hata çıktı : ${errorMessage}`);
-                }
-
-            } catch (error) {
-                console.error('Error:', error);
-                // Handle error if fetch fails
-                alert('An error occurred while processing your request.');
-            }
-
-        }
-        //---------------------------------------------------
+        
+        //----------------------------------------
 
 
         //LOGOUT-----------------------------------------------
@@ -233,21 +206,6 @@
                 });
         }
         //-----------------------------------------------------------
-
-        function openImageView() {
-            var fileInput = document.createElement("input");
-            fileInput.type = "file";
-
-            fileInput.addEventListener("change", function () {
-                var selectedFile = fileInput.files[0];
-                if (selectedFile) {
-                    var imageViewer = document.getElementById("imageViewer");
-                    imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
-                }
-            });
-
-            fileInput.click();
-        }
 
         //USER DATA________---------------------------------------------
         async function displayUserInfo() {
