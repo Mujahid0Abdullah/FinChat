@@ -80,23 +80,8 @@ function istekAt() {
           document.getElementById('cumhuriyet-altini').textContent="Cumhuriyet altını: "+data["cumhuriyet-altini"].Buying;
     
 
-        // Tablodaki tüm satırları temizleyelim
-        const altinTablosu = document.getElementById('altinTablosu').getElementsByTagName('tbody')[0];
-        altinTablosu.innerHTML = '';
-
-        // Yeni verileri tabloya ekleyelim
-        for (const altin in altinVerileri) {
-          const row = altinTablosu.insertRow();
-          const altinIsmiCell = row.insertCell(0);
-          const alisFiyatiCell = row.insertCell(1);
-
-          // Altın isimlerini düzeltilmiş halde tabloya ekleyelim
-          altinIsmiCell.innerHTML = duzeltilmisIsim(altin);
-
-          // Alış fiyatını tabloya ekleyelim
-          const alisFiyati = altinVerileri[altin].Buying.replace('$', ' '); // "$" işaretini kaldırma
-          alisFiyatiCell.innerHTML = alisFiyati + " TL";
-        }
+      
+        
 
         // Bir sonraki isteği 10 saniye sonra atalım
         
@@ -104,6 +89,39 @@ function istekAt() {
       .catch(error => console.error('Veri alınamadı:', error));
   }
   istekAt();
+
+  function updateData() {
+    
+   
+
+    // CoinGecko API'sinden veri çekme
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,litecoin,ripple,dogecoin&vs_currencies=try')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+    
+          console.log(data.bitcoin.try)
+        // Kripto paraların fiyatlarını alm
+        document.getElementById('bitcoin').textContent= "bitcoin"+data.bitcoin.try
+        document.getElementById('Ethereum').textContent="Ethereum"+data.ethereum.try
+        document.getElementById('Litecoin').textContent="Litecoin"+data.litecoin.try
+        document.getElementById('Dogecoin').textContent="Dogecoin"+data.dogecoin.try
+       
+        // İstek başarılı olduğunda konsola mesaj yazdırma
+        console.log('İstek başarıyla yapıldı.');
+
+        // İstek sayısını artırma
+       
+      })
+      .catch(error => {
+        console.error('API çağrısı sırasında bir hata oluştu:', error);
+      });
+  }
+  updateData();
 
 function getExchangeRates() {
     const apiKey = 'e2d37d6b14c2e615ce74c8d0';
