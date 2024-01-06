@@ -206,6 +206,7 @@ document.getElementById('postForm').addEventListener('submit', function () {
 
 
 //KULLANCI BİLGİLERİ GETİRMEK//
+/*
 async function displayUserInfo(userid) {
     try {
         const response = await fetch(`${url}users?userid=${userid}`);
@@ -240,9 +241,51 @@ async function displayUserInfo(userid) {
     } catch (error) {
         console.error('Error:', error);
     }
-}
+}*/
 
 displayUserInfo(0);
+function displayUserInfo(userid) {
+    fetch(`${url}users?userid=${userid}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(userInfo => {
+        console.log(userInfo);
+        const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
+        const userInfoDiv = document.getElementById('userInfo2');
+        const userimage = document.getElementById('currentProfilePicture');
+        const userimage2 = document.getElementById('user-avatar-big');
+         document.getElementById('user-avatar-big3').src =img;
+
+
+        userimage.src = img; // Resim URL
+        userimage2.src = img; // Resim URL
+
+        userimage.alt = 'user Image';
+        userimage2.alt = 'user Image';
+
+        const user_Info_post = document.getElementById('input-post-name');
+        user_Info_post.value = userInfo.name;
+
+        user_Info_post.innerHTML = `               
+  <p> ${userInfo.name}</p>          
+`;
+        userInfoDiv.innerHTML = `               
+<div style="text-align: center;">
+<p style="font-weight: bold;">${userInfo.name}</p>
+</div>        `;
+   
+
+       
+      })
+      .catch(error => {
+        console.error('Error fetching user info:', error);
+      });
+  }
+
 
 //UPDATE USER //
 
