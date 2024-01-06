@@ -69,15 +69,15 @@ function istekAt() {
           console.log(data["14-ayar-altin"].Buying)
           console.log(data["22-ayar-bilezik"].Buying)
            document.getElementById('dolar-try').textContent ="USD TO TR: "+data["USD"].Buying;
-         document.getElementById('euro-try').textContent=data["EUR"].Buying;
-            document.getElementById('sterlin-try').textContent=data["GBP"].Buying;
-            document.getElementById('pln-try').textContent=data["PLN"].Buying;
+         document.getElementById('euro-try').textContent="EUR TO TR: "+data["EUR"].Buying;
+            document.getElementById('sterlin-try').textContent="GBP TO TR: "+data["GBP"].Buying;
+            document.getElementById('pln-try').textContent="PLN TO TR: "+data["PLN"].Buying;
 
-          document.getElementById('22altin').textContent="Atın ayar 22: "+data["22-ayar-bilezik"].Buying;
+          document.getElementById('22altin').textContent="Gram Altın: "+data["22-ayar-bilezik"].Buying;
 
-          document.getElementById('Caltin').textContent="Çeyrek altın"+data["ceyrek-altin"].Buying;
+          document.getElementById('Caltin').textContent="Çeyrek Altın"+data["ceyrek-altin"].Buying;
           document.getElementById('gumus').textContent="Gümüş: "+data["gumus"].Buying;
-          document.getElementById('cumhuriyet-altini').textContent="Cumhuriyet altını: "+data["cumhuriyet-altini"].Buying;
+          document.getElementById('cumhuriyet-altini').textContent="C. Altını: "+data["cumhuriyet-altini"].Buying;
     
 
       
@@ -106,10 +106,10 @@ function istekAt() {
     
           console.log(data.bitcoin.try)
         // Kripto paraların fiyatlarını alm
-        document.getElementById('bitcoin').textContent= "bitcoin"+data.bitcoin.try
-        document.getElementById('Ethereum').textContent="Ethereum"+data.ethereum.try
-        document.getElementById('Litecoin').textContent="Litecoin"+data.litecoin.try
-        document.getElementById('Dogecoin').textContent="Dogecoin"+data.dogecoin.try
+        document.getElementById('bitcoin').textContent= "Bitcoin: "+data.bitcoin.try
+        document.getElementById('Ethereum').textContent="Ethereum: "+data.ethereum.try
+        document.getElementById('Litecoin').textContent="Litecoin: "+data.litecoin.try
+        document.getElementById('Dogecoin').textContent="Dogecoin: "+data.dogecoin.try
        
         // İstek başarılı olduğunda konsola mesaj yazdırma
         console.log('İstek başarıyla yapıldı.');
