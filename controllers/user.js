@@ -8,16 +8,16 @@ import { uploadFile } from "../googleimage.js"; //.js
 
 export const getUser = (req, res) => {
 
-    const q = "SELECT * FROM users WHERE id=?";
+    const q = "SELECT name, username,profilePic,id,email FROM users WHERE id=?";
     let id = req.query.userid;
     console.log(id)
     if (id == 0) { id = req.userInfo.id }
    
     db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
-        const { password, ...info } = data[0];
+       
 
-        return res.json(info);
+        return res.json(data);
     });
 
 };
