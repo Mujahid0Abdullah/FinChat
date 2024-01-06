@@ -251,6 +251,11 @@
         });
     }
 
+
+    function openHisProfilePage(userid) {
+    window.location = `${url}OthersProfile?userid=${userid}`
+}
+
     // getfollower işlevi güncellenmiş hali
     function getfollower(followedUserId) {
       fetch(`${url}follow/?followedUserId=${followedUserId}`)
