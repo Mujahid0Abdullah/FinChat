@@ -57,6 +57,53 @@ function closePopupWithDelay() {
 
     }, 100); // 1 saniye gecikme
 };
+function istekAt() {
+    // Her istek atıldığında console ekranına istek başarılı bir şekilde atıldı mesajı verelim
+    console.log('İstek başarılı bir şekilde atıldı');
+
+    // JSON verisini çekelim
+    fetch('https://finans.truncgil.com/v3/today.json')
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          console.log(data["14-ayar-altin"].Buying)
+          console.log(data["22-ayar-bilezik"].Buying)
+           document.getElementById('dolar-try').textContent ="USD TO TR: "+data["USD"].Buying;
+         document.getElementById('euro-try').textContent=data["EUR"].Buying;
+            document.getElementById('sterlin-try').textContent=data["GBP"].Buying;
+            document.getElementById('pln-try').textContent=data["PLN"].Buying;
+
+          document.getElementById('22altin').textContent="Atın ayar 22: "+data["22-ayar-bilezik"].Buying;
+
+          document.getElementById('Caltin').textContent="Çeyrek altın"+data["ceyrek-altin"].Buying;
+          document.getElementById('gumus').textContent="Gümüş: "+data["gumus"].Buying;
+          document.getElementById('cumhuriyet-altini').textContent="Cumhuriyet altını: "+data["cumhuriyet-altini"].Buying;
+    
+
+        // Tablodaki tüm satırları temizleyelim
+        const altinTablosu = document.getElementById('altinTablosu').getElementsByTagName('tbody')[0];
+        altinTablosu.innerHTML = '';
+
+        // Yeni verileri tabloya ekleyelim
+        for (const altin in altinVerileri) {
+          const row = altinTablosu.insertRow();
+          const altinIsmiCell = row.insertCell(0);
+          const alisFiyatiCell = row.insertCell(1);
+
+          // Altın isimlerini düzeltilmiş halde tabloya ekleyelim
+          altinIsmiCell.innerHTML = duzeltilmisIsim(altin);
+
+          // Alış fiyatını tabloya ekleyelim
+          const alisFiyati = altinVerileri[altin].Buying.replace('$', ' '); // "$" işaretini kaldırma
+          alisFiyatiCell.innerHTML = alisFiyati + " TL";
+        }
+
+        // Bir sonraki isteği 10 saniye sonra atalım
+        
+      })
+      .catch(error => console.error('Veri alınamadı:', error));
+  }
+  istekAt();
 
 function getExchangeRates() {
     const apiKey = 'e2d37d6b14c2e615ce74c8d0';
@@ -98,5 +145,5 @@ function getExchangeRates() {
 }
 
 // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
-getExchangeRates();
+//getExchangeRates();
 
