@@ -59,7 +59,7 @@ function closePopupWithDelay() {
 };
 
 function getExchangeRates() {
-    const apiKey = '1bcf3f77aed6bcf6430e283f';
+    const apiKey = 'e2d37d6b14c2e615ce74c8d0';
     const baseCurrency = 'USD';
     const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
 
