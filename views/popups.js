@@ -73,7 +73,7 @@ function istekAt() {
             document.getElementById('sterlin-try').textContent="GBP TO TR: "+data["GBP"].Buying;
             document.getElementById('pln-try').textContent="PLN TO TR: "+data["PLN"].Buying;
 
-          document.getElementById('22altin').textContent="Gram Altın: "+data["22-ayar-bilezik"].Buying;
+          document.getElementById('22altin').textContent="22 Ayar Altın: "+data["22-ayar-bilezik"].Buying;
 
           document.getElementById('Caltin').textContent="Çeyrek Altın"+data["ceyrek-altin"].Buying;
           document.getElementById('gumus').textContent="Gümüş: "+data["gumus"].Buying;
