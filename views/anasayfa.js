@@ -46,7 +46,9 @@ inputElement.addEventListener('input', function (event) {
                   <div class="left-column-vp">
 
                     <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                    <div class="user-avatar" style="height: 100%; width: 100%;">
                       <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+                      </div>
                     </div>
 
                   </div>
