@@ -34,7 +34,9 @@
                 <span></span>
             </div>
             <div class="user-avatar-big" style="margin:40px;">
-                <img src="path/to/user/avatar.jpg">
+                <div class="user-avatar" style="height: 100%; width: 100%;">
+                    <img id="user-avatar-big3" src="">
+                </div>
             </div>
             <div id="userInfo2"></div>
             <div id="popup" onmouseover="cancelClosePopup()" onmouseleave="closePopupWithDelay()"
@@ -62,7 +64,9 @@
                 <div class="share-comment">
                     <div class="left-column">
                         <div class="user-avatar-small">
-                            <img src="path/to/user/avatar.jpg">
+                            <div class="user-avatar" style="height: 100%; width: 100%;">
+                                <img id="user-avatar-big4" src="">
+                            </div>
                         </div>
                         <div id="userInfo" class="user-name"></div>
                     </div>
@@ -215,7 +219,9 @@
                         <div class="post-view">
                             <div class="left-column">
                                 <div class="user-avatar-big">
+                                    <div class="user-avatar" style="height: 100%; width: 100%;">
                                     <img src="${post.profilePic}">
+                                    </div>
                                 </div>
                                 <div class="user-name">${post.name}</div>
                             </div>
@@ -253,7 +259,9 @@
             <div class="shared-comment">
                 <div class="left-column">
                     <div class="user-avatar-small">
+                        <div class="user-avatar" style="height: 100%; width: 100%;">
                         <img src="${comment.profilePic}">
+                        </div>
                     </div>
                     <div class="user-name">${comment.name}</div>
                 </div>
@@ -391,6 +399,10 @@
 
                 const userInfoDiv = document.getElementById('userInfo');
                 const userInfoDiv2 = document.getElementById('userInfo2');
+                const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
+        document.getElementById('user-avatar-big3').src =img;
+        document.getElementById('user-avatar-big4').src =img;
+
 
 
                 userInfoDiv.innerHTML = `               
