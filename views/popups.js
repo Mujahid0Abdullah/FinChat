@@ -68,10 +68,10 @@ function istekAt() {
           console.log(data);
           console.log(data["14-ayar-altin"].Buying)
           console.log(data["22-ayar-bilezik"].Buying)
-           document.getElementById('dolar-try').textContent ="USD TO TR: "+data["USD"].Buying;
-         document.getElementById('euro-try').textContent="EUR TO TR: "+data["EUR"].Buying;
-            document.getElementById('sterlin-try').textContent="GBP TO TR: "+data["GBP"].Buying;
-            document.getElementById('pln-try').textContent="PLN TO TR: "+data["PLN"].Buying;
+           document.getElementById('dolar-try').textContent ="Usd To Tr: "+data["USD"].Buying;
+         document.getElementById('euro-try').textContent="Eur To Tr: "+data["EUR"].Buying;
+            document.getElementById('sterlin-try').textContent="Gbp To Tr: "+data["GBP"].Buying;
+            document.getElementById('pln-try').textContent="Pln To Tr: "+data["PLN"].Buying;
 
           document.getElementById('22altin').textContent="22 Ayar Altın: "+data["22-ayar-bilezik"].Buying;
 
