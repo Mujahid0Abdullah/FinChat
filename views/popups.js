@@ -75,7 +75,7 @@ function istekAt() {
 
           document.getElementById('22altin').textContent="22 Ayar Altın: "+data["22-ayar-bilezik"].Buying;
 
-          document.getElementById('Caltin').textContent="Çeyrek Altın"+data["ceyrek-altin"].Buying;
+          document.getElementById('Caltin').textContent="Çeyrek Altın: "+data["ceyrek-altin"].Buying;
           document.getElementById('gumus').textContent="Gümüş: "+data["gumus"].Buying;
           document.getElementById('cumhuriyet-altini').textContent="C. Altını: "+data["cumhuriyet-altini"].Buying;
     
