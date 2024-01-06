@@ -393,7 +393,7 @@
         displayUserInfo();
         async function displayUserInfo() {
             try {
-                const response = await fetch('/users');
+                const response = await fetch('/users?userid=0');
                 if (!response.ok) {
                     throw new Error('Failed to fetch user info');
                 }
