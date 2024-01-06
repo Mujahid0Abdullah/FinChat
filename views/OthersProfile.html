@@ -39,6 +39,21 @@
                 <div class="popup-content" onclick="logoutUser()">Log Out</div>
 
             </div>
+            <label for="search"
+            style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Follower</label>
+    
+          <div id="followerList" class="You-Follow-Follows-You-container">
+    
+    
+          </div>
+    
+          <label for="search"
+            style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Followed</label>
+    
+          <div id="followedList" class="You-Follow-Follows-You-container">
+    
+    
+          </div>
         </div>
         <div id="middle-region">
             <!-- Orta Bölge İçeriği Buraya Gelecek -->
@@ -90,6 +105,8 @@
             <h3 id="Litecoin" class="kripto-degerleri"></h3>
             <h3 id="Dogecoin" class="kripto-degerleri"></h3>
             <div class="horizontal-line"></div>
+
+            
         </div>
     </div>
 
@@ -120,7 +137,9 @@
         const id = urlParams.get('userid');
         const url = "https://fin-chat.onrender.com/"
         fetchPosts()
-
+        getfollowed(id); 
+        getfollower(id);
+        displayUserInfo(id)
 
         function fetchPosts() {
 
@@ -207,10 +226,82 @@
         }
         //-----------------------------------------------------------
 
+        function getfollowed(followerUserId) {
+      fetch(`${url}follow/my?followerUserId=${followerUserId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(users => {
+          console.log(users);
+          const postsListContainer = document.getElementById('followedList');
+          postsListContainer.innerHTML = "";
+
+          users.forEach(user => {
+            let postContent = `
+          <div class="view-profiles">
+            <div class="left-column-vp">
+              <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                <div class="user-avatar"  style="height: 100%; width: 100%;">
+                <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+                </div>
+              </div>
+            </div>
+            <div class="right-column-vp">
+              ${user.name}
+            </div>
+          </div>
+        `;
+            postsListContainer.innerHTML += postContent;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching followed users:', error);
+        });
+    }
+
+    // getfollower işlevi güncellenmiş hali
+    function getfollower(followedUserId) {
+      fetch(`${url}follow/?followedUserId=${followedUserId}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(users => {
+          console.log(users);
+          const postsListContainer = document.getElementById('followerList');
+          postsListContainer.innerHTML = "";
+
+          users.forEach(user => {
+            let postContent = `
+          <div class="view-profiles">
+            <div class="left-column-vp">
+              <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                <div class="user-avatar"  style="height: 100%; width: 100%;">
+                <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+                </div>
+              </div>
+            </div>
+            <div class="right-column-vp">
+              ${user.name}
+            </div>
+          </div>
+        `;
+            postsListContainer.innerHTML += postContent;
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching followers:', error);
+        });
+    }
         //USER DATA________---------------------------------------------
-        async function displayUserInfo() {
+        async function displayUserInfo(userid) {
             try {
-                const response = await fetch('/users');
+                const response = await fetch(`/users?userid=${userid}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch user info');
                 }

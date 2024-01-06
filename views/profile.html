@@ -421,9 +421,9 @@
       fileInput.click();
     }
 
-    async function displayUserInfo() {
+    async function displayUserInfo(userid) {
       try {
-        const response = await fetch('/users');
+        const response = await fetch(`/users?userid=${userid}`);
         if (!response.ok) {
           throw new Error('Failed to fetch user info');
         }
@@ -442,7 +442,7 @@
         console.error('Error:', error);
       }
     }
-    displayUserInfo();
+    displayUserInfo(0);
 
 
     document.getElementById('update-user-form').addEventListener('submit', async function (event) {

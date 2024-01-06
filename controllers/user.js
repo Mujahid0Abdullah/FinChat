@@ -9,8 +9,11 @@ import { uploadFile } from "../googleimage.js"; //.js
 export const getUser = (req, res) => {
 
     const q = "SELECT * FROM users WHERE id=?";
-    const userId = req.userInfo.id;
-    db.query(q, [userId], (err, data) => {
+    let id = req.query.userid;
+    console.log(id)
+    if (id == 0) { id = req.userInfo.id }
+   
+    db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
         const { password, ...info } = data[0];
 
