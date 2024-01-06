@@ -259,9 +259,9 @@ body {
     height: 50px;
     width: 100px;
     margin-top: 5px;
-    margin-right: 5px;
+    margin-left: 5px;
     margin-bottom: 10px;
-    float: right;
+    float: left;
     background-color: #F2F2F2;
     color: black;
     border-radius: 50px 50px 50px 50px;
