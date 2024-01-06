@@ -16,8 +16,8 @@ export const getUser = (req, res) => {
     db.query(q, [id], (err, data) => {
         if (err) return res.status(500).json(err);
        console.log(data);
-
-        return res.json(data);
+        const useri= data[0]
+        return res.json(useri);
     });
 
 };
