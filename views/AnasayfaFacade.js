@@ -38,9 +38,9 @@ class post {
             });
     }
 
-    fetchPosts() {
+    fetchPosts(api= "") {
 
-        fetch(`${this.url}posts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+        fetch(`${this.url}posts${api}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
             .then(response => response.json())
             .then(posts => {
                 // Sunucudan gelen verileri işleme
@@ -85,12 +85,74 @@ class post {
             })
     }
 
+    fetchmyPosts() {
+
+        fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+          .then(response => response.json())
+          .then(posts => {
+            // Sunucudan gelen verileri işleme
+            console.log(posts);
+            const postsListContainer = document.getElementById('postsList');
+  
+            posts.forEach(post => {
+  
+              let postContent = `
+                      
+              <div class="post-view" >
+                  <div class="left-column">
+                      <div class="user-avatar-big">
+                          <img src="${post.profilePic}">
+                      </div>
+                      <div class="user-name">${post.name}</div>
+                  </div>
+                  <div class="right-column">
+                      <div class="upper-row">
+                          <textarea readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
+                       </div>
+  
+                      <div class="lower-row">
+                          <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
+                        <button onclick="Deletepost(${post.id})" id="DeleteButton">
+                            <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/delete.png" alt="Button Image">
+                        </button>
+                        <button onclick="postClicked(${post.id})"  id="commentsButton">
+                            <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
+                        </button>
+                      </div>
+                  </div>
+              </div>
+                  `;
+  
+              postsListContainer.innerHTML += postContent
+  
+            })
+              .catch(error => {
+                console.error('Error fetching posts:', error);
+              });
+          })
+      }
+
 
   }
    
-  class SubsystemB {
-    method() {
-      console.log('This is a method of Subsystem-B');
+  class user {
+     async displaymyUserInfo() {
+        try {
+            const response = await fetch('/users');
+            if (!response.ok) {
+              throw new Error('Failed to fetch user info');
+            }
+            const userInfo = await response.json();
+    
+            const userInfoDive = document.getElementById('userInfo222');
+    
+            userInfoDive.innerHTML = `               
+            <div style="text-align: center;">
+        <p style="font-weight: bold;">${userInfo.name}</p>
+    </div>        `;
+          } catch (error) {
+            console.error('Error:', error);
+          }
     }
   }
    
@@ -111,6 +173,14 @@ class post {
       this.subsystemB.method();
       this.subsystemC.method();
     }
+
+    myprofileInterface() {
+        const api ="/myposts";
+        this.post.fetchmyPosts()
+        this.post.fetchPosts(api);
+        this.subsystemB.method();
+        this.subsystemC.method();
+      }
   }
 
 
