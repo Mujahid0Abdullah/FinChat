@@ -23,7 +23,7 @@ export const getUser = (req, res) => {
 
 export const finduser = (req, res) => {
 
-    const q = "SELECT id, username,name FROM users WHERE name LIKE ?";
+    const q = "SELECT * FROM users WHERE name LIKE ?";
     const name = '%' + req.body.name + '%';
     db.query(q, [name], (err, data) => {
         if (err) return res.status(500).json(err);
