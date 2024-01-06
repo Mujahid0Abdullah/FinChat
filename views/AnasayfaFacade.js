@@ -55,7 +55,9 @@ class post {
         <div class="post-view" >
             <div class="left-column">
                 <div class="user-avatar-big" onclick="openHisProfilePage(${post.userId})">
+                <div class="user-avatar" style="height: 100%; width: 100%;">
                     <img src="https://lh3.googleusercontent.com/d/${post.profilePic}">
+                </div>
                 </div>
                 <div class="user-name">${post.name}</div>
             </div>
