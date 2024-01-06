@@ -213,6 +213,7 @@ async function displayUserInfo(userid) {
             throw new Error('Failed to fetch user info');
         }
         const userInfo = await response.json();
+        console.log(userInfo);
         const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
         const userInfoDiv = document.getElementById('userInfo2');
         const userimage = document.getElementById('currentProfilePicture');
