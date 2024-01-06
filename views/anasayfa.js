@@ -206,9 +206,9 @@ document.getElementById('postForm').addEventListener('submit', function () {
 
 
 //KULLANCI BİLGİLERİ GETİRMEK//
-async function displayUserInfo() {
+async function displayUserInfo(userid) {
     try {
-        const response = await fetch(`${url}users`);
+        const response = await fetch(`${url}users?userid=${userid}`);
         if (!response.ok) {
             throw new Error('Failed to fetch user info');
         }
@@ -241,7 +241,7 @@ async function displayUserInfo() {
     }
 }
 
-displayUserInfo();
+displayUserInfo(0);
 
 //UPDATE USER //
 
