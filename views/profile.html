@@ -123,9 +123,11 @@
   <script>
 
     const url = "https://fin-chat.onrender.com/"
-    fetchPosts()
+    //fetchPosts()
     getfollowed(0)
     getfollower(0)
+    fcd.getpost(0,"profile");
+   
 
     //------------getfollowed----------------------
 
@@ -296,7 +298,7 @@
 
     //--------------------------------GET POST------------------------------------
 
-
+/*
     function fetchPosts() {
 
       fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
@@ -345,7 +347,7 @@
             });
         })
     }
-
+*/
     //--------------------------------------------------------------------
     function openProfilePage() {
       window.location = `${url}profile`
@@ -509,6 +511,8 @@
 
   </script>
 </body>
+<script src="https://fin-chat.onrender.com/static/PageFacade.js"></script>
+
 <script src="./popupJs"></script>
 
 </html>

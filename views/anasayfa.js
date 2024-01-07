@@ -1,11 +1,10 @@
 //import { Facade,post } from "https://fin-chat.onrender.com/static/AnasayfaFacade.js";
 const url = "https://fin-chat.onrender.com/"
 
-const facade= new Facade();
-facade.anasayfaInterface();
+fcd.getpost(0,"home");
 
 
-//fetchPosts()
+
 
 
 //SEARCH BAR//
