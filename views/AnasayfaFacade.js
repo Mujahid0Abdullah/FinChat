@@ -155,31 +155,23 @@ class post {
           }
     }
   }
-   
-  class SubsystemC {
-    method() {
-      console.log('This is a method of Subsystem-C');
-    }
-  }
+  
   class Facade {
     constructor() {
       this.post = new post();
-      this.subsystemB = new SubsystemB();
-      this.subsystemC = new SubsystemC();
+     
     }
    
     anasayfaInterface() {
       this.post.fetchPosts();
-      this.subsystemB.method();
-      this.subsystemC.method();
+    
     }
 
     myprofileInterface() {
         const api ="/myposts";
         this.post.fetchmyPosts()
         this.post.fetchPosts(api);
-        this.subsystemB.method();
-        this.subsystemC.method();
+      
       }
   }
 
