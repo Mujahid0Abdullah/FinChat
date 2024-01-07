@@ -320,6 +320,11 @@
     displayUserInfo(0);
 
 */
+document.getElementById('update-user-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fcd.updateUser()
+})
+/*
     document.getElementById('update-user-form').addEventListener('submit', async function (event) {
       event.preventDefault();
 
@@ -361,7 +366,7 @@
 
     });
 
-
+*/
   </script>
 </body>
 

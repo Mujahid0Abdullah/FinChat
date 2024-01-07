@@ -1,6 +1,56 @@
 class page {
     getpost(userid){}
     getUserinfo(userid){}
+
+    updateUser(){
+
+        const fileInput = document.getElementById('profileImage');
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
+
+    const name = document.getElementById('firstnameLastname').value;
+    const password = document.getElementById('password').value;
+    const repeatPassword = document.getElementById('repeatPassword').value;
+
+    if (password === repeatPassword || name !== null) {
+        fetch('https://fin-chat.onrender.com/upload', {
+            method: 'POST',
+            body: formData,
+        })
+            .then(resImg => resImg.json())
+            .then(data => {
+                console.log(data);
+                const imgId = data.fileId;
+                console.log(imgId);
+
+                return fetch('https://fin-chat.onrender.com/users', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, password, imgId })
+                });
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('bilgileriniz güncellendi');
+                    location.reload();
+                } else {
+                    return response.json().then(errorMessage => {
+                        throw new Error(`Login failed: ${errorMessage}`);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while processing your request.');
+            });
+    } else {
+        alert("password aynı değil yada adı boş");
+    }
+    }
+
+
     getExchangeRates() {
         console.log('İstek başarılı bir şekilde atıldı');
 
@@ -412,6 +462,9 @@ class facade {
         this.page.gitCurrency();
     }
 
+    updateUser(){
+        this.page.updateUser();
+    }
 
 
 

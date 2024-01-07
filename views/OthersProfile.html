@@ -362,7 +362,12 @@
       
 
         //UPDATE USER DATA---------------------------------------------------------
-        document.getElementById('update-user-form').addEventListener('submit', async function (event) {
+
+        document.getElementById('update-user-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fcd.updateUser()
+})
+        /*document.getElementById('update-user-form').addEventListener('submit', async function (event) {
             event.preventDefault();
 
             const name = document.getElementById('firstnameLastname').value;
@@ -402,7 +407,7 @@
 
 
         });
-
+*/
 
     </script>
 </body>

@@ -7,7 +7,44 @@ fcd.getUserinfo(0,"home");
 
 fcd.getExchangeRates()
 
+document.getElementById('update-user-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fcd.updateUser()
+})
 
+function openProfilePage() {
+    window.location = `${url}profile`
+}
+
+function openHisProfilePage(userid) {
+    window.location = `${url}OthersProfile?userid=${userid}`
+}
+
+
+function postClicked(postId) {
+    // alert(postId)
+    window.location = `${url}post?postId=${postId}`
+}
+
+
+//LOGOUT
+function logoutUser() {
+    fetch(`${url}auths/logout`, { method: 'POST' })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Logout failed');
+        })
+        .then(data => {
+            console.log(data);
+
+            window.location.href = `${url}`;
+        })
+        .catch(error => {
+            console.error('Logout error:', error);
+        });
+}
 
 //SEARCH BAR//
 
@@ -73,6 +110,41 @@ inputElement.addEventListener('input', function (event) {
         });
 });
 
+document.getElementById('postForm').addEventListener('submit', function () {
+
+    const desc = document.getElementById('desc').value;
+
+
+    // Post verilerini obje olarak oluştur
+    const postData = {
+        desc: desc,
+
+    };
+
+    // POST isteği göndermek için fetch kullanımı
+    fetch(`${url}posts`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(postData)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Post eklendi:', data);
+            
+            
+        })
+        .catch(error => {
+            console.error('There was an error!', error);
+        });
+});
+
 
 /*
 function fetchPosts() {
@@ -120,39 +192,7 @@ function fetchPosts() {
 }*/
 
 
-function openProfilePage() {
-    window.location = `${url}profile`
-}
 
-function openHisProfilePage(userid) {
-    window.location = `${url}OthersProfile?userid=${userid}`
-}
-
-
-function postClicked(postId) {
-    // alert(postId)
-    window.location = `${url}post?postId=${postId}`
-}
-
-
-//LOGOUT
-function logoutUser() {
-    fetch(`${url}auths/logout`, { method: 'POST' })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Logout failed');
-        })
-        .then(data => {
-            console.log(data);
-
-            window.location.href = `${url}`;
-        })
-        .catch(error => {
-            console.error('Logout error:', error);
-        });
-}
 
 
 /*
@@ -165,40 +205,6 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 
 });*/
 
-document.getElementById('postForm').addEventListener('submit', function () {
-
-    const desc = document.getElementById('desc').value;
-
-
-    // Post verilerini obje olarak oluştur
-    const postData = {
-        desc: desc,
-
-    };
-
-    // POST isteği göndermek için fetch kullanımı
-    fetch(`${url}posts`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(postData)
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Post eklendi:', data);
-            
-            
-        })
-        .catch(error => {
-            console.error('There was an error!', error);
-        });
-});
 
 
 
@@ -293,6 +299,7 @@ function displayUserInfo(userid) {
 //---------------------------------------------------------------------
 //UPDATE USER //
 
+/*
 document.getElementById('update-user-form').addEventListener('submit', function (event) {
     event.preventDefault();
     const fileInput = document.getElementById('profileImage');
@@ -339,7 +346,7 @@ document.getElementById('update-user-form').addEventListener('submit', function 
     } else {
         alert("password aynı değil yada adı boş");
     }
-});
+});*/
 /*
 document.getElementById('update-user-form').addEventListener('submit', async function (event) {
     event.preventDefault();

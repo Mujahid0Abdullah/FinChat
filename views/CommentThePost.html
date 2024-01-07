@@ -162,7 +162,10 @@
         fcd.getExchangeRates()
         fetchPosts()
 
-
+        document.getElementById('update-user-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fcd.updateUser()
+})
 
         function openProfilePage() {
             window.location.href = "profile.html";
