@@ -105,7 +105,9 @@
     <form id="update-user-form">
         <div id="close-btn" onclick="closeDynamicPopup()">X</div>
         <div class="user-avatar-big" onclick="openProfilePictureInput()">
+            <div class="user-avatar"  style="height: 100%; width: 100%;">
             <img id="currentProfilePicture" src="" alt="">
+            </div>
             <div id="editProfilePicture"></div>
         </div>
         <input type="file" id="profileImage" accept="image/*" onchange="handleProfilePictureChange()">
