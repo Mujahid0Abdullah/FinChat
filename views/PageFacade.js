@@ -326,7 +326,6 @@ class commentPage extends page {
           return response.json();
         })
         .then(userInfo => {
-                const userInfo =  response.json();
 
                 const userInfoDiv = document.getElementById('userInfo');
                 const userInfoDiv2 = document.getElementById('userInfo2');
