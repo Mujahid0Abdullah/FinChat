@@ -246,7 +246,7 @@
 
         if (response.ok) {
           alert('post Silindi');
-          location.reload();
+          fcd.getpost(0,"profile");
           // window.location.href = './home';
         } else {
           const errorMessage = await response.json();

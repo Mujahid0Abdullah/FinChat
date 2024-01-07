@@ -229,6 +229,7 @@ class profile extends page {
           // Sunucudan gelen verileri işleme
           console.log(posts);
           const postsListContainer = document.getElementById('postsList');
+          postsListContainer.innerHTML="";
 
           posts.forEach(post => {
 
