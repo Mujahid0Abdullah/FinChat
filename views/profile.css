@@ -121,7 +121,7 @@ body {
     left: 0;
     right: 0;
     top: 120px;
-    width: 200px;
+    max-width: 200px;
     height: 50px;
     background-color: #BFBFBF;
     display: flex;
