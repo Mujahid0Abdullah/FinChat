@@ -134,21 +134,24 @@
     </div>
 
     <div id="dynamic-popup">
-        <div id="close-btn" onclick="closeDynamicPopup()">X</div>
-        <div class="user-avatar-big" onclick="openProfilePictureInput()">
-            <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
-            <div id="editProfilePicture"></div>
-        </div>
-        <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
-        <br>
-        <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
-        <br>
-        <input type="password" id="password" placeholder="Password">
-        <br>
-        <input type="password" id="repeatPassword" placeholder="Repeat Password">
-        <br>
-        <button id="save-btn" onclick="">Save</button>
+        <form id="update-user-form">
+            <div id="close-btn" onclick="closeDynamicPopup()">X</div>
+            <div class="user-avatar-big" onclick="openProfilePictureInput()">
+                <img id="currentProfilePicture" src="" alt="">
+                <div id="editProfilePicture"></div>
+            </div>
+            <input type="file" id="profileImage" accept="image/*" onchange="handleProfilePictureChange()">
+            <br>
+            <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
+            <br>
+            <input type="password" id="password" placeholder="Password">
+            <br>
+            <input type="password" id="repeatPassword" placeholder="Repeat Password">
+            <br>
+            <button type="submit" id="save-btn">Save</button>
+        </form>
     </div>
+
     <script src="https://fin-chat.onrender.com/static/PageFacade.js"></script>
 
     <script>
@@ -384,46 +387,9 @@
         }
 
 
-
-
-
-        //
         document.getElementById("sendButton").addEventListener("click", function () {
             location.reload();
         });
-/*
-        displayUserInfo();
-        async function displayUserInfo() {
-            try {
-                const response = await fetch('/users?userid=0');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user info');
-                }
-                const userInfo = await response.json();
-
-                const userInfoDiv = document.getElementById('userInfo');
-                const userInfoDiv2 = document.getElementById('userInfo2');
-                const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
-        document.getElementById('user-avatar-big3').src =img;
-        document.getElementById('user-avatar-big4').src =img;
-
-
-
-                userInfoDiv.innerHTML = `               
-          <p>${userInfo.name}</p>          
-        `;
-
-                userInfoDiv2.innerHTML = `               
-        <div style="text-align: center;">
-    <p style="font-weight: bold;">${userInfo.name}</p>
-</div>        `;
-       -
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-*/
-
 
     </script>
 </body>

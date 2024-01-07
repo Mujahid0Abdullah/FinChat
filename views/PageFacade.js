@@ -31,6 +31,39 @@ class page {
       })
       .catch(error => console.error('Veri alınamadı:', error));
     }
+
+
+    gitCurrency() {
+    
+   
+
+        // CoinGecko API'sinden veri çekme
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,litecoin,ripple,dogecoin&vs_currencies=try')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+        
+              console.log(data.bitcoin.try)
+            // Kripto paraların fiyatlarını alm
+            document.getElementById('bitcoin').textContent= "Bitcoin: "+data.bitcoin.try
+            document.getElementById('Ethereum').textContent="Ethereum: "+data.ethereum.try
+            document.getElementById('Litecoin').textContent="Litecoin: "+data.litecoin.try
+            document.getElementById('Dogecoin').textContent="Dogecoin: "+data.dogecoin.try
+           
+            // İstek başarılı olduğunda konsola mesaj yazdırma
+            console.log('İstek başarıyla yapıldı.');
+    
+            // İstek sayısını artırma
+           
+          })
+          .catch(error => {
+            console.error('API çağrısı sırasında bir hata oluştu:', error);
+          });
+      }
 }
 
 
@@ -375,7 +408,8 @@ class facade {
     }
 
     getExchangeRates(){
-        this.page.getExchangeRates()
+        this.page.getExchangeRates();
+        this.page.gitCurrency();
     }
 
 

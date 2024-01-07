@@ -111,23 +111,24 @@
     </div>
 
     <div id="dynamic-popup">
-        <form id="update-user-form">
-            <div id="close-btn" onclick="closeDynamicPopup()">X</div>
-            <div class="user-avatar-big" onclick="openProfilePictureInput()">
-                <img id="currentProfilePicture" src="path/to/user/avatar.jpg" alt="">
-                <div id="editProfilePicture"></div>
-            </div>
-            <input type="file" id="profilePictureInput" accept="image/*" onchange="handleProfilePictureChange()">
-            <br>
-            <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
-            <br>
-            <input type="password" id="password" placeholder="Password">
-            <br>
-            <input type="password" id="repeatPassword" placeholder="Repeat Password">
-            <br>
-            <button type="submit" id="save-btn">Save</button>
-        </form>
-    </div>
+      <form id="update-user-form">
+          <div id="close-btn" onclick="closeDynamicPopup()">X</div>
+          <div class="user-avatar-big" onclick="openProfilePictureInput()">
+              <img id="currentProfilePicture" src="" alt="">
+              <div id="editProfilePicture"></div>
+          </div>
+          <input type="file" id="profileImage" accept="image/*" onchange="handleProfilePictureChange()">
+          <br>
+          <input type="text" id="firstnameLastname" placeholder="First Name Last Name">
+          <br>
+          <input type="password" id="password" placeholder="Password">
+          <br>
+          <input type="password" id="repeatPassword" placeholder="Repeat Password">
+          <br>
+          <button type="submit" id="save-btn">Save</button>
+      </form>
+  </div>
+
     <script src="https://fin-chat.onrender.com/static/PageFacade.js"></script>
     <script>
 
