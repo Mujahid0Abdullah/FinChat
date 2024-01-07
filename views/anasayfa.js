@@ -5,6 +5,7 @@ fcd.getpost(0,"home");
 fcd.getUserinfo(0,"home");
 
 
+fcd.getExchangeRates()
 
 
 

@@ -2,42 +2,34 @@ class page {
     getpost(userid){}
     getUserinfo(userid){}
     getExchangeRates() {
-        const apiKey = 'e2d37d6b14c2e615ce74c8d0';
-        const baseCurrency = 'USD';
-        const apiUrl = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${baseCurrency}`;
+        console.log('İstek başarılı bir şekilde atıldı');
+
+    // JSON verisini çekelim
+    fetch('https://finans.truncgil.com/v3/today.json')
+      .then(response => response.json())
+      .then(data => {
+          console.log(data);
+          console.log(data["14-ayar-altin"].Buying)
+          console.log(data["22-ayar-bilezik"].Buying)
+           document.getElementById('dolar-try').textContent ="USD To TR: "+data["USD"].Buying;
+         document.getElementById('euro-try').textContent="EUR To TR: "+data["EUR"].Buying;
+            document.getElementById('sterlin-try').textContent="GBP To TR: "+data["GBP"].Buying;
+            document.getElementById('pln-try').textContent="PLN To TR : "+data["PLN"].Buying;
+
+          document.getElementById('22altin').textContent="22 Ayar Altın: "+data["22-ayar-bilezik"].Buying;
+
+          document.getElementById('Caltin').textContent="Çeyrek Altın: "+data["ceyrek-altin"].Buying;
+          document.getElementById('gumus').textContent="Gümüş: "+data["gumus"].Buying;
+          document.getElementById('cumhuriyet-altini').textContent="C. Altını: "+data["cumhuriyet-altini"].Buying;
     
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const dollarToTRY = document.getElementById('dolar-try');
-                const usdToTRY = data.conversion_rates.TRY;
-                dollarToTRY.textContent = `USD to TRY: ${usdToTRY.toFixed(5)}`; // Döviz kuru bilgisini gösterir
-    
-    
-                const usdToEUR = data.conversion_rates.EUR;
-                const eurToTRY = (1 / usdToEUR) * usdToTRY;
-                const euroToTRY = document.getElementById('euro-try');
-                //const eurToTRY = data.conversion_rates.EUR;
-                euroToTRY.textContent = `EUR to TRY: ${eurToTRY.toFixed(5)}`;
-    
-                const gbpToTRY = document.getElementById('sterlin-try');
-                const usdToGBP = data.conversion_rates.GBP;
-                const gbpToTRYValue = (1 / usdToGBP) * usdToTRY;
-                gbpToTRY.textContent = `GBP to TRY: ${gbpToTRYValue.toFixed(5)}`;
-    
-                const plnToTRY = document.getElementById('pln-try');
-                const usdToPLN = data.conversion_rates.PLN;
-                const plnToTRYValue = (1 / usdToPLN) * usdToTRY;
-                plnToTRY.textContent = `PLN to TRY: ${plnToTRYValue.toFixed(5)}`;
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
+
+      
+        
+
+        // Bir sonraki isteği 10 saniye sonra atalım
+        
+      })
+      .catch(error => console.error('Veri alınamadı:', error));
     }
 }
 
@@ -316,26 +308,79 @@ class othersProfile extends page {
 }
 
 
+
+class commentPage extends page {
+
+    constructor(){
+        super();
+        this.url = "https://fin-chat.onrender.com/";
+    }
+
+    getUserinfo(userid){
+        
+        fetch(`${this.url}users?userid=${userid}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(userInfo => {
+                const userInfo =  response.json();
+
+                const userInfoDiv = document.getElementById('userInfo');
+                const userInfoDiv2 = document.getElementById('userInfo2');
+                const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
+        document.getElementById('user-avatar-big3').src =img;
+        document.getElementById('user-avatar-big4').src =img;
+
+
+
+                userInfoDiv.innerHTML = `               
+          <p>${userInfo.name}</p>          
+        `;
+
+                userInfoDiv2.innerHTML = `               
+        <div style="text-align: center;">
+    <p style="font-weight: bold;">${userInfo.name}</p>
+</div>        `;
+    
+})
+.catch(error => {
+  console.error('Error fetching user info:', error);
+});
+        }
+    
+
+}
+
+
 class facade {
     constructor(){
         this.home = new homePage();
         this.profile = new profile();
         this.othersprofile = new othersProfile();
+        this.commentPage= new commentPage();
+        this.page = new page() 
     }
 
     getpost(id, pageType){
         if (pageType =="home"){
             this.home.getpost(id)
-            this.home.getExchangeRates()
         }else if (pageType =="profile"){
             this.profile.getpost(id);
-            this.profile.getExchangeRates()
         }else if (pageType =="othersProfile"){
             this.othersprofile.getpost(id);
-            this.othersprofile.getExchangeRates()
 
         }
     }
+
+    getExchangeRates(){
+        this.page.getExchangeRates()
+    }
+
+
+
 
     getUserinfo(id, pageType){
         if (pageType =="home"){
@@ -344,9 +389,10 @@ class facade {
             this.profile.getUserinfo(id);
         }else if (pageType =="othersProfile"){
             this.othersprofile.getUserinfo(id);
-
-        }
+        }else if (pageType =="commentpage"){
+            this.commentPage.getUserinfo(id);
     }
+}
 
 
 }

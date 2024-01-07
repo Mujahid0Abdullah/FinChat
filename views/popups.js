@@ -57,6 +57,7 @@ function closePopupWithDelay() {
 
     }, 100); // 1 saniye gecikme
 };
+/*
 function istekAt() {
     // Her istek atıldığında console ekranına istek başarılı bir şekilde atıldı mesajı verelim
     console.log('İstek başarılı bir şekilde atıldı');
@@ -89,7 +90,7 @@ function istekAt() {
       .catch(error => console.error('Veri alınamadı:', error));
   }
   istekAt();
-
+*/
   function updateData() {
     
    

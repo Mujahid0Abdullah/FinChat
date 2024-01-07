@@ -149,12 +149,14 @@
         <br>
         <button id="save-btn" onclick="">Save</button>
     </div>
+    <script src="https://fin-chat.onrender.com/static/PageFacade.js"></script>
 
     <script>
         const url = "https://fin-chat.onrender.com/";
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('postId');
-
+        fcd.getUserinfo(0,"commentpage")
+        fcd.getExchangeRates()
         fetchPosts()
 
 
@@ -389,7 +391,7 @@
         document.getElementById("sendButton").addEventListener("click", function () {
             location.reload();
         });
-
+/*
         displayUserInfo();
         async function displayUserInfo() {
             try {
@@ -415,15 +417,12 @@
         <div style="text-align: center;">
     <p style="font-weight: bold;">${userInfo.name}</p>
 </div>        `;
-        /*userInfoDiv2.innerHTML = `               
-        <div style="text-align: center;">
-    <p style="font-weight: bold;">${userInfo.name}</p>
-</div>        `*/;
+       -
             } catch (error) {
                 console.error('Error:', error);
             }
         }
-
+*/
 
 
     </script>
