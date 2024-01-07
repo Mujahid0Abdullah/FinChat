@@ -2,6 +2,7 @@
 const url = "https://fin-chat.onrender.com/"
 
 fcd.getpost(0,"home");
+fcd.getUserinfo(0,"home");
 
 
 
@@ -153,7 +154,7 @@ function logoutUser() {
 }
 
 
-
+/*
 document.getElementById('postForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Sayfanın yenilenmesini engellemek için formun varsayılan davranışını engeller
 
@@ -161,8 +162,8 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
     const desc = document.getElementById('desc').value;
     desc.value="";
 
-});//Post eklendi//
-/*
+});*/
+
 document.getElementById('postForm').addEventListener('submit', function () {
 
     const desc = document.getElementById('desc').value;
@@ -190,13 +191,13 @@ document.getElementById('postForm').addEventListener('submit', function () {
         })
         .then(data => {
             console.log('Post eklendi:', data);
-            fetchPosts();
-            // İsteğin başarılı olduğu durumda, istediğiniz işlemleri burada gerçekleştirin
+            
+            
         })
         .catch(error => {
             console.error('There was an error!', error);
         });
-});*/
+});
 
 
 
@@ -242,6 +243,9 @@ async function displayUserInfo(userid) {
     }
 }*/
 
+
+//in facade----------------------------------------
+/*
 displayUserInfo(0);
 function displayUserInfo(userid) {
     fetch(`${url}users?userid=${userid}`)
@@ -283,9 +287,9 @@ function displayUserInfo(userid) {
       .catch(error => {
         console.error('Error fetching user info:', error);
       });
-  }
+  }*/
 
-
+//---------------------------------------------------------------------
 //UPDATE USER //
 
 document.getElementById('update-user-form').addEventListener('submit', function (event) {
@@ -381,44 +385,4 @@ document.getElementById('update-user-form').addEventListener('submit', async fun
     } else { alert("password aynı değil yada adı boş") }
 });*/
 
-/*
-document.getElementById('uploadButton').addEventListener('click', () => {
-    const fileInput = document.getElementById('fileInput');
-    const formData = new FormData();
-    formData.append('file', fileInput.files[0]);
 
-    fetch('/api/upload', {
-      method: 'POST',
-      body: formData,
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Dosya yüklendi:', data);
-        // İşlem tamamlandıktan sonra yapılacak işlemler
-      })
-      .catch(error => {
-        console.error('Hata:', error);
-        // Hata durumunda yapılacak işlemler
-      });
-  });*/
-
-//İMG GÖSTERMEK
-function openImageView() {
-    var fileInput = document.createElement("input");
-    fileInput.type = "file";
-
-    fileInput.addEventListener("change", function () {
-        var selectedFile = fileInput.files[0];
-        if (selectedFile) {
-            var imageViewer = document.getElementById("imageViewer");
-            imageViewer.innerHTML = '<img src="' + URL.createObjectURL(selectedFile) + '" alt="Uploaded Image">';
-        }
-    });
-
-    fileInput.click();
-}

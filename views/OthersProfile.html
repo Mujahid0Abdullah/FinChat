@@ -139,8 +139,11 @@
         //fetchPosts()
         getfollowed(id); 
         //getfollower(id);
-        displayUserInfo(id)
+       // displayUserInfo(id)
         fcd.getpost(id, "othersProfile")
+        fcd.getUserinfo(id, "othersProfile")
+
+
 /*
         function fetchPosts() {
 
@@ -302,7 +305,9 @@
         });
     }*/
         //USER DATA________---------------------------------------------
-        function displayUserInfo(userid) {
+
+        //facaede-------------------
+   /*     function displayUserInfo(userid) {
     fetch(`${url}users?userid=${userid}`)
       .then(response => {
         if (!response.ok) {
@@ -329,7 +334,7 @@
         console.error('Error fetching user info:', error);
       });
   }
-
+*/
 /*
         async function displayUserInfo(userid) {
             try {

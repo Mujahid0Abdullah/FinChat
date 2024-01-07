@@ -127,94 +127,10 @@
     getfollowed(0)
     getfollower(0)
     fcd.getpost(0,"profile");
-   
-
-    //------------getfollowed----------------------
-
-    /* function getfollowed() {
- 
-       fetch(`${url}follow/my?followerUserId=${followerUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-         .then(response => response.json())
-         .then(users => {
-           // Sunucudan gelen verileri işleme
-           console.log(users);
-           const postsListContainer = document.getElementById('followedList');
-           postsListContainer.innerHTML = "";
- 
-           users.forEach(user => {
- 
-             let postContent = `
-         
- 
-             <div class="view-profiles">
- 
-               <div class="left-column-vp">
- 
-                 <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
-                   <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
-                 </div>
- 
-               </div>
- 
-               <div class="right-column-vp">
-               ${user.name}
-               </div>
-             </div>
-     `;
- 
-             postsListContainer.innerHTML += postContent
- 
-           })
-             .catch(error => {
-               console.error('Error fetching posts:', error);
-             });
-         })
-     }*/
+    fcd.getUserinfo(0,"profile");
 
 
-
-
-    //------------getfollower---------------------
-    /*
-        function getfollower() {
-    
-          fetch(`${url}follow/?followedUserId=${followedUserId}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-            .then(response => response.json())
-            .then(users => {
-              // Sunucudan gelen verileri işleme
-              console.log(users);
-              const postsListContainer = document.getElementById('followerList');
-              postsListContainer.innerHTML = "";
-    
-              users.forEach(user => {
-    
-                let postContent = `
-            
-    
-                <div class="view-profiles">
-    
-                  <div class="left-column-vp">
-    
-                    <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
-                      <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
-                    </div>
-    
-                  </div>
-    
-                  <div class="right-column-vp">
-                  ${user.name}
-                  </div>
-                </div>
-        `;
-    
-                postsListContainer.innerHTML += postContent
-    
-              })
-                .catch(error => {
-                  console.error('Error fetching posts:', error);
-                });
-            })
-        }*/
+  
     // getfollowed işlevi güncellenmiş hali
 
     function getfollowed(followerUserId) {
@@ -298,56 +214,6 @@
 
     //--------------------------------GET POST------------------------------------
 
-/*
-    function fetchPosts() {
-
-      fetch(`${url}posts/myposts`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-        .then(response => response.json())
-        .then(posts => {
-          // Sunucudan gelen verileri işleme
-          console.log(posts);
-          const postsListContainer = document.getElementById('postsList');
-
-          posts.forEach(post => {
-
-            let postContent = `
-                    
-            <div class="post-view" >
-                <div class="left-column">
-                    <div class="user-avatar-big">
-                      <div class="user-avatar" style="height: 100%; width: 100%;">
-                        <img src="https://lh3.googleusercontent.com/d/${post.profilePic}">
-                      </div>
-                    </div>
-                    <div class="user-name">${post.name}</div>
-                </div>
-                <div class="right-column">
-                    <div class="upper-row">
-                        <textarea readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
-                     </div>
-
-                    <div class="lower-row">
-                        <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
-                      <button onclick="Deletepost(${post.id})" id="DeleteButton">
-                          <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/delete.png" alt="Button Image">
-                      </button>
-                      <button onclick="postClicked(${post.id})"  id="commentsButton">
-                          <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
-                      </button>
-                    </div>
-                </div>
-            </div>
-                `;
-
-            postsListContainer.innerHTML += postContent
-
-          })
-            .catch(error => {
-              console.error('Error fetching posts:', error);
-            });
-        })
-    }
-*/
     //--------------------------------------------------------------------
     function openProfilePage() {
       window.location = `${url}profile`
@@ -414,28 +280,12 @@
 
 
 
-/*
-    async function displayUserInfo(userid) {
-      try {
-        const response = await fetch(`/users?userid=${userid}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch user info');
-        }
-        const userInfo = await response.json();
-
-        const userInfoDive = document.getElementById('userInfo222');
-        const img= "https://lh3.googleusercontent.com/d/" + userInfo.profilePic
-        document.getElementById('user-avatar-big3').src =img;
 
 
-        userInfoDive.innerHTML = `               
-        <div style="text-align: center;">
-    <p style="font-weight: bold;">${userInfo.name}</p>
-</div>        `;
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }*/
+//facade ----------------------------------------
+
+
+    /*
     function displayUserInfo(userid) {
     fetch(`${url}users?userid=${userid}`)
       .then(response => {
@@ -466,7 +316,7 @@
   }
     displayUserInfo(0);
 
-
+*/
     document.getElementById('update-user-form').addEventListener('submit', async function (event) {
       event.preventDefault();
 
