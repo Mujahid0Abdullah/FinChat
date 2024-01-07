@@ -90,7 +90,7 @@ function istekAt() {
       .catch(error => console.error('Veri alınamadı:', error));
   }
   istekAt();
-*/
+*//*
   function updateData() {
     
    
@@ -123,7 +123,7 @@ function istekAt() {
       });
   }
   updateData();
-
+*/
 
 
 // API'den döviz kuru verilerini almak için fonksiyonu çağıralım
