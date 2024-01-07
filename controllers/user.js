@@ -39,16 +39,7 @@ export const finduser = (req, res) => {
 export const updateUser = (req, res) => {
 
     console.log("Password:", req.body.password);
-    /*
-    const files = req.files;
 
-    // Resim dosyasını bul
-    console.log(req.file)
-    console.log(req.files)
-    const formData = req.body
-
-    uploadFile(req.files.file);
-*/
     //hash password
     const Salt = bcrypt.genSaltSync(10); // şifreleme metodu
     const hashedPassword = bcrypt.hashSync(req.body.password, Salt)

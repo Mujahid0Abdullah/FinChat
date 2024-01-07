@@ -21,7 +21,6 @@ export const getRelationships = (req, res) => {
 
 export const getmyRelationships = (req, res) => {
     const q = "SELECT r.* ,u.id, name, profilePic  FROM relationships r JOIN users u ON (u.id = r.followedUserId) WHERE r.followerUserId = ?";
-    //"SELECT p.*, u.id AS userId, name, profilePic FROM posts p JOIN users u ON (u.id = p.userId) WHERE u.id=? ORDER BY p.createdAt DESC"
     let id = req.query.followerUserId;
     console.log(id)
     if (id == 0) { id = req.userInfo.id }
