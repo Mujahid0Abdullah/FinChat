@@ -2,6 +2,155 @@ const urlParamss = new URLSearchParams(window.location.search);
 const followedUserId = urlParamss.get('userid');
 const urls = "https://fin-chat.onrender.com/";
 
+
+
+class FollowButtonObserver {
+  constructor(buttonElement) {
+    this.button = buttonElement;
+    this.isFollowing = false;
+  }
+
+  update(isFollowing) {
+    this.isFollowing = isFollowing;
+    this.button.textContent = isFollowing ? 'Unfollow' : 'Follow';
+  }
+}
+
+class followerlistobserver{
+    constructor(followedUserId){
+        this.followedUserId= followedUserId;
+        this.isFollowing=false;
+        
+    }
+
+    getfollower(followedUserId) {
+        fetch(`${url}follow/?followedUserId=${followedUserId}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(users => {
+            console.log(users);
+            const postsListContainer = document.getElementById('followerList');
+            postsListContainer.innerHTML = "";
+  
+            users.forEach(user => {
+              let postContent = `
+            <div class="view-profiles">
+              <div class="left-column-vp">
+                <div class="user-avatar-vp" onclick="openHisProfilePage(${user.id})">
+                  <div class="user-avatar"  style="height: 100%; width: 100%;">
+                  <img src="https://lh3.googleusercontent.com/d/${user.profilePic}">
+                  </div>
+                </div>
+              </div>
+  
+              <div class="right-column-vp">
+                ${user.name}
+              </div>
+            </div>
+          `;
+              postsListContainer.innerHTML += postContent;
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching followers:', error);
+          });
+      }
+
+    update(isFollowing){
+       
+            this.getfollower(this.followedUserId)
+        
+        this.isFollowing= isFollowing;
+        
+    }
+
+}
+class FollowSubject {
+  constructor() {
+    this.observers = [];
+  }
+
+  attach(observer) {
+    this.observers.push(observer);
+  }
+
+  detach(observer) {
+    this.observers = this.observers.filter(obs => obs !== observer);
+  }
+
+  notify() {
+    this.observers.forEach(observer => observer.update(this.isFollowing));
+  }
+
+  async checkFollowStatus(followedUserId) {
+    const response = await fetch(`${urls}follow/check?followedUserId=${followedUserId}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    this.isFollowing = data;
+    this.notify();
+  }
+
+  async follow(followedUserId) {
+    const response = await fetch(`${urls}follow`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: followedUserId })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    this.isFollowing = true;
+    this.notify();
+  }
+
+  async unfollow(followedUserId) {
+    const response = await fetch(`${urls}follow`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userId: followedUserId })
+    });
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    this.isFollowing = false;
+    this.notify();
+  }
+}
+
+const followSubject = new FollowSubject();
+const buttonObserver = new FollowButtonObserver(document.getElementById('follow-unfollowButton'));
+followSubject.attach(buttonObserver);
+const listobserver = new followerlistobserver(followedUserId)
+followSubject.attach(listobserver);
+// Initial check on page load
+followSubject.checkFollowStatus(followedUserId);
+
+// Button click handler
+document.getElementById('follow-unfollowButton').addEventListener('click', async () => {
+  try {
+    if (buttonObserver.isFollowing) {
+      await followSubject.unfollow(followedUserId);
+    } else {
+      await followSubject.follow(followedUserId);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    // Handle error appropriately
+  }
+});
+
+
+
 /*
 function checkAndToggleFollowButton() {
     const relationshipButton = document.getElementById('follow-unfollowButton');
@@ -130,99 +279,8 @@ function delfollow() {
 
 
 
-
-
-
-class FollowButtonObserver {
-  constructor(buttonElement) {
-    this.button = buttonElement;
-    this.isFollowing = false;
-  }
-
-  update(isFollowing) {
-    this.isFollowing = isFollowing;
-    this.button.textContent = isFollowing ? 'Unfollow' : 'Follow';
-  }
-}
-
-class FollowSubject {
-  constructor() {
-    this.observers = [];
-  }
-
-  attach(observer) {
-    this.observers.push(observer);
-  }
-
-  detach(observer) {
-    this.observers = this.observers.filter(obs => obs !== observer);
-  }
-
-  notify() {
-    this.observers.forEach(observer => observer.update(this.isFollowing));
-  }
-
-  async checkFollowStatus(followedUserId) {
-    const response = await fetch(`${urls}follow/check?followedUserId=${followedUserId}`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    this.isFollowing = data;
-    this.notify();
-  }
-
-  async follow(followedUserId) {
-    const response = await fetch(`${urls}follow`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: followedUserId })
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    this.isFollowing = true;
-    this.notify();
-  }
-
-  async unfollow(followedUserId) {
-    const response = await fetch(`${urls}follow`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ userId: followedUserId })
-    });
-
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-
-    this.isFollowing = false;
-    this.notify();
-  }
-}
-
-const followSubject = new FollowSubject();
-const buttonObserver = new FollowButtonObserver(document.getElementById('follow-unfollowButton'));
-followSubject.attach(buttonObserver);
-
-// Initial check on page load
-followSubject.checkFollowStatus(followedUserId);
-
-// Button click handler
-document.getElementById('follow-unfollowButton').addEventListener('click', async () => {
-  try {
-    if (buttonObserver.isFollowing) {
-      await followSubject.unfollow(followedUserId);
-    } else {
-      await followSubject.follow(followedUserId);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    // Handle error appropriately
-  }
-});
+//------------------------------------------------------------------
+//------------------------------------------------------------------
 
 /*document.getElementById( 'follow-unfollowButton').addEventListener('click', function () {
     if (document.getElementById('follow-unfollowButton').textContent === 'Follow') {
