@@ -357,12 +357,13 @@
             let date = document.getElementById("post-date").value;
             console.log(value);
             console.log(date);
+            const con=`bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` ;
+            console.log(con);
 
             let body = {
                 model: "gpt-3.5-turbo",
-                messages: [{ role: "user", content: `"bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` }],
+                messages: [{ role: "user", content:con }],
                 tempreture: "1",
-                max_tokens: 30
             };
 
             let headers = {
