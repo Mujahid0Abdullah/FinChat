@@ -131,7 +131,10 @@
     fcd.getpost(0,"profile");
     fcd.getUserinfo(0,"profile");
     fcd.getExchangeRates()
-
+    document.getElementById('update-user-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fcd.updateUser()
+})
 
 
   
@@ -216,9 +219,6 @@
           console.error('Error fetching followers:', error);
         });
     }
-
-
-    //--------------------------------GET POST------------------------------------
 
     //--------------------------------------------------------------------
     function openProfilePage() {
@@ -323,10 +323,7 @@
     displayUserInfo(0);
 
 */
-document.getElementById('update-user-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    fcd.updateUser()
-})
+
 /*
     document.getElementById('update-user-form').addEventListener('submit', async function (event) {
       event.preventDefault();
