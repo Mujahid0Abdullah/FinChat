@@ -39,16 +39,16 @@
                 <div class="popup-content" onclick="logoutUser()">Log Out</div>
 
             </div>
-            <label for="search"
-            style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Follower</label>
+            <label for="search" id="follower"
+            style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Follower </label>
     
           <div id="followerList" class="You-Follow-Follows-You-container">
     
     
           </div>
     
-          <label for="search"
-            style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Followed</label>
+          <label for="search" id="followed"
+            style="font-size: 25px; font-weight: bold; text-align: center; display: block; margin: 0 auto;">Followed </label>
     
           <div id="followedList" class="You-Follow-Follows-You-container">
     
@@ -245,7 +245,7 @@
           console.log(users);
           const postsListContainer = document.getElementById('followedList');
           postsListContainer.innerHTML = "";
-
+          document.getElementById('followed').value = users.length 
           users.forEach(user => {
             let postContent = `
           <div class="view-profiles">
