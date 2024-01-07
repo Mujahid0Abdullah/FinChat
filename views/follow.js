@@ -35,7 +35,7 @@ class followerlistobserver{
             console.log(users);
             const postsListContainer = document.getElementById('followerList');
             postsListContainer.innerHTML = "";
-            document.getElementById('follower').value = users.length 
+            document.getElementById('follower').textContent ="Follower " +users.length 
   
             users.forEach(user => {
               let postContent = `
