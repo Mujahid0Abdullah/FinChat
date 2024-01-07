@@ -5,6 +5,7 @@ class page {
 
 class homePage extends page {
     constructor(){
+        super();
         this.url = "https://fin-chat.onrender.com/";
     }
 
@@ -59,6 +60,7 @@ class homePage extends page {
 class profile extends page {
 
     constructor(){
+        super();
         this.url = "https://fin-chat.onrender.com/";
     }
 
@@ -116,6 +118,7 @@ class profile extends page {
 class othersProfile extends page {
 
     constructor(){
+        super();
         this.url = "https://fin-chat.onrender.com/";
     }
 
