@@ -387,7 +387,8 @@
         let reply = data.choices[0].message.content;
         console.log(reply);
         document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
-                sendComment();
+        if(data != null){
+                sendComment();}
     })
     .catch(error => {
         console.error('There was an error!', error);
