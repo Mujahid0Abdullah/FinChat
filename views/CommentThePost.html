@@ -351,6 +351,48 @@
         document.getElementById("gptButton").addEventListener("click", function () {
             sendToChatGPT();
         });
+        function sendToChatGPT1() {
+  
+
+    let value = document.getElementById("post").value;
+            let date = document.getElementById("post-date").value;
+            console.log(value);
+            console.log(date);
+            const con=`bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` ;
+            console.log(con);
+
+    let body = {
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: con }],
+        temperature: 1, // It should be "temperature", not "tempreture"
+    };
+//
+    fetch("https://api.openai.com/v1/chat/completions", {
+        method: 'POST',
+        
+        headers: {
+        'content-type': 'application/json;charset=UTF-8',
+        'authorization': 'Bearer '+PROCESS.env.OPENKEY
+        },
+        body: JSON.stringify(body),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('comment eklendi:', data);
+        let reply = data.choices[0].message.content;
+        console.log(reply);
+        document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
+                sendComment();
+    })
+    .catch(error => {
+        console.error('There was an error!', error);
+    });
+}
 
         function sendToChatGPT() {
             let value = document.getElementById("post").value;
@@ -365,9 +407,9 @@
                 messages: [{ role: "user", content:con }],
                 tempreture: "1",
             };
-
+//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
             let headers = {
-                Authorization: "Bearer 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",
+                Authorization: "Bearer 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",
                 "Content-Type": "application/json",
             };
 

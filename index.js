@@ -6,6 +6,9 @@ import { db } from "./connect.js";
 import multer from "multer";
 import { uploadFile, generatePublicUrl } from "./googleimage.js"; //.js
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 
 console.log("im here listening");
