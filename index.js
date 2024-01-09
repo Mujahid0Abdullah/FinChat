@@ -74,7 +74,7 @@ app.post('/getGPTResponse', async (req, res) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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'// + process.env.OPENKEY, // Use your actual API key here
+          'Authorization': 'Bearer '+ process.env.OPENKEY, // Use your actual API key here
         },
         body: JSON.stringify(body),
       });
