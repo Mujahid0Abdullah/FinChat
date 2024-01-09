@@ -336,15 +336,17 @@
             .then(data => {
                 console.log('ai:', data);
                 let reply = data.sentiment;
-                if(reply=="neg"){sentiment=0;}
-             
+                console.log('ai:',reply);
+                if(reply=="neg"){sentiment=0; console.log(sentiment);}
+                console.log(sentiment);
+
                 
             })
             .catch(error => {
                 console.error('There was an error!', error);
             });
 
-            
+            console.log("diş"+sentiment);
             const commentData = {
                 desc: desc,
                 sentiment: sentiment
@@ -367,8 +369,9 @@
                     })
                     .then(data => {
                         console.log('comment eklendi:', data);
-                        desc="";
-                     
+                        
+                        fetchComments()
+            document.getElementById('desc').value="";
                     })
 
                     .catch(error => {
@@ -379,8 +382,7 @@
                     
 
             } else { alert("yorum boş olmaz") }
-            fetchComments()
-            document.getElementById('desc').value="";
+            
 
         }
 
