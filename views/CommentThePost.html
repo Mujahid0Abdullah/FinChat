@@ -60,7 +60,7 @@
 
 
 
-            <form id="commentForm">
+           
                 <div class="share-comment">
                     <div class="left-column">
                         <div class="user-avatar-small">
@@ -77,19 +77,19 @@
                         </div>
 
                         <div class="lower-row">
-                            <button type="submit" id="gptButton" style="background-color: aquamarine;">
+                            <button type="click" id="gptButton" style="background-color: aquamarine;">
                                 <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
                                     alt="Button Image">
                             </button>
 
-                            <button type="submit" id="sendButton">
+                            <button type="click" id="sendButton">
                                 <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/send.png"
                                     alt="Button Image">
                             </button>
                         </div>
                     </div>
                 </div>
-            </form>
+            
 
             <div id="commentsList"></div>
 
@@ -304,8 +304,8 @@
         //-------------SET COMMENT------------//
 
 
-        document.getElementById('commentForm').addEventListener('submit', function (event) {
-            event.preventDefault();
+        document.getElementById('sendButton').addEventListener('click', function () {
+            
             sendComment();
             fetchComments()
         });
