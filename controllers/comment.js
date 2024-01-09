@@ -15,15 +15,16 @@ export const getComments = (req, res) => {
 function acc(id){
     let oran =0
     let all=1
+
     const q = "SELECT count(sentiment) as oran FROM comments  WHERE postId = ? and sentiment=1"
     db.query(q, [id], (err, data) => {
           oran= data.oran
-          const q2 = "SELECT count(sentiment) as all FROM comments  WHERE postId = ? "
+          const q2 = "SELECT count(sentiment) as al FROM comments  WHERE postId = ? "
           db.query(q2, [id], (err, data) => {
              
-              console.log("dataall"+data.all)
+              console.log("dataall"+data.al)
       
-              all= data.all
+              all= data.al
               console.log("alliç"+all)
 
               console.log("alldiş"+all)
