@@ -356,7 +356,7 @@
   
 
   let value = document.getElementById("post").value;
-          let date = document.getElementById("post-date").value;
+          let date = document.getElementById("post-date").textContent;
           console.log(value);
           console.log(date);
           const content=`bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` ;
@@ -370,7 +370,7 @@
       headers: {
                         'Content-Type': 'application/json'
                     },
-      body: JSON.stringify(content),
+      body: JSON.stringify({content}),
   })
   .then(response => {
       if (!response.ok) {
