@@ -320,7 +320,7 @@
 
             };
 
-            if (desc != null || desc != "") {
+            if (desc != null && desc != "") {
 
                 fetch(`${url}comments?postId=${id}`, {
                     method: 'POST',
@@ -351,7 +351,46 @@
         document.getElementById("gptButton").addEventListener("click", function () {
             sendToChatGPT1();
         });
+
         function sendToChatGPT1() {
+  
+
+  let value = document.getElementById("post").value;
+          let date = document.getElementById("post-date").value;
+          console.log(value);
+          console.log(date);
+          const content=`bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` ;
+          console.log(content);
+
+ 
+//
+  fetch(`${url}getGPTResponse`, {
+      method: 'POST',
+      
+      headers: {
+                        'Content-Type': 'application/json'
+                    },
+      body: JSON.stringify(content),
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return response.json();
+  })
+  .then(data => {
+      console.log('comment eklendi:', data);
+      let reply = data.choices[0].message.content;
+      console.log(reply);
+      document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
+      if(data != null){
+              sendComment();}
+  })
+  .catch(error => {
+      console.error('There was an error!', error);
+  });
+}
+ /*       function sendToChatGPT1() {
   
 
     let value = document.getElementById("post").value;
@@ -393,7 +432,7 @@
     .catch(error => {
         console.error('There was an error!', error);
     });
-}
+}*/
 /*
         function sendToChatGPT() {
             let value = document.getElementById("post").value;

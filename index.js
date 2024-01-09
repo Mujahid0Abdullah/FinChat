@@ -5,7 +5,7 @@ import cors from "cors";
 import { db } from "./connect.js";
 import multer from "multer";
 import { uploadFile, generatePublicUrl } from "./googleimage.js"; //.js
-
+import fetch from "node-fetch";
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -62,7 +62,34 @@ app.listen(8800, () => {
 app.use(cookieParser());
 //--------------------------------
 
-
+app.post('/getGPTResponse', async (req, res) => {
+    try {
+      const body = {
+        model: 'gpt-3.5-turbo',
+        messages: [{ role: 'user', content: req.body.content }],
+        temperature: 1,
+      };
+  
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer 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'// + process.env.OPENKEY, // Use your actual API key here
+        },
+        body: JSON.stringify(body),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error('There was an error!', error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
 
 
 app.get("/home", (req, res) => {
@@ -191,15 +218,7 @@ app.get("/followJs", (req, res) => {
     res.sendFile(htmlPath);
 });
 
-/*
-app.get("/upload", (req, res) => {
-    console.log("photo");
 
-    const htmlPath = path.resolve('public', "uploads", '1703618127158.png');
-    console.log(htmlPath);
-
-    res.sendFile(htmlPath);
-});*/
 
 
 const storage = multer.diskStorage({
