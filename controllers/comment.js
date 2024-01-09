@@ -47,7 +47,7 @@ function acc(id){
 
    
 }
-*//*
+*/
 async function acc(id) {
     try {
       let oran = 0;
@@ -68,7 +68,7 @@ async function acc(id) {
         );
       });
   
-      oran = oranData.oran;
+      oran = oranData[0].oran;
       console.log(oran)
       // Second query using a promise
       const allData = await new Promise((resolve, reject) => {
@@ -85,7 +85,7 @@ async function acc(id) {
         );
       });
   
-      all = allData.al;
+      all = allData[0].al;
       console.log(all)
 
       if (all !== 0 && all !== null) {
@@ -114,8 +114,8 @@ async function acc(id) {
     } catch (err) {
       console.error("Error:", err);
     }
-  }*/
-
+  }
+/*
   async function acc(id) {
     try {
       const oranData = await new Promise((resolve, reject) => {
@@ -174,7 +174,7 @@ async function acc(id) {
     } catch (err) {
       console.error("Error:", err);
     }
-  }
+  }*/
 export const addComment = (req, res) => {
     const token = req.cookies.accessToken;
 
