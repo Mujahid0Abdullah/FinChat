@@ -264,6 +264,7 @@
                     // Sunucudan gelen verileri işleme
                     console.log(comments);
                     const commetsListContainer = document.getElementById('commentsList');
+                    commetsListContainer.innerHTML="";
 
                     comments.forEach(comment => {
 
@@ -337,6 +338,8 @@
                     })
                     .then(data => {
                         console.log('comment eklendi:', data);
+                        desc="";
+                        fetchComments()
                     })
 
                     .catch(error => {
@@ -379,7 +382,7 @@
       return response.json();
   })
   .then(data => {
-      console.log('comment eklendi:', data);
+      console.log('gpt:', data);
       let reply = data.choices[0].message.content;
       console.log(reply);
       document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
