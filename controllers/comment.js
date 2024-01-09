@@ -47,7 +47,7 @@ function acc(id){
 
    
 }
-*/
+*//*
 async function acc(id) {
     try {
       let oran = 0;
@@ -92,6 +92,66 @@ async function acc(id) {
         const sonuc = oran / all;
         console.log(sonuc)
 
+        // Update query using a promise
+        await new Promise((resolve, reject) => {
+          db.query(
+            "UPDATE posts SET `img`=? WHERE id=?",
+            [sonuc, id],
+            (err, data) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+              }
+            }
+          );
+        });
+  
+        console.log("Data updated successfully");
+      } else {
+        console.log("Cannot calculate ratio: all is 0 or null");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  }*/
+
+  async function acc(id) {
+    try {
+      const oranData = await new Promise((resolve, reject) => {
+        db.query(
+          "SELECT count(sentiment) as oran FROM comments WHERE postId = ? and sentiment=1",
+          [id],
+          (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          }
+        );
+      });
+  
+      const allData = await new Promise((resolve, reject) => {
+        db.query(
+          "SELECT count(sentiment) as al FROM comments WHERE postId = ?",
+          [id],
+          (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          }
+        );
+      });
+  
+      let oran = oranData.oran;
+      let all = allData.al;
+  
+      if (all !== 0 && all !== null) {
+        const sonuc = oran / all;
+  
         // Update query using a promise
         await new Promise((resolve, reject) => {
           db.query(
