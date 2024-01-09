@@ -432,7 +432,7 @@
           let date = document.getElementById("post-date").textContent;
           console.log(value);
           console.log(date);
-          const content=`bu adam ${date} , şöyle post attı: ${value}.kısa bir cümle ile postu olumlu yada olumsuz olduğunu söyle ` ;
+          const content=`bu adam ${date} , şöyle post attı: ${value}.kısa bir cümle ile postu olumlu yada olumsuz olduğunu belirle ` ;
           console.log(content);
 
             fetch(`${url}getGPTResponse`, {
@@ -452,7 +452,7 @@
                 console.log('gpt:', data);
                 let reply = data.choices[0].message.content;
                 console.log(reply);
-                document.getElementById('desc').textContent = "CHAT GPT: " + reply;
+                document.getElementById('desc').textContent =  reply;
                 
             })
             .catch(error => {
@@ -461,10 +461,6 @@
 }
 
 
-/*
-        document.getElementById("sendButton").addEventListener("click", function () {
-            location.reload();
-        });*/
 
     </script>
 </body>
