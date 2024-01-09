@@ -241,7 +241,10 @@
                                 <div class="upper-row">
                                     <textarea id="post" readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
                              </div>
-
+                             <div class="lower-row">
+                        <div style="font-weight: normal; font-size: 12px;" readonly> DOĞRULUK : ${post.img} </div>
+                    </div>
+                    
                                 <div class="lower-row">
                                     <div id="post-date" style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
                                 </div>
@@ -287,6 +290,7 @@
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly> sentiment : ${sent} </div>
                     </div>
+                    
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(comment.createdAt).fromNow()} </div>
                     </div>

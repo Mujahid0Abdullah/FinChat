@@ -148,10 +148,11 @@ async function acc(id) {
   
       let oran = oranData.oran;
       let all = allData.al;
-  
+      console.log(all)
+  console.log(oran)
       if (all !== 0 && all !== null) {
         const sonuc = oran / all;
-  
+  console.log(sonuc)
         // Update query using a promise
         await new Promise((resolve, reject) => {
           db.query(
