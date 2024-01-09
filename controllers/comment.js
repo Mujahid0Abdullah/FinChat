@@ -11,7 +11,7 @@ export const getComments = (req, res) => {
     });
 
 }
-
+/*
 function acc(id){
     let oran =0
     let all=1
@@ -28,7 +28,7 @@ function acc(id){
               console.log("alliç"+all)
 
               console.log("alldiş"+all)
-              if (all != 0 || all == null ){const sonuc= oran/all
+              if (all != 0 && all != null ){const sonuc= oran/all
               console.log("sonuç"+sonuc)
           
               const q3 ="UPDATE posts SET `img`=? WHERE id=? ";
@@ -47,6 +47,74 @@ function acc(id){
 
    
 }
+*/
+async function acc(id) {
+    try {
+      let oran = 0;
+      let all = 1;
+  
+      // First query using a promise
+      const oranData = await new Promise((resolve, reject) => {
+        db.query(
+          "SELECT count(sentiment) as oran FROM comments WHERE postId = ? and sentiment=1",
+          [id],
+          (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          }
+        );
+      });
+  
+      oran = oranData.oran;
+      console.log(oran)
+      // Second query using a promise
+      const allData = await new Promise((resolve, reject) => {
+        db.query(
+          "SELECT count(sentiment) as al FROM comments WHERE postId = ?",
+          [id],
+          (err, data) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(data);
+            }
+          }
+        );
+      });
+  
+      all = allData.al;
+      console.log(all)
+
+      if (all !== 0 && all !== null) {
+        const sonuc = oran / all;
+        console.log(sonuc)
+
+        // Update query using a promise
+        await new Promise((resolve, reject) => {
+          db.query(
+            "UPDATE posts SET `img`=? WHERE id=?",
+            [sonuc, id],
+            (err, data) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+              }
+            }
+          );
+        });
+  
+        console.log("Data updated successfully");
+      } else {
+        console.log("Cannot calculate ratio: all is 0 or null");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+    }
+  }
 export const addComment = (req, res) => {
     const token = req.cookies.accessToken;
 
