@@ -355,42 +355,70 @@
             sendToChatGPT1();
         });
 
-        function sendToChatGPT1() {
-  
+        function ai() {
+    let value = document.getElementById("post").value;
+          let date = document.getElementById("post-date").textContent;
+          console.log(value);
+          console.log(date);
+          const text=`this man ${date} ,  "${value}" say ` ;
+          console.log(text);
 
-  let value = document.getElementById("post").value;
+            fetch(`http://127.0.0.1:5000/analyze_sentiment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({text}),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('ai:', data);
+                let reply = data.sentiment;
+                console.log(reply);
+                document.getElementById('desc').textContent = "ai comment: " + reply;
+                
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+}
+
+        function sendToChatGPT1() {
+    let value = document.getElementById("post").value;
           let date = document.getElementById("post-date").textContent;
           console.log(value);
           console.log(date);
           const content=`bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` ;
           console.log(content);
 
- 
-//
-  fetch(`${url}getGPTResponse`, {
-      method: 'POST',
-      
-      headers: {
-                        'Content-Type': 'application/json'
-                    },
-      body: JSON.stringify({content}),
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return response.json();
-  })
-  .then(data => {
-      console.log('gpt:', data);
-      let reply = data.choices[0].message.content;
-      console.log(reply);
-      document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
-     
-  })
-  .catch(error => {
-      console.error('There was an error!', error);
-  });
+            fetch(`${url}getGPTResponse`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({content}),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('gpt:', data);
+                let reply = data.choices[0].message.content;
+                console.log(reply);
+                document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
+                
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
 }
 
 
