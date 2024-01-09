@@ -318,7 +318,7 @@
         function sendComment() {
             const desc = document.getElementById('desc').value;
             const text = document.getElementById('desc').value;
-            const sentiment= 1;
+            let sentiment= 1;
             if (desc != null && desc != "") {
             fetch(`http://127.0.0.1:5000/analyze_sentiment`, {
                 method: 'POST',
@@ -380,7 +380,7 @@
 
             } else { alert("yorum boş olmaz") }
             fetchComments()
-            desc="";
+            document.getElementById('desc').value="";
 
         }
 
