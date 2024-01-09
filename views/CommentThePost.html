@@ -338,21 +338,12 @@
                 let reply = data.sentiment;
                 console.log('ai:',reply);
                 if(reply=="neg"){sentiment=0; console.log(sentiment);}
-                console.log(sentiment);
+              
+                const commentData = {
+                    desc: desc,
+                    sentiment: sentiment
+                };
 
-                
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-
-            console.log("diş"+sentiment);
-            const commentData = {
-                desc: desc,
-                sentiment: sentiment
-            };
-
-            
 
                 fetch(`${url}comments?postId=${id}`, {
                     method: 'POST',
@@ -371,12 +362,23 @@
                         console.log('comment eklendi:', data);
                         
                         fetchComments()
-            document.getElementById('desc').value="";
+                        document.getElementById('desc').value="";
                     })
 
                     .catch(error => {
-                        console.error('There was an error!', error);
+                        console.error('comment ekleme error', error);
                     });
+
+                
+            })
+            .catch(error => {
+                console.error('ai error', error);
+            });
+
+            
+            
+
+                
 
 
                     
