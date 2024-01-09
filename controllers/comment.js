@@ -17,29 +17,33 @@ function acc(id){
     let all=1
     const q = "SELECT count(sentiment) as oran FROM comments  WHERE postId = ? and sentiment=1"
     db.query(q, [id], (err, data) => {
-        if (err) return res.status(500).json(err);
-        oran= data.oran
+          oran= data.oran
+          const q2 = "SELECT count(sentiment) as all FROM comments  WHERE postId = ? "
+          db.query(q2, [id], (err, data) => {
+             
+              console.log("dataall"+data.all)
+      
+              all= data.all
+              console.log("alliç"+all)
+
+              console.log("alldiş"+all)
+              if (all != 0 || all == null ){const sonuc= oran/all
+              console.log("sonuç"+sonuc)
+          
+              const q3 ="UPDATE posts SET `img`=? WHERE id=? ";
+              db.query(q3, [sonuc,id], (err, data) => {
+                 
+                  console.log(data)
+              });
+          
+          }
+              
+          });
+
     });
 
-    const q2 = "SELECT count(sentiment) as all FROM comments  WHERE postId = ? "
-    db.query(q2, [id], (err, data) => {
-        if (err) return res.status(500).json(err);
-        console.log(data.all)
+   
 
-        all= data.all
-        console.log(all)
-    });
-    console.log(all)
-    if (all != 0 || all == null ){const sonuc= oran/all
-    console.log(sonuc)
-
-    const q3 ="UPDATE posts SET `img`=? WHERE id=? ";
-    db.query(q3, [sonuc,id], (err, data) => {
-        if (err) return res.status(500).json(err);
-        
-    });
-
-}
    
 }
 export const addComment = (req, res) => {
