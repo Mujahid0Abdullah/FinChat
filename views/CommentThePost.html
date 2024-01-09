@@ -265,8 +265,9 @@
                     console.log(comments);
                     const commetsListContainer = document.getElementById('commentsList');
                     commetsListContainer.innerHTML="";
-
+                    let sent ="negative";
                     comments.forEach(comment => {
+                        if(comment.sentiment==1 || comment.sentiment== null){sent="positive"}
 
                         let postContent = `
             <div class="shared-comment">
@@ -283,6 +284,9 @@
                         <textarea id="comment${comment.id}" readonly style="font-weight: bold; font-size: 16px;">${comment.desc}</textarea>
                     </div>
 
+                    <div class="lower-row">
+                        <div style="font-weight: normal; font-size: 12px;" readonly> sentiment : ${sent} </div>
+                    </div>
                     <div class="lower-row">
                         <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(comment.createdAt).fromNow()} </div>
                     </div>
@@ -307,21 +311,46 @@
         document.getElementById('sendButton').addEventListener('click', function () {
             
             sendComment();
-            fetchComments()
+          
         });
 
 
         function sendComment() {
-
-
-
             const desc = document.getElementById('desc').value;
+            const text = document.getElementById('desc').value;
+            const sentiment= 1;
+            if (desc != null && desc != "") {
+            fetch(`http://127.0.0.1:5000/analyze_sentiment`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({text}),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('ai:', data);
+                let reply = data.sentiment;
+                if(reply=="neg"){sentiment=0;}
+             
+                
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+
+            
             const commentData = {
                 desc: desc,
-
+                sentiment: sentiment
             };
 
-            if (desc != null && desc != "") {
+            
 
                 fetch(`${url}comments?postId=${id}`, {
                     method: 'POST',
@@ -346,16 +375,21 @@
                         console.error('There was an error!', error);
                     });
 
+
+                    
+
             } else { alert("yorum boş olmaz") }
+            fetchComments()
+            desc="";
 
         }
 
 
         document.getElementById("gptButton").addEventListener("click", function () {
-            ai();
-            //sendToChatGPT1();
+           
+            sendToChatGPT1();
         });
-
+/*
         function ai() {
     let value = document.getElementById("post").value;
           let date = document.getElementById("post-date").textContent;
@@ -387,14 +421,14 @@
             .catch(error => {
                 console.error('There was an error!', error);
             });
-}
+}*/
 
         function sendToChatGPT1() {
     let value = document.getElementById("post").value;
           let date = document.getElementById("post-date").textContent;
           console.log(value);
           console.log(date);
-          const content=`bu adam ${date} , şöyle dedi: ${value}. bir kelime ile cevap ver ya olumlu yada olumsuz ` ;
+          const content=`bu adam ${date} , şöyle post attı: ${value}.kısa bir cümle ile postu olumlu yada olumsuz olduğunu söyle ` ;
           console.log(content);
 
             fetch(`${url}getGPTResponse`, {
@@ -414,7 +448,7 @@
                 console.log('gpt:', data);
                 let reply = data.choices[0].message.content;
                 console.log(reply);
-                document.getElementById('desc').textContent = "CHAT GPT COMMENT: " + reply;
+                document.getElementById('desc').textContent = "CHAT GPT: " + reply;
                 
             })
             .catch(error => {

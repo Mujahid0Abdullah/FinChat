@@ -20,7 +20,7 @@ export const addComment = (req, res) => {
         if (err) return res.status(403).json("Token is not valid");
 
 
-        const q = "INSERT INTO comments (`desc`, `postId`, `userId`, `createdAt`) VALUES (?)";
+        const q = "INSERT INTO comments (`desc`, `postId`, `userId`, `createdAt`, `sentiment`) VALUES (?)";
 
         const descValue = req.body.desc;//req çalışmıyor
         console.log(descValue);
@@ -28,8 +28,10 @@ export const addComment = (req, res) => {
             descValue,
             req.query.postId,
             userInfo.id,
+           
 
-            moment(Date.now()).format("YYYY-MM-DD HH:mm:ss")
+            moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
+            req.body.sentiment
         ];
 
         db.query(q, [values], (err, data) => {
