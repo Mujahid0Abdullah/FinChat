@@ -144,61 +144,12 @@
         fcd.getpost(id, "othersProfile")
         fcd.getUserinfo(id, "othersProfile")
         fcd.getExchangeRates()
+        document.getElementById('update-user-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    fcd.updateUser()
+})
 
-
-
-/*
-        function fetchPosts() {
-
-            fetch(`${url}posts/Otherpost?userid=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
-                .then(response => response.json())
-                .then(posts => {
-                    // Sunucudan gelen verileri işleme
-                    console.log(posts);
-                    const postsListContainer = document.getElementById('postsList');
-
-
-
-                    posts.forEach(post => {
-
-                        let postContent = `
-                    
-            <div class="post-view" >
-                <div class="left-column">
-                    <div class="user-avatar-big">
-                        <div class="user-avatar" style="height: 100%; width: 100%;">
-                        <img src="https://lh3.googleusercontent.com/d/${post.profilePic}">
-                    </div>
-                    </div>
-                    <div class="user-name">${post.name}</div>
-                </div>
-                <div class="right-column">
-                    <div class="upper-row">
-                        <textarea readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
-                     </div>
-
-                    <div class="lower-row">
-                        <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
-                    
-                      <button onclick="postClicked(${post.id})"  id="commentsButton">
-                          <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
-                      </button>
-                    </div>
-                </div>
-            </div>
-                `;
-
-                        postsListContainer.innerHTML += postContent
-
-                    })
-                        .catch(error => {
-                            console.error('Error fetching posts:', error);
-                        });
-                })
-        }
-*/
-
-        function openProfilePage() {
+function openProfilePage() {
             window.location = `${url}profile`
         }
 
@@ -269,6 +220,58 @@
           console.error('Error fetching followed users:', error);
         });
     }
+
+/*
+        function fetchPosts() {
+
+            fetch(`${url}posts/Otherpost?userid=${id}`) // Sunucu tarafında '/posts' endpoint'i bekliyorsa
+                .then(response => response.json())
+                .then(posts => {
+                    // Sunucudan gelen verileri işleme
+                    console.log(posts);
+                    const postsListContainer = document.getElementById('postsList');
+
+
+
+                    posts.forEach(post => {
+
+                        let postContent = `
+                    
+            <div class="post-view" >
+                <div class="left-column">
+                    <div class="user-avatar-big">
+                        <div class="user-avatar" style="height: 100%; width: 100%;">
+                        <img src="https://lh3.googleusercontent.com/d/${post.profilePic}">
+                    </div>
+                    </div>
+                    <div class="user-name">${post.name}</div>
+                </div>
+                <div class="right-column">
+                    <div class="upper-row">
+                        <textarea readonly style="font-weight: bold; font-size: 16px;">${post.desc}</textarea>
+                     </div>
+
+                    <div class="lower-row">
+                        <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
+                    
+                      <button onclick="postClicked(${post.id})"  id="commentsButton">
+                          <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
+                      </button>
+                    </div>
+                </div>
+            </div>
+                `;
+
+                        postsListContainer.innerHTML += postContent
+
+                    })
+                        .catch(error => {
+                            console.error('Error fetching posts:', error);
+                        });
+                })
+        }
+*/
+
 
     // getfollower işlevi güncellenmiş hali
     /*
@@ -364,10 +367,7 @@
 
         //UPDATE USER DATA---------------------------------------------------------
 
-        document.getElementById('update-user-form').addEventListener('submit', function (event) {
-    event.preventDefault();
-    fcd.updateUser()
-})
+
         /*document.getElementById('update-user-form').addEventListener('submit', async function (event) {
             event.preventDefault();
 
