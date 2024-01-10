@@ -174,7 +174,7 @@ function fetchPosts() {
             <div class="lower-row">
                 <div style="font-weight: normal; font-size: 12px;" readonly>  ${moment(post.createdAt).fromNow()} </div>
               <button onclick="postClicked(${post.id})" id="commentsButton">
-                  <img src="https://raw.githubusercontent.com/Mujahid0Abdullah/FinChat/main/views/comment.png" alt="Button Image">
+                  <img src="https://fin-chat.onrender.com/static/comment.png" alt="Button Image">
               </button>
             </div>
         </div>
