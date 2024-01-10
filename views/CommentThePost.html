@@ -268,8 +268,9 @@
                     console.log(comments);
                     const commetsListContainer = document.getElementById('commentsList');
                     commetsListContainer.innerHTML="";
-                    let sent ="negative";
+                    
                     comments.forEach(comment => {
+                        let sent ="negative";
                         if(comment.sentiment==1 || comment.sentiment== null){sent="positive"}
 
                         let postContent = `
