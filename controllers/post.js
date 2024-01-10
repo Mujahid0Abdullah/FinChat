@@ -25,7 +25,7 @@ export const addPost = (req, res) => {
     console.log(req.body);
     //const file = req.file;
     //const imagePath = `./public/uploads/${file.filename}`;
-    const imagePath = "no image";
+    const imagePath = "1";
     const descValue = req.body.desc;
     const userInfo = req.userInfo; // Yetkilendirme adımında doğrulanan kullanıcı bilgileri
 
