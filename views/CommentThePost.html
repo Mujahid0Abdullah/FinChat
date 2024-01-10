@@ -379,6 +379,11 @@
             })
             .catch(error => {
                 console.error('ai error', error);
+                
+                const commentData = {
+                    desc: desc,
+                    sentiment: 1
+                };
                 fetch(`${url}comments?postId=${id}`, {
                     method: 'POST',
                     headers: {
