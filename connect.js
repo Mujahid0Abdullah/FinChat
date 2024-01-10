@@ -1,5 +1,6 @@
 import mysql from "mysql"
-
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const db = mysql.createConnection({
     host: "byg6pj4yq5rqua2wemyy-mysql.services.clever-cloud.com",
