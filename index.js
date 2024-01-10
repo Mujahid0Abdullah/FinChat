@@ -61,7 +61,7 @@ app.listen(8800, () => {
 });
 app.use(cookieParser());
 //--------------------------------
-
+//---------------------GPT-------------------------------
 app.post('/getGPTResponse', async (req, res) => {
     try {
       const body = {
@@ -91,7 +91,7 @@ app.post('/getGPTResponse', async (req, res) => {
     }
   });
 
-
+//HTML REQUEST
 app.get("/home", (req, res) => {
     console.log("Anasayfa");
 

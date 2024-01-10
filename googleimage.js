@@ -25,31 +25,7 @@ const drive = google.drive({
     auth: oauth2Client,
 });
 
-/* 
-filepath which needs to be uploaded
-Note: Assumes example.jpg file is in root directory, 
-though this can be any filePath
-*/
-//const filePath = path.join(__dirname, 'example.jpg');
-/*
-export async function uploadFile(img) {
-    try {
-        const response = await drive.files.create({
-            requestBody: {
-                name: Date.now() + 'example.jpg', //This can be name of your choice
-                mimeType: 'image/jpg',
-            },
-            media: {
-                mimeType: 'image/jpg',
-                body: img,
-            },
-        });
 
-        console.log(response.data);
-    } catch (error) {
-        console.log(error.message);
-    }
-}*/
 
 export async function uploadFile(filename) {
     try {
@@ -177,3 +153,28 @@ router.put("/", authorize, async (req, res) => {
 });
 
 
+/* 
+filepath which needs to be uploaded
+Note: Assumes example.jpg file is in root directory, 
+though this can be any filePath
+*/
+//const filePath = path.join(__dirname, 'example.jpg');
+/*
+export async function uploadFile(img) {
+    try {
+        const response = await drive.files.create({
+            requestBody: {
+                name: Date.now() + 'example.jpg', //This can be name of your choice
+                mimeType: 'image/jpg',
+            },
+            media: {
+                mimeType: 'image/jpg',
+                body: img,
+            },
+        });
+
+        console.log(response.data);
+    } catch (error) {
+        console.log(error.message);
+    }
+}*/
