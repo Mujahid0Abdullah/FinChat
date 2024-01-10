@@ -379,6 +379,29 @@
             })
             .catch(error => {
                 console.error('ai error', error);
+                fetch(`${url}comments?postId=${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(commentData)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('comment eklendi:', data);
+                        
+                        fetchComments()
+                        document.getElementById('desc').value="";
+                    })
+
+                    .catch(error => {
+                        console.error('comment ekleme error', error);
+                    });
             });
 
             
