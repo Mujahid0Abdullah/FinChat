@@ -1,7 +1,0 @@
-git add * yada degisen dosya adi
-git commit -m "zekeriyya"
-git push
-
-
-git pull // ile son kodu indir
-ben ozan
