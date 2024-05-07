@@ -1,10 +1,4 @@
 # FinChat
-porje url : 
-https://fin-chat.onrender.com/register
+project url: https://fin-chat.onrender.com/register
 
-github :
-https://github.com/Mujahid0Abdullah/FinChat
-
-
-NOT : NLP çalıştırmak için python kodları çalıştırmalısınız ve localHoste http://127.0.0.1:5000/ olacak (kullanılan kütüphaneleri indirin)
--aşamalar yapılmazsa , tüm yazdığınız commentler positive değerlendirecek
+NOTE: To run NLP, you must run Python codes and localhost will be http://127.0.0.1:5000/ (download the libraries used) - if the steps are not done, all comments you write will be evaluated as positive sentiment.
